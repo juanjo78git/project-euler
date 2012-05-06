@@ -1,0 +1,55 @@
+/* Program MAT_MULT.C
+**
+** Illustrates how to multiply two LEN_MATRIXXLEN_MATRIX matrices.
+**
+** Justin, Feb 20, '97
+*/
+
+#include <stdio.h>
+
+
+#define LEN_MATRIX	4
+
+void mult_matrices(int a[][LEN_MATRIX], int b[][LEN_MATRIX], int result[][LEN_MATRIX]);
+void print_matrix(int a[][LEN_MATRIX]);
+
+void main(void)
+{
+   int p[LEN_MATRIX][LEN_MATRIX] = { {0, 1, 1, 1}, {0, 0, 0, 1}, {0, 1, 0, 1}, {0, 0, 1, 0} };
+   int q[LEN_MATRIX][LEN_MATRIX] = { {0, 1, 1, 1}, {0, 0, 0, 1}, {0, 1, 0, 1}, {0, 0, 1, 0} };
+   int r[LEN_MATRIX][LEN_MATRIX];
+
+	print_matrix(p);
+	printf("\n\n\n");
+
+   mult_matrices(p, q, r);
+   print_matrix(r);
+}
+
+void mult_matrices(int a[][LEN_MATRIX], int b[][LEN_MATRIX], int result[][LEN_MATRIX])
+{
+   int i, j, k;
+   for(i=0; i<LEN_MATRIX; i++)
+   {
+	 for(j=0; j<LEN_MATRIX; j++)
+	 {
+	    for(k=0; k<LEN_MATRIX; k++)
+	    {
+		  result[i][j] = a[i][k] + b[k][j];
+	    }
+	 }
+   }
+}
+
+void print_matrix(int a[][LEN_MATRIX])
+{
+   int i, j;
+   for (i=0; i<LEN_MATRIX; i++)
+   {
+	 for (j=0; j<LEN_MATRIX; j++)
+	 {
+	    printf("%d\t", a[i][j]);
+	 }
+	 printf("\n");
+   }
+}

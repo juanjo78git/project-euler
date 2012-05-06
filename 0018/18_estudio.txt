@@ -1,0 +1,61 @@
+http://en.wikipedia.org/wiki/Longest_path_problem
+
+http://es.wikipedia.org/wiki/Algoritmo_de_Floyd-Warshall
+
+>Hello, 
+>
+>I'm looking for a Floyd-Warshall Python implementation. The only
+>implementation I  have seen (searching this newsgroup) used a Python
+>library called "Numeric". This   implementation doesn't work anymore.
+>I was wondering whether anyone knew of any FW implementations
+>elsewhere, or knew how I could convert the old example to Python code
+>that would run on Python 2.2?
+
+This is really so simple that it's almost a bit redundant to have a
+separate library for it... Here is a sample implementation:
+
+def floyd_warshall(w, n):
+    d = {0: w}
+    for k in range(1,n+1):
+        d[k] = {}
+        for i in range(1,n+1):
+            for j in range(1,n+1):
+                d[k][i,j] = min(d[k-1][i,j],
+                                d[k-1][i,k] + d[k-1][k,j])
+    return d[n]
+
+This is basically directly translated from the standard pseudocode. A
+graph is represented by its weight matrix, in the form of a dictionary
+with tuple keys. For example:
+
+w = {}
+w[1,2] = 3
+w[1,3] = 8
+w[1,5] = -4
+w[2,4] = 1
+...
+
+and so forth. You could add a loop like this to fill out the edges
+that aren't specified explicitly:
+
+for i in range(1,n+1):
+    w[i,i] = 0
+    for j in range(1,n+1):
+        w.setdefault((i,j), INF)
+
+Here, n is the number of nodes in the graph and INF may be set to
+something like sys.maxint.
+
+The algorithm above stores all steps of the algorithm, with d[k] being
+the distance matrix after step k -- a bit redundant, but useful if you
+want to display the steps.
+
+You might also want to keep a parent matrix (or, rather, a dictionary)
+where pi[k][i,j] is the parent to node j in the shortest path from i
+to j after step k (set this when selecting the minimum; you'd have to
+replace the call to min() with an if statement). Again, keeping the
+results from all steps is highly redundant, but easily simplified; you
+only need the previous and the current.
+
+>Thanks,
+>Dave.
