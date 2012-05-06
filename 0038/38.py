@@ -6,6 +6,9 @@ def ispandigital9(n):
 	if len(s) != 9:
 		return False
 	
+	if incluyecero(n):
+		return False
+	
 	for i in range(1, 10):
 		if s.find(str(i)) == -1:
 			return False
