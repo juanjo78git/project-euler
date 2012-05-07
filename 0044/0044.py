@@ -22,16 +22,21 @@ def list_pentagonal(e):
 		lpent.append(pentagonal(n))
 	return lpent
 
-x = 10000
+x = 1000
 
 # ¿generamos una lista muy grande?
 lpent = list_pentagonal(x)
 
-for k in range(0, x-1):
-	for j in range(k, x-1):
+print("Lista de pentagonal generada para", x)
+
+for j in range(0, x-1):
+	Pj = lpent[j]
+	for k in range(j, x-1):
 		Pk = lpent[k]
-		Pj = lpent[j]
-		if ((Pk+Pj) in lpent) and ((Pj-Pk) in lpent):
-			print(Pk, Pj, Pk-Pj)
+		if (Pj+Pk) in lpent:
+			print("Porcentaje ", format(j/x, '06.2%')," - Pj:", Pj, ", Pk:", Pk, sep='')
+			if (Pk-Pj) in lpent:
+				print("Resultado", Pj, Pk, Pk-Pj)
+				exit(0)
 
 
