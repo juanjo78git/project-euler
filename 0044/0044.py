@@ -22,7 +22,7 @@ def list_pentagonal(e):
 		lpent.append(pentagonal(n))
 	return lpent
 
-x = 1000
+x = 3000
 
 # ¿generamos una lista muy grande?
 lpent = list_pentagonal(x)
