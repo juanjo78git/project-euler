@@ -31,8 +31,38 @@
 #				print(n)
 #				exit(0)
 # solucionado! a falta de picar (eso espero!)
-# los tiempos serán buenos... el único problema es delimitar cuandos primos
-# guardamos, aunque una chapuza sería para cada bucle generar un listado
-# de primos menos que n... me-nu-da chapuza... --> quizás mejor sería que
-# el bucle del medio estuviera el último, que es el más pesado por el tema
-# de los primos... <-- gran idea
+# los tiempos serÃ¡n buenos... el Ãºnico problema es delimitar cuandos primos
+# guardamos, aunque una chapuza serÃ­a para cada bucle generar un listado
+# de primos menos que n... me-nu-da chapuza... --> quizÃ¡s mejor serÃ­a que
+# el bucle del medio estuviera el Ãºltimo, que es el mÃ¡s pesado por el tema
+# de los primos... <-- gran idea#! /usr/bin/python
+
+def isprime(n):
+	if n == 1:
+		return False
+	
+	# rango empieza en 2, y solo tenemos que llegar hasta el cuadrado de n
+	for x in range(2, int(n**0.5)+1):
+		if n % x == 0:
+			return False
+	return True
+
+# un listado de n nÃºmeros primos
+def lista_n_primos(n):
+	lprimos = []
+	j = 2
+	
+	while len(lprimos) != n:
+		if isprime(j):
+			lprimos.append(j)
+		
+		j = j + 1
+
+	return lprimos
+
+
+lprimos = lista_n_primos(10)	
+
+print(lprimos)			
+			
+		 
