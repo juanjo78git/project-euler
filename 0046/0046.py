@@ -74,7 +74,7 @@ def pos_primo_mayor(l, n):
 # impar = primo + 2	* n^2		
 			
 			
-lprimos = lista_n_primos(10000)	
+lprimos = lista_n_primos(100000)	
 
 print("Lista de 100000 generada")
 
@@ -89,6 +89,7 @@ while True:
 		rango_primo = pos_primo_mayor(lprimos, impar)
 		for n in range(1, int(((impar/2)**0.5)+1)):
 			for iprimo in range(0, rango_primo):
+				goldbach = False
 				
 				# y ahroa el cálculo entero
 				if (impar == lprimos[iprimo] + (2*(n**2))):
@@ -100,9 +101,10 @@ while True:
 			# correcta
 			if goldbach:
 				break
-			else:
-				print("No cumple Goldbach el impar", impar)
-				exit(0)
+		
+		if not goldbach:
+			print("No cumple Goldbach el impar", impar)
+			exit(0)
 			
 	impar = impar + 2
 	if (impar % 1001) == 0:
