@@ -55,14 +55,81 @@ def lista_n_primos(n):
 	while len(lprimos) != n:
 		if isprime(j):
 			lprimos.append(j)
-		
+			if (len(lprimos) % 1000) == 0:
+				print("Procesados", len(lprimos), "primos de un total de", n)
 		j = j + 1
 
 	return lprimos
 
+# retorna el indice del siguiente elemento mayor que n, la lista debe
+# estar ordenada!
+def pos_primo_mayor(l, n):
+	for i in range(0, len(l)):
+		if l[i] > n:
+			return i
 
-lprimos = lista_n_primos(10)	
-
-print(lprimos)			
 			
-		 
+# main
+# 9 = 7 + 2*1^2
+# impar = primo + 2	* n^2		
+			
+			
+lprimos = lista_n_primos(10000)	
+
+print("Lista de 100000 generada")
+
+# primer impar no primo!
+impar = 9
+goldbach = False
+
+while True:
+	if not isprime(impar):
+	
+		# esto se podría mejorar con el rango de abajo...
+		rango_primo = pos_primo_mayor(lprimos, impar)
+		for n in range(1, int(((impar/2)**0.5)+1)):
+			for iprimo in range(0, rango_primo):
+				
+				# y ahroa el cálculo entero
+				if (impar == lprimos[iprimo] + (2*(n**2))):
+					print("Es Goldbach:", impar, "=", lprimos[iprimo], "+ 2 x ", n, "^2")
+					goldbach = True
+					break
+			
+			# al terminar el bucle comprobamos si existía una combinación 
+			# correcta
+			if goldbach:
+				break
+			else:
+				print("No cumple Goldbach el impar", impar)
+				exit(0)
+			
+	impar = impar + 2
+	if (impar % 1001) == 0:
+		print("Tratamiento del impar:", impar)
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+print(lprimos)
+
+i = pos_primo_mayor(lprimos, 55)
+
+print(lprimos[i],lprimos[i-1])
