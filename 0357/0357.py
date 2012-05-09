@@ -1,46 +1,87 @@
 #!/usr/bin/pypy
 
+# Consider the divisors of 30: 1,2,3,5,6,10,15,30.
+# It can be seen that for every divisor d of 30, d+30/d is prime.
+
+# Find the sum of all positive integers n not exceeding 100 000 000
+# such that for every divisor d of n, d+n/d is prime.
+
+################################################################################
+
+
+
+
+import random, sys
+
+def miller_rabin_pass(a, s, d, n):
+    a_to_power = pow(a, d, n)
+    if a_to_power == 1:
+        return True
+    for i in xrange(s-1):
+        if a_to_power == n - 1:
+            return True
+        a_to_power = (a_to_power * a_to_power) % n
+    return a_to_power == n - 1
+
+
+def miller_rabin(n):
+    d = n - 1
+    s = 0
+    while d % 2 == 0:
+        d >>= 1
+        s += 1
+	
+    for repeat in xrange(20):
+        a = 0
+        while a == 0:
+            a = random.randrange(n)
+        if not miller_rabin_pass(a, s, d, n):
+            return False
+    return True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # es un número primo
 def isprime(n):
-        if n == 1:
-                return False
-
-        # rango empieza en 2, y solo tenemos que llegar hasta el cuadrado de n
-        for x in range(2, int(n**0.5)+1):
-                if n % x == 0:
-                        return False
-        return True
-
-# lista de divisores
-def divisors(n):
-	ldivs = []
-	
-	for d in range(1, n + 1):
-		if n % d == 0:
-			ldivs.append(d)
-	return ldivs
-
-
-
-
-# es divisible por 3
-def isdiv3(n):
-	s = str(n)
-	while len(s) > 1:
-		n = 0
-		for i in range(0, len(s)):
-			n = n + int(s[i])
-		s = str(n)
-	
-	if (int(s) == 3) or (int(s) == 6) or (int(s) == 9):
-		return True
-	else:
+	if n == 1:
 		return False
-	
+
+	# rango empieza en 2, y solo tenemos que llegar hasta el cuadrado de n
+	for x in range(2, int(n**0.5)+1):
+		if n % x == 0:
+			return False
+
+	return True
+
+
 	
 def isnumdivprimes(n):
+
+	
 
 	# tratamientos previos
 	# 1. un número impar nunca cumplirá, ya que siempre tendremos que el
@@ -72,7 +113,14 @@ def isnumdivprimes(n):
 		di,m = divmod(n, d)                
 		if m == 0:
 			p = d + di
-			if not isprime(int(p)):
+			
+			#if miller_rabin(p) != isprime(p):
+			#	print p
+			#	exit(0)
+			
+			
+			#if not isprime(p):
+			if not miller_rabin(p):
 				return False	
 
 	return True
@@ -82,7 +130,7 @@ def isnumdivprimes(n):
 #sys.exit(0)
 
 rango = 100000000
-#rango = 50000
+#rango = 1000000
 total = 0
 
 for n in range(1, rango + 1):
