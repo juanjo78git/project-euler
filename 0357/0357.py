@@ -81,7 +81,7 @@ def isprime(n):
 	
 def isnumdivprimes(n):
 
-	
+	limite = int(n**0.5)
 
 	# tratamientos previos
 	# 1. un número impar nunca cumplirá, ya que siempre tendremos que el
@@ -90,12 +90,13 @@ def isnumdivprimes(n):
 	#if n % 2 == 1:
 	#	return False
 	lastdigit = int(str(n)[len(str(n))-1])
-	if lastdigit % 2 == 1:
-	#if n  % 2 == 0:
-		return False
 	
-	# 2. Similar al anterior, si termina en 4 o en 9 sería divisible entre 5
-	if lastdigit == 4 or lastdigit == 9:
+	#if lastdigit % 2 == 1:
+	#if n  % 2 == 0:
+	#	return False
+	
+	# 2. Similar al anterior, si termina en 4 es divisible entre 5
+	if lastdigit == 4:
 	#if n % 4 == 0 or n % 9 == 0:
 		return False
 	
@@ -106,22 +107,43 @@ def isnumdivprimes(n):
 	if (n + 1) % 3 == 0:
 		return False
 		
+	if n % 4 == 0:
+		return False	
+		
+		
 	# En otro caso... lo hacemos a fuerza bruta, si vemos que es demasiado
 	# buscaremos más trucos como los anteriores
 
-	for d in range(1, n + 1):
+	# caso primero de n como divisor de si mismo o 1 es divisor de si mismo
+	if not isprime(n+1):
+		return False
+
+	if limite*limite == n:
+		return False
+
+
+	for d in range(2, limite + 1):
+		
 		di,m = divmod(n, d)                
 		if m == 0:
+			
+			# explicacion, si existe algun divisor dos veces, no cumple
+			if di % d == 0:
+				return False
+
 			p = d + di
 			
 			#if miller_rabin(p) != isprime(p):
 			#	print p
 			#	exit(0)
 			
-			
-			#if not isprime(p):
-			if not miller_rabin(p):
-				return False	
+			if not isprime(p):
+				#if not miller_rabin(p):
+				return False
+
+	
+	
+	
 
 	return True
 
@@ -129,20 +151,25 @@ def isnumdivprimes(n):
 #print(isnumdivprimes(30))
 #sys.exit(0)
 
-rango = 100000000
-#rango = 1000000
+#rango = 100000000
+
+rango = 50
 total = 0
 
-for n in range(1, rango + 1):
+# solo tratamos los pares
+for n in range(2, rango + 1, 2):
 
-	if n % 10000 == 0:
+	if n % 100000 == 0:
 		print (100*n)/float(rango)
 	
 	if isnumdivprimes(n):
 		total = total + n
+		#print("Cumple", n)
+	#else:
+	#	print("No cumple", n)
 
 #print("Resultado para 0357:", total)
-print total	
+print(total)	
 
 
 
