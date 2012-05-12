@@ -19,4 +19,27 @@
 #In the first one-thousand expansions, how many fractions contain a numerator
 #with more digits than denominator?
 
+#
+def next_numerator_denominator(n, d):
+	nnext = (2*d)+n
+	dnext = n+d
+	return nnext, dnext
 
+
+
+
+
+n_iteraciones = 1000
+numerator_more_digits = 0
+n = 3
+d = 2
+
+for i in range(0, n_iteraciones):
+	if len(str(n)) > len(str(d)):
+		numerator_more_digits = numerator_more_digits + 1
+	
+	n, d = next_numerator_denominator(n,d)
+	
+print("Resultado 0057:", numerator_more_digits)
+
+	
