@@ -63,8 +63,9 @@ def compcombinac(lxprimes):
 	return True
 
 
-nprimos = 1000
+nprimos = 5000
 lprime = lprimos(nprimos)
+lresult = []
 
 for pi1 in range(0, nprimos-4):
 	
@@ -106,6 +107,8 @@ for pi1 in range(0, nprimos-4):
 				
 				if not compcombinac(l4primes):
 					continue
+				#else:
+				#	print(l4primes)
 						
 				for pi5 in range(pi4+1, nprimos): 
 					p5 = lprime[pi5]
@@ -119,8 +122,12 @@ for pi1 in range(0, nprimos-4):
 					l5primes.append(p5)
 				
 					if compcombinac(l5primes):
-						print("Resultado 0060:", sum(l5primes))
-						exit(0)
+						if len(lresult) > 0 and sum(l5primes) < sum(lresult):
+							lresult = l5primes
+						#print("Un resultado 0060:", sum(l5primes), l5primes)
+						#exit(0)
+
+print("Un resultado 0060:", sum(lresult), lresult)
 						
 						
 				
