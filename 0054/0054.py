@@ -65,39 +65,148 @@
 
 # How many hands does Player 1 win?
 
-# para el tipo de carga... quizás luego pase de esto (COMPLICAR DEMASIADO)
-class TipoCarta:
-    C, D, S, H= range(4)
-    
-    
-En mi estructura de cartas, implementaré el __cmp__ para ver que carta es 
-mayor o menor...    
-    
- #!/usr/bin/env python
-import random
+import shlex
 
-class C:
-    def __init__(self,count):
-        self.count = count
+class Carta:
+	"""Clase para guardar una carta"""
+	def __init__(self, carta):
+		if carta[0] == 'T':
+			self.numero = 10
+		elif carta[0] == 'J':
+			self.numero = 11
+		elif carta[0] == 'Q':
+			self.numero = 12
+		elif carta[0] == 'K':
+			self.numero = 13
+		elif carta[0] == 'A':
+			self.numero = 1
+		else:
+			self.numero = int(carta[0])
+		self.color = carta[1]  
 
-    def __cmp__(self,other):
-        return cmp(self.count,other.count)
+	def __str__(self):
+		#return "["+str(self.numero)+"-"+self.color+"]"
+		return "[%02d-%s]" % (self.numero, self.color)
+		
+	def __cmp__(self, other):
+		## tratamiento para el AS
+		if self.numero == 1 or other.numero == 1:
+			return ((self.numero > other.numero) - (self.numero < other.numero)) * (-1)
+		else:
+			return (self.numero > other.numero) - (self.numero < other.numero)
 
-longList = [C(random.random()) for i in xrange(1000000)] #about 6.1 secs
+	def __lt__(self, other):
+		return self.__cmp__(other) < 0
 
-longList.sort() #about 52 - 6.1 = 46 secs
-longList.sort(key = lambda c: c.count) #about 9 - 6.1 = 3 secs   
-    
-O quizás tiro por lo alto y uso esto que es más esquisito
+	def __le__(self, other):
+		return self.__cmp__(other) < 0
 
-object.__lt__(self, other)
-object.__le__(self, other)
-object.__eq__(self, other)
-object.__ne__(self, other)
-object.__gt__(self, other)
-object.__ge__(self, other)
+	def __gt__(self, other):
+		return self.__cmp__(other) > 0
 
-y así puedo hacer 
+	def __ge__(self, other):
+		return self.__cmp__(other) >= 0
 
-Carta1 <= Carta2.... en todas partes de mi código :D <-- Me gusta!    
-    
+	def get_numero(self):
+		return self.numero
+		
+	def get_color(self):
+		return self.color
+
+
+
+class ManoDeCartas:
+	"""Mano de cartas que tiene un jugador"""
+	def __init__(self, lista_de_jugadas):
+		self.cartas = []
+		for c in lista_de_jugadas:
+			self.cartas.append(Carta(c))
+		if len(self.cartas) != 5:
+			print("Error, nÃºmero de cartas distinto de 5")
+		self.cartas.sort()
+			
+	def __str__(self):
+		mano = ""
+		for c in self.cartas:
+			mano = mano + str(c)
+		return mano
+	
+	def get_listacartas(self):
+		listacartas = []
+		for c in self.cartas:
+			listacartas.append(c.get_numero())
+		return listacartas
+	
+	"""Indica si tiene color la mano"""	
+	def is_color(self):
+		color = self.cartas[0].get_color()
+		for c in self.cartas:
+			if color != c.get_color():
+				return False
+		return True		
+
+	"""Escalera real"""
+	def is_escalera_real(self):
+		escalera_color = [10,11,12,13,1]
+		if not self.is_color():
+			return False
+		else:
+			if escalera_color == self.get_listacartas():
+				return True
+			else:
+				return False
+			
+
+
+
+class PartidaPoker:
+	"""Partida de poker"""
+	# le pasamos una lÃ­nea del fichero...
+	def __init__(self, linea_de_juego):
+		lista_jugadas = shlex.split(linea_de_juego)
+		self.mano_j1 = ManoDeCartas(lista_jugadas[:5])
+		self.mano_j2 = ManoDeCartas(lista_jugadas[5:])
+	
+	def __str__(self):
+		return str(self.mano_j1) + " <-VS-> " + str(self.mano_j2)
+		
+	def get_mano_jugador(self, jug):
+		if jug == 1:
+			return self.mano_j1
+		else:
+			return self.mano_j2
+			
+			
+## PROBLEMA 0054 _______________________________________________________________
+
+lmano = ['1A', 'TA','QA','JA','KA']
+
+mano = ManoDeCartas(lmano)
+
+print(mano.is_escalera_real())
+
+lmano = ['2A', 'TA','QA','JA','KA']
+
+mano = ManoDeCartas(lmano)
+
+print(mano.is_escalera_real())
+
+exit(0)
+
+
+
+# lectura de todo el fichero...
+f = open('./poker.txt')
+
+
+lista_poker = f.readlines()
+
+for poker in lista_poker:
+	poker = poker.replace('\n', '')
+	partida = PartidaPoker(poker)
+	print(partida)
+
+
+
+
+
