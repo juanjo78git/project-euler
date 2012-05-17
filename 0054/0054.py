@@ -70,30 +70,19 @@ import shlex
 class Carta:
 	"""Clase para guardar una carta"""
 	def __init__(self, carta):
-		if carta[0] == 'T':
-			self.numero = 10
-		elif carta[0] == 'J':
-			self.numero = 11
-		elif carta[0] == 'Q':
-			self.numero = 12
-		elif carta[0] == 'K':
-			self.numero = 13
-		elif carta[0] == 'A':
-			self.numero = 1
-		else:
-			self.numero = int(carta[0])
-		self.color = carta[1]  
+		self.color = carta[1]
+		self.valor = carta[0] 
 
 	def __str__(self):
-		#return "["+str(self.numero)+"-"+self.color+"]"
-		return "[%02d-%s]" % (self.numero, self.color)
+		return "["+str(self.valor)+str(self.color)+"]"
+
+	def cmp(self, other):
+		a = self.get_numero()
+		b = other.get_numero()
+		return (a > b) - (a < b)
 		
 	def __cmp__(self, other):
-		## tratamiento para el AS
-		if self.numero == 1 or other.numero == 1:
-			return ((self.numero > other.numero) - (self.numero < other.numero)) * (-1)
-		else:
-			return (self.numero > other.numero) - (self.numero < other.numero)
+		return self.cmp(other)
 
 	def __lt__(self, other):
 		return self.__cmp__(other) < 0
@@ -106,21 +95,42 @@ class Carta:
 
 	def __ge__(self, other):
 		return self.__cmp__(other) >= 0
+		
+	def __eq__(self, other):
+		return self.valor == other.valor
 
 	def get_numero(self):
-		return self.numero
+		if self.valor == 'T':
+			return 10
+		elif self.valor == 'J':
+			return 11
+		elif self.valor == 'Q':
+			return 12
+		elif self.valor == 'K':
+			return 13
+		elif self.valor == 'A':
+			return 14
+		else:
+			return int(self.valor)	
 		
 	def get_color(self):
 		return self.color
-
+		
+	def get_valor(self):
+		return self.valor
 
 
 class ManoDeCartas:
 	"""Mano de cartas que tiene un jugador"""
 	def __init__(self, lista_de_jugadas):
 		self.cartas = []
-		for c in lista_de_jugadas:
-			self.cartas.append(Carta(c))
+		self.__dic_ocurr = {"A":0, "1":0, "2":0, "3":0, "4":0, "5":0, "6":0, \
+						"7":0, "8":0, "9":0, "T":0, "J":0, "Q":0, "K":0}
+
+		for jugada in lista_de_jugadas:
+			carta = Carta(jugada)
+			self.cartas.append(carta)
+			self.__dic_ocurr[carta.get_valor()] += 1
 		if len(self.cartas) != 5:
 			print("Error, número de cartas distinto de 5")
 		self.cartas.sort()
@@ -136,9 +146,26 @@ class ManoDeCartas:
 		for c in self.cartas:
 			listacartas.append(c.get_numero())
 		return listacartas
+		
+	def get_listavalores(self):
+		listavalores = []
+		for c in self.cartas:
+			listavalores.append(c.get_valor())
+		return listavalores	
 	
-	"""Indica si tiene color la mano"""	
+	# no me termina de gustar :/
+	def get_ocurr_valor(self, o):	
+		""" Retorna las ocurrencias pasado un valor """
+		for valor, ocurr in self.__dic_ocurr.items():
+			if ocurr == o:
+				return valor
+		return None
+
+	def get_dir_ocurr(self):
+		return self.__dic_ocurr	
+		
 	def is_color(self):
+		"""Indica si tiene color la mano"""
 		color = self.cartas[0].get_color()
 		for c in self.cartas:
 			if color != c.get_color():
@@ -147,16 +174,43 @@ class ManoDeCartas:
 
 	"""Escalera real"""
 	def is_escalera_real(self):
-		escalera_color = [10,11,12,13,1]
+		escalera_color = ['T','J','Q','K','A']
 		if not self.is_color():
 			return False
 		else:
-			if escalera_color == self.get_listacartas():
+			if escalera_color == self.get_listavalores():
 				return True
 			else:
 				return False
+	
+	""" las comparaciones """
+	
+	def analiza_escalera_real(self, other):
+		""" 0 es son iguales... """
+		if self.is_escalera_real() and not other.is_escalera_real():
+			return 1
+		elif not self.is_escalera_real() and other.is_escalera_real():
+			return -1
+		elif self.is_escalera_real() and other.is_escalera_real():
+			return 0
+		else:
+			# con 2 indicamos que no cumple ninguno...
+			return 2
 			
-
+	def analiza_poker(self, other):	
+		valor1 = self.get_ocurr_valor(4)
+		valor2 = other.get_ocurr_valor(4)
+		
+		if valor1 == None and valor2 == None:
+			return 2
+		elif valor1 != None and valor2 == None:
+			return 1
+		elif valor1 == None and valor2 != None:
+			return -1
+		else:
+			# marcamos el color como X
+			return Carta(valor1+'X').cmp(Carta(valor2+'X'))
+	
 
 
 class PartidaPoker:
@@ -179,17 +233,20 @@ class PartidaPoker:
 			
 ## PROBLEMA 0054 _______________________________________________________________
 
-lmano = ['1A', 'TA','QA','JA','KA']
+lmano = ['4B', '4A','4A','3A','2A']
 
-mano = ManoDeCartas(lmano)
+mano1 = ManoDeCartas(lmano)
 
-print(mano.is_escalera_real())
 
-lmano = ['2A', 'TA','QA','JA','KA']
+lmano = ['AA', '2A','2A','2A','AA']
 
-mano = ManoDeCartas(lmano)
+mano2 = ManoDeCartas(lmano)
 
-print(mano.is_escalera_real())
+#print(mano1.cmp_escalera_real(mano2))
+
+print(mano1.analiza_poker(mano2))
+
+
 
 exit(0)
 
