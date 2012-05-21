@@ -183,34 +183,91 @@ class ManoDeCartas:
 			else:
 				return False
 	
+	def is_poker_of(self):
+		return self.get_ocurr_valor(4)
+	
+	
+	def is_full_of(self):
+		valor3 = self.get_ocurr_valor(3)
+		valor2 = self.get_ocurr_valor(2)
+		
+		if valor3 and valor2:
+			return valor3, valor2
+		else:
+			return None, None
+	
+	def is_trio_of(self):
+		valor3 = self.get_ocurr_valor(3)
+		valor2 = self.get_ocurr_valor(2)
+		
+		if valor3 and not valor2:
+			return valor3
+		else:
+			return None
+	
+	
 	""" las comparaciones """
 	
+	# Ok!
 	def analiza_escalera_real(self, other):
 		""" 0 es son iguales... """
-		if self.is_escalera_real() and not other.is_escalera_real():
+		escal1 = self.is_escalera_real()
+		escal2 = other.is_escalera_real()
+		
+		if escal1 and not escal2:
 			return 1
-		elif not self.is_escalera_real() and other.is_escalera_real():
+		elif not escal1 and escal2:
 			return -1
-		elif self.is_escalera_real() and other.is_escalera_real():
+		elif escal1 and escal2:
 			return 0
 		else:
 			# con 2 indicamos que no cumple ninguno...
 			return 2
-			
+	
+	# Ok!		
 	def analiza_poker(self, other):	
-		valor1 = self.get_ocurr_valor(4)
-		valor2 = other.get_ocurr_valor(4)
+		valor1 = is_poker_of(self)
+		valor2 = is_poker_of(other)
 		
-		if valor1 == None and valor2 == None:
+		if not valor1 and not valor2:
 			return 2
-		elif valor1 != None and valor2 == None:
+		elif valor1 and not valor2:
 			return 1
-		elif valor1 == None and valor2 != None:
+		elif not valor1 and valor2:
 			return -1
 		else:
 			# marcamos el color como X
 			return Carta(valor1+'X').cmp(Carta(valor2+'X'))
 	
+	# Ok!
+	def analiza_full(self, other):
+		val3s, val2s = self.is_full_of()
+		val3o, val2o = other.is_full_of()
+
+		if val3s and not val3o:
+			return 1
+		elif not val3s and val3o:
+			return -1
+		elif val3s and val3o:
+			# no puede haber dos trios iguales
+			return Carta(val3s+'X').cmp(Carta(val3o+'X'))
+		else:
+			return 2
+
+
+	def analiza_trio(self, other):
+		val3s = self.is_trio_of()
+		val3o = other.is_trio_of()
+
+		if val3s and not val3o:
+			return 1
+		elif not val3s and val3o:
+			return -1
+		elif val3s and val3o:
+			return Carta(val3s+'X').cmp(Carta(val3o+'X'))
+		else:
+			return 2 
+
 
 
 class PartidaPoker:
@@ -233,18 +290,18 @@ class PartidaPoker:
 			
 ## PROBLEMA 0054 _______________________________________________________________
 
-lmano = ['4B', '4A','4A','3A','2A']
+lmano = ['4X', '4X','4X','1X','1X']
 
 mano1 = ManoDeCartas(lmano)
 
 
-lmano = ['AA', '2A','2A','2A','AA']
+lmano = ['AX', 'AX','AX','3X','3X']
 
 mano2 = ManoDeCartas(lmano)
 
 #print(mano1.cmp_escalera_real(mano2))
 
-print(mano1.analiza_poker(mano2))
+print(mano1.analiza_full(mano2))
 
 
 
