@@ -154,7 +154,7 @@ class ManoDeCartas:
 		return listavalores	
 	
 	# no me termina de gustar :/
-	def get_ocurr_valor(self, o):	
+	def repetidas_valor(self, o):	
 		""" Retorna las ocurrencias pasado un valor """
 		for valor, ocurr in self.__dic_ocurr.items():
 			if ocurr == o:
@@ -183,13 +183,25 @@ class ManoDeCartas:
 			else:
 				return False
 	
+	def is_escalera(self):
+		for i in range(0, 4):
+			num1 = self.cartas[i].get_numero() 
+			num2 = self.cartas[i+1].get_numero()
+			if num1 + 1 != num2:
+				return False
+		return True
+	
+	def is_escalera_color(self):
+		return (self.is_escalera() and self.is_color() \
+				and not self.is_escalera_real())
+	
 	def is_poker_of(self):
-		return self.get_ocurr_valor(4)
+		return self.repetidas_valor(4)
 	
 	
 	def is_full_of(self):
-		valor3 = self.get_ocurr_valor(3)
-		valor2 = self.get_ocurr_valor(2)
+		valor3 = self.repetidas_valor(3)
+		valor2 = self.repetidas_valor(2)
 		
 		if valor3 and valor2:
 			return valor3, valor2
@@ -197,18 +209,32 @@ class ManoDeCartas:
 			return None, None
 	
 	def is_trio_of(self):
-		valor3 = self.get_ocurr_valor(3)
-		valor2 = self.get_ocurr_valor(2)
+		valor3 = self.repetidas_valor(3)
+		valor2 = self.repetidas_valor(2)
 		
 		if valor3 and not valor2:
 			return valor3
 		else:
 			return None
 	
+	def is_two_pair_of(self):
+		pares = []
+		for valor, ocurr in self.__dic_ocurr.items():
+			if ocurr == 2:
+				pares.append(valor)
+		if len(pares) == 2:
+			pares.sort()
+			return pares[0], pares[1]
+		else:
+			return None, None
+		
+	def is_one_pair_of(self):
+		return self.repetidas_valor(2)
+		
 	
 	""" las comparaciones """
 	
-	# Ok!
+	# 1. escalera real!
 	def analiza_escalera_real(self, other):
 		""" 0 es son iguales... """
 		escal1 = self.is_escalera_real()
@@ -224,10 +250,25 @@ class ManoDeCartas:
 			# con 2 indicamos que no cumple ninguno...
 			return 2
 	
-	# Ok!		
+	# 2. escalera color
+	def analiza_escalera_color(self, other):
+		escal1 = self.is_escalera_color()
+		escal2 = other.is_escalera_color()
+	
+		if escal1 and not escal2:
+			return 1
+		elif not escal1 and escal2:
+			return -1
+		elif escal1 and escal2:
+			return self.cartas[4].cmp(other.cartas[4])
+		else:
+			# con 2 indicamos que no cumple ninguno...
+			return 2
+	
+	# 3. poker		
 	def analiza_poker(self, other):	
-		valor1 = is_poker_of(self)
-		valor2 = is_poker_of(other)
+		valor1 = self.is_poker_of()
+		valor2 = other.is_poker_of()
 		
 		if not valor1 and not valor2:
 			return 2
@@ -238,8 +279,8 @@ class ManoDeCartas:
 		else:
 			# marcamos el color como X
 			return Carta(valor1+'X').cmp(Carta(valor2+'X'))
-	
-	# Ok!
+
+	# 4. full
 	def analiza_full(self, other):
 		val3s, val2s = self.is_full_of()
 		val3o, val2o = other.is_full_of()
@@ -255,6 +296,38 @@ class ManoDeCartas:
 			return 2
 
 
+	# 5. color
+	def analiza_color(self, other):
+		col1 = self.is_color()
+		col2 = other.is_color()
+	
+		if col1 and not col2:
+			return 1
+		elif not col1 and col2:
+			return -1
+		elif col1 and col2:
+			return self.analiza_mayor(other)
+		else:
+			# con 2 indicamos que no cumple ninguno...
+			return 2
+
+	# 6. escalera
+	def analiza_escalera(self, other):
+		escal1 = self.is_escalera()
+		escal2 = other.is_escalera()
+	
+		if escal1 and not escal2:
+			return 1
+		elif not escal1 and escal2:
+			return -1
+		elif escal1 and escal2:
+			return self.analiza_mayor(other)
+		else:
+			# con 2 indicamos que no cumple ninguno...
+			return 2	
+	
+
+	# 7. trio
 	def analiza_trio(self, other):
 		val3s = self.is_trio_of()
 		val3o = other.is_trio_of()
@@ -267,6 +340,111 @@ class ManoDeCartas:
 			return Carta(val3s+'X').cmp(Carta(val3o+'X'))
 		else:
 			return 2 
+
+	# 8. dobles parejas
+	def analiza_doble_pareja(self, other):
+		# el par 2 será mayor, ya que viene en orden
+		par1s, par2s = self.is_two_pair_of()
+		par1o, par2o = other.is_two_pair_of()
+		if par1s and par1o:
+			comp = Carta(par2s+'X').cmp(Carta(par2o+'X'))
+			if comp == 0:
+				return Carta(par1s+'X').cmp(Carta(par1o+'X'))
+			else:
+				return comp
+		elif par1s and not par1o:
+			return 1
+		elif not par1s and par1o:
+			return -1
+		else:
+			return 2
+	
+	# 9. pareja
+	def analiza_pareja(self, other):
+		pars = self.is_one_pair_of()
+		paro = other.is_one_pair_of()
+		
+		if pars and paro:
+			return Carta(pars+'X').cmp(Carta(paro+'X'))
+		elif pars and not paro:
+			return 1
+		elif not pars and paro:
+			return -1
+		else:
+			return 2
+
+	# 10. carta mayor
+	def analiza_mayor(self, other):
+		return self.cartas[4].cmp(other.cartas[4])
+
+
+	def __cmp__(self, other):
+		
+		# 1. escalera real
+		comp = self.analiza_escalera_real(other)
+		if comp != 2:
+			return comp
+		
+		# 2. escalera color
+		comp = self.analiza_escalera_color(other)
+		if comp != 2:
+			return comp		
+			
+		# 3. poker		
+		comp = self.analiza_poker(other)
+		if comp != 2:
+			return comp
+					
+		# 4. full		
+		comp = self.analiza_full(other)
+		if comp != 2:
+			return comp		
+		
+		# 5. color
+		comp = self.analiza_color(other)
+		if comp != 2:
+			return comp			
+		
+		# 6. escalera
+		comp = self.analiza_escalera(other)
+		if comp != 2:	
+			return comp
+			
+		# 7. trio
+		comp = self.analiza_trio(other)
+		if comp != 2:
+			return comp
+			
+		# 8. dobles parejas
+		comp = self.analiza_doble_pareja(other)
+		if comp != 2:
+			return comp
+			
+		# 9. pareja
+		comp = self.analiza_pareja(other)
+		if comp != 2:	
+			return comp		
+		
+		# 10. carta mayor
+		return self.analiza_mayor(other)
+		
+
+	def __lt__(self, other):
+		return self.__cmp__(other) < 0
+
+	def __le__(self, other):
+		return self.__cmp__(other) < 0
+
+	def __gt__(self, other):
+		return self.__cmp__(other) > 0
+
+	def __ge__(self, other):
+		return self.__cmp__(other) >= 0
+		
+	def __eq__(self, other):
+		return self.valor == other.valor
+
+
 
 
 
@@ -290,35 +468,20 @@ class PartidaPoker:
 			
 ## PROBLEMA 0054 _______________________________________________________________
 
-lmano = ['4X', '4X','4X','1X','1X']
-
-mano1 = ManoDeCartas(lmano)
-
-
-lmano = ['AX', 'AX','AX','3X','3X']
-
-mano2 = ManoDeCartas(lmano)
-
-#print(mano1.cmp_escalera_real(mano2))
-
-print(mano1.analiza_full(mano2))
-
-
-
-exit(0)
-
-
-
 # lectura de todo el fichero...
 f = open('./poker.txt')
 
-
+total = 0
 lista_poker = f.readlines()
 
 for poker in lista_poker:
 	poker = poker.replace('\n', '')
 	partida = PartidaPoker(poker)
-	print(partida)
+	
+	if partida.get_mano_jugador(1) > partida.get_mano_jugador(2):
+		total += 1
+	
+print("Total partidas ganas por player1: ", total)
 
 
 
