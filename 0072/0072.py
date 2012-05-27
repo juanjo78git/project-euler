@@ -33,7 +33,7 @@ total = 0
 
 # n/d
 for d in range(1, limite+1):
-	if d % 10000 == 0:
+	if d % 1000 == 0:
 		print(d)
 	for n in range(d+1, limite+1):
 		if mcd_it(n, d) == 1:
