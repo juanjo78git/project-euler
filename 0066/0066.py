@@ -8,29 +8,30 @@ def is_square(n):
 		return False
 
 
-def diophantine(d, x):	
-	dv, md = divmod((x**2)-1, d)
-	if md == 0:
-		y = dv**0.5
-		if int(y) == y:
-			return True
-	return False
-
+def diophantine(d, y2):	
+	x = ((y2*d)+1)**0.5
+	if x == int(x):
+		return int(x)
+	else:
+		return -1
+	
 
 D_result = 0
 x_min = -1
 limite = 1000
-#limite = 13
 for D in range(1, limite+1):
-	print(D)
-	x = 2
+	y = 1
 	if not is_square(D):
-		while not diophantine(D, x):
-			x += 1
-		
-		if x > x_min:
-			x_min = x
-			D_result = D
+		dio = False
+		while not dio: 
+			x = diophantine(D, (y*y))
+			y += 1
+			if x != -1:
+				dio = True
+				print(D, x)
+				if x > x_min:
+					x_min = x
+					D_result = D
 
 print(D_result, x_min)
 
