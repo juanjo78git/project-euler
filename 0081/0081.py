@@ -17,6 +17,7 @@
 #Target As...'), a 31K text file containing a 80 by 80 matrix, from the top 
 #left to the bottom right by only moving right and down.
 
+import sys
 
 # algoritmo de floyd-warshall para calcular el camino mínimo en un grafo
 # dirigido.
@@ -77,14 +78,17 @@ def mat_to_ady(m, dim):
 			if j < dim-1:
 				ady_der = (i*dim)+j+1
 				ady[ady_orig][ady_der] = m[i][j+1]
+				# añado, que al salir desde el inicio, ya sumamos...
+				if j == 0:
+					ady[ady_orig][ady_der] += m[i][j]					
 
 			# abajo	
 			if i < dim-1:
 				ady_abaj = ((i+1)*dim)+j
 				ady[ady_orig][ady_abaj] = m[i+1][j]			
+				if j == 0:
+					ady[ady_orig][ady_abaj] += m[i][j]	
 
-	# marcamos el origen con el valor correcto
-	ady[0][0] = m[0][0]
 	
 	return ady
 
@@ -95,12 +99,12 @@ def printmat(m, dim):
 	print(' ')
 	
 
-dim = 80
-fichero = './matrix.txt'
+dim = int(sys.argv[1])
+fichero = sys.argv[2]
 
 m = fich_to_mat(fichero, dim)
 ady = mat_to_ady(m, dim)
 p = floyd_warshall(ady, dim*dim)
 
-print('Resultado 0081:', int(p[0][0] + p[0][(dim*dim)-1]))
+print('Resultado 0081:', int(p[0][(dim*dim)-1]))
 
