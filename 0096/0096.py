@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python2
 
 
 
@@ -115,7 +115,8 @@ class Sudoku:
 				
 
 	def is_solved_partial(self, partial):
-		if [1,2,3,4,5,6,7,8,9] == partial.sort():
+		partial.sort()
+		if [1,2,3,4,5,6,7,8,9] == partial:
 			return True
 		else:
 			False
@@ -127,57 +128,53 @@ class Sudoku:
 				return False
 			if not self.is_solved_partial(self.getcolumn(i)):
 				return False
-			if not self.is_solved_partial(self.getfile(i)):
+			if not self.is_solved_partial(self.getfile(i)):	
 				return False
 		return True
 
-	# seria recursivo, pero no lo tengo claro..., dejo un esbozo.	
+	# funciona!, pero no me esta guardando el resultado :_(
 	def resolve(self):
 		if self.is_solved():
-			self.__str__()
 			return True
 		else:
-			ind = -1
+			# buscamos el primer 0 libre
 			for i in range(81):
 				if self.__sudoku[i] == 0:
-					ind = i
 					break
-			
-			poss = self.getpossibles(ind)
-			print(poss, '#', ind)
-			print(self)
-			for p in poss:
-				self.__sudoku[ind] = p
-				self.__str__()
+			# para cada uno de los elementos posibles, llamo recursivamente
+			for p in self.getpossibles(i):
+				self.__sudoku[i] = p
 				if self.is_valid():
-					salida = self.resolve()
+					if not self.resolve():
+						self.__sudoku[i] = 0
+					else:
+						return True
 				else:
-					self.__sudoku[ind] = 0
-		
-				
-# vamos a ver como lo puedo montar
+					self.__sudoku[i] = 0
+			return False
 
-# notas: con el mod, podemos quedarnos con con el minicuadrado de 3x3:
-#
 
-#sudoku = Sudoku("023456789123456789223456789123456789123456789123456789123456789123456789777888999")
+s = '300200000000107000706030500070009080900020004010800050009040301000702000000008006'
+#s = '083921657967045821251876093048032970729564138136798245372689514814253769695417382'
 
-sudoku = Sudoku("300200000000107000706030500070009080900020004010800050009040301000702000000008006")
+sudoku = Sudoku(s)
+
+
 
 print(sudoku)
-
 
 #print(sudoku.getcube(0))
 #print(sudoku.getcube(1))
 #print(sudoku.getcube(2))
 #print(sudoku.getcube(3))
 #print(sudoku.getcube(8))
-#print(sudoku.is_valid())
-#print(sudoku.is_solved())
+print(sudoku.is_valid())
+print(sudoku.is_solved())
 #print(sudoku.getcord(80))
 #print(sudoku.getcord(22))
 #print(sudoku.getpossibles(1))
-sudoku.resolve()
+print(sudoku.resolve())
+print(sudoku)
 #print(sudoku.getcolumn(8))
 
 
