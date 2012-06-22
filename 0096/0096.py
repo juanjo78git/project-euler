@@ -5,9 +5,9 @@
 class Sudoku:
 	"""Un sudoku!!"""
 	def __init__(self, cadena):
-		self.sudoku = []
+		self.__sudoku = []
 		for i in range(len(cadena)):
-			self.sudoku.append(int(cadena[i]))
+			self.__sudoku.append(int(cadena[i]))
 
 	#def __str__(self):
 	#	return self."
@@ -19,7 +19,7 @@ class Sudoku:
 			for j in range(9):
 			 	if j % 3 == 0:
 			 		s += "|"
-			 	s += str(self.sudoku[(i*9)+j])
+			 	s += str(self.__sudoku[(i*9)+j])
 			 	if (j+1) % 3 != 0:
 			 		s += " "
 			 	
@@ -30,10 +30,18 @@ class Sudoku:
 		s += "+-----+-----+-----+"
 		return s	
 
+
+	def getcord(self, i):
+		""" retorna las cordenadas """
+		# @TODO repasar, que python3 no me gusta mucho lo de dividir :(
+		cubo = ((i//27)*3 + (i//3)%3)
+		fila, columna = divmod(i, 9)
+		return cubo, fila, columna
+		
 	
 	def getfila(self, n):
 		""" devuelve la fila n """
-		return self.sudoku[(9*n):((9*n)+9)]
+		return self.__sudoku[(9*n):((9*n)+9)]
 
 
 	def getmissnumcube(self, n):
@@ -50,17 +58,17 @@ class Sudoku:
 		""" le paso una columna de la 0 a la 8 y me devuelve los datos... """ 
 		column = []
 		for j in range(9):
-			column.append(self.sudoku[n+(j*9)])
+			column.append(self.__sudoku[n+(j*9)])
 		
 		return column
 
 	def getcube(self, n):
-		""" le paso una fila de la 0 a la 8 y me devuelve los datos... """ 
+		""" le paso uno de los cubos y devuelve los datos que tiene... """ 
 		cubo = []
 		for f in range(3):
 			for i in range(3):
 				e = (27 * (n / 3)) + (f * 9) + i + ((n % 3) * 3)
-				cubo.append(self.sudoku[e])
+				cubo.append(self.__sudoku[e])
 		return cubo
 
 	def is_valid_partial(self, partial):
@@ -131,6 +139,8 @@ print(sudoku.getcube(3))
 print(sudoku.getcube(8))
 print(sudoku.is_valid())
 print(sudoku.is_solved())
+print(sudoku.getcord(80))
+print(sudoku.getcord(22))
 #print(sudoku.getcolumn(8))
 
 
