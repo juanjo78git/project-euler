@@ -30,6 +30,25 @@ class Sudoku:
 		s += "+-----+-----+-----+"
 		return s	
 
+	# @TODO: porfavor, hay que limpiar este metodo
+	def getpossibles(self, i):
+		""" devuelve la lista de posibles! """
+		if self.__sudoku[i] != 0:
+			return []
+
+		c, i, j = self.getcord(i) 
+		cubo = self.getcube(c)
+		fila = self.getfile(i)
+		columna = self.getcolumn(j)
+
+		miss = self.getmissnumcube(c)
+		poss = list(miss)
+
+		for m in miss:
+			if m in fila or m in columna:
+				poss.remove(m)
+		return poss
+		
 
 	def getcord(self, i):
 		""" retorna las cordenadas """
@@ -39,7 +58,7 @@ class Sudoku:
 		return cubo, fila, columna
 		
 	
-	def getfila(self, n):
+	def getfile(self, n):
 		""" devuelve la fila n """
 		return self.__sudoku[(9*n):((9*n)+9)]
 
@@ -52,6 +71,7 @@ class Sudoku:
 		for i in range(9):
 			if cube[i] != 0:
 				miss.remove(int(cube[i]))
+		return miss
 	
 	
 	def getcolumn(self, n):
@@ -89,7 +109,7 @@ class Sudoku:
 				return False
 			if not self.is_valid_partial(self.getcolumn(i)):
 				return False
-			if not self.is_valid_partial(self.getfila(i)):
+			if not self.is_valid_partial(self.getfile(i)):
 				return False
 		return True
 				
@@ -107,23 +127,38 @@ class Sudoku:
 				return False
 			if not self.is_solved_partial(self.getcolumn(i)):
 				return False
-			if not self.is_solved_partial(self.getfila(i)):
+			if not self.is_solved_partial(self.getfile(i)):
 				return False
 		return True
-		
+
+	# seria recursivo, pero no lo tengo claro..., dejo un esbozo.	
+	def resolve(self):
+		if self.is_solved():
+			self.__str__()
+			return True
+		else:
+			ind = -1
+			for i in range(81):
+				if self.__sudoku[i] == 0:
+					ind = i
+					break
+			
+			poss = self.getpossibles(ind)
+			print(poss, '#', ind)
+			print(self)
+			for p in poss:
+				self.__sudoku[ind] = p
+				self.__str__()
+				if self.is_valid():
+					salida = self.resolve()
+				else:
+					self.__sudoku[ind] = 0
 		
 				
 # vamos a ver como lo puedo montar
 
 # notas: con el mod, podemos quedarnos con con el minicuadrado de 3x3:
 #
-
-
-a = ([[1,2,3], [4,5,0], [0,7,8]])
-
-
-
-
 
 #sudoku = Sudoku("023456789123456789223456789123456789123456789123456789123456789123456789777888999")
 
@@ -132,15 +167,17 @@ sudoku = Sudoku("300200000000107000706030500070009080900020004010800050009040301
 print(sudoku)
 
 
-print(sudoku.getcube(0))
-print(sudoku.getcube(1))
-print(sudoku.getcube(2))
-print(sudoku.getcube(3))
-print(sudoku.getcube(8))
-print(sudoku.is_valid())
-print(sudoku.is_solved())
-print(sudoku.getcord(80))
-print(sudoku.getcord(22))
+#print(sudoku.getcube(0))
+#print(sudoku.getcube(1))
+#print(sudoku.getcube(2))
+#print(sudoku.getcube(3))
+#print(sudoku.getcube(8))
+#print(sudoku.is_valid())
+#print(sudoku.is_solved())
+#print(sudoku.getcord(80))
+#print(sudoku.getcord(22))
+#print(sudoku.getpossibles(1))
+sudoku.resolve()
 #print(sudoku.getcolumn(8))
 
 
