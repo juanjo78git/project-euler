@@ -14,29 +14,23 @@
 #How many elements would be contained in the set of reduced proper fractions 
 #for d  1,000,000?
 
-def mcd(a, b):
-	if b == 0:
-		return a
-	else:
-		return mcd(b, a % b)
+# TODO me falta un detalle, estoy quitando n-1, pero si el número no es primo
+# se puede dar el caso de:
+#
+# 4/1 4/2 4/3 4/4 (fijate en 4/2 ya que aparecería como "divisible"!!!!
 
-def mcd_it(a, b):
-	while b != 0:
-		aux = b
-		b = a % b
-		a = aux
-	return a
-		
-limite = 1000000
+
+# numproperfraction
+def npf(dmax, n):
+	re = ((dmax-(dmax/n)) - (n-1))
+	print(n, re)
+	return re
+
+dmax = 8
 total = 0
+for i in range(1, dmax+1):
+	print(i)
+	total += npf(dmax, i) 
 
-
-# n/d
-for d in range(1, limite+1):
-	if d % 1000 == 0:
-		print(d)
-	for n in range(d+1, limite+1):
-		if mcd_it(n, d) == 1:
-			total += 1
 
 print("Resultado 0072:", total)
