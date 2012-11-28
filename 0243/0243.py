@@ -26,24 +26,85 @@ def getlistdiv(n):
 
         # solo queremos una lista de primos, no de divisores
         while (n % i == 0 and n != 1):
-            n = n / i
+            n = n // i
     
         if (n == 1):
             return ldiv
 
 def is_resilient(ldivs, n, d):
+    if n == 1:
+        return True
+    
+    if ldivs[n] == None or ldivs[d] == None:
+        return False
+    
     for ni in ldivs[n]:
         if ni in ldivs[d]:
             return False
 
     return True
 
+# el número de resilient, y el total, que será siempre d-1
+def is_0243(nresi, d):
+    #print("is_0253", nresi, d)
 
 
+    if (nresi < 1):
+        return False
+
+    if (d < 2):
+        return False
+
+    if (nresi / (d - 1)) < 0.1635881955585578:
+        return True
+    else:
+        return False
+
+
+    #dsol, msol = divmod(15499, 94744)
+    #dresi, mresi = divmod(nresi, d - 1)
+
+    #if (dresi < dsol):
+        #return True
+    #elif (dresi == dsol):
+        #if (mresi < msol):
+            #return True
+        #else:
+            #return False
+    #else:
+        #return False
+
+# lista de los divisores por numero
 ldivs = []
 
-for i in range(0,10):
-    ldivs.append(getlistdiv(i))
+nresi = 1
+d = 1
+
+ldivs.append(getlistdiv(0))
+
+while (True):
+        ldivs.append(getlistdiv(d))
+
+        nresi = 0
+        for numerator in range(1, d):
+            if (is_resilient(ldivs, numerator, d)):
+                nresi = nresi + 1
+        
+        # trazas
+        # print("resultados para", d, nresi)
+       
+        if (is_0243(nresi, d)):
+            break
+
+        # avanzamos al siguiente
+        d = d + 1
+        
+        if (d % 1000 == 0):
+            print("d:", d)
 
 
-print(is_resilient(ldivs, 4, 9))
+
+# si salimos es que tenemos solucion...
+print("Resultado 0243:", d)
+
+
