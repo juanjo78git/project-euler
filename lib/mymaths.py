@@ -82,3 +82,4 @@ def trianglenumber():
     while True:
         yield n
         n, i = n + i + 1, i + 1
+
