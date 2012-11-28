@@ -99,7 +99,6 @@ void prlong_matrix2(long a[][NUM_NODOS_N])
     printf("\n\n");
 }
 
-
 void
 mult_matrix(long a[][NUM_NODOS], long b[][NUM_NODOS], long r[][NUM_NODOS])
 {
@@ -113,7 +112,6 @@ mult_matrix(long a[][NUM_NODOS], long b[][NUM_NODOS], long r[][NUM_NODOS])
 	}
     }
 }
-
 
 void calcula_matriz_adyacencia(long a[][NUM_NODOS])
 {
