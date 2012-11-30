@@ -82,6 +82,56 @@ def esciclico_ordenado(l, ndc):
     return False
 
 
+def limpiar_listas(l):
+
+    # prefijo serían ya los dos dos primeros números
+    def tiene_prefijo(pre, l):
+        for x in l:
+            if pre == str(x)[0:2]:
+                return True
+        return False
+
+    def tiene_sufijo(suf, l):
+        for i in l:
+            if suf == str(i)[2:4]:
+                return True
+        return False
+
+    def busca_pre_suf(n, l):
+        #print(n, i, l)
+
+        pre = str(n)[0:2]
+        suf = str(n)[2:4]
+        bpre = False
+        bsuf = False
+
+        for lx in l:
+            if tiene_prefijo(pre, lx):
+                bpre = True
+
+            if tiene_sufijo(suf, lx):
+                bsuf = True
+
+        return bpre and bsuf
+
+
+    li = 0
+    lcopy = list(l)
+    print(id(lcopy), id(l))
+    for lx in l:
+        lminus = list(l)
+        lminus.pop(li)
+        for i in lx:
+            if not busca_pre_suf(i, lminus):
+                lcopy[li].remove(i)
+
+        li += 1
+
+
+
+
+
+
 # variables
 numero_digitos_ciclicos = 2
 np = 6
@@ -95,9 +145,25 @@ l.append(lxnal(hexagonal))
 l.append(lxnal(heptagonal))
 l.append(lxnal(octagonal))
 
+# intentamos limpiar... con un poco de suerte
+#
+#for i in 
+
+limpiar_listas(l)
+
 for lx in l:
     print(len(lx))
     #print(lx)
+
+
+
+
+
+
+
+
+
+
 
 count = 0
 total = 0
