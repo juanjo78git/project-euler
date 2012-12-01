@@ -1,6 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+
+# idea para limpiar
+#
+# no lo metas en una lista general, ve sacando los datos de las
+# listas individuales y luego vas viendo que listas has usado
+# y cuales no. joder, como el del foro... o intenta dejar esta 
+# solución lo más simple posible
+
 import itertools
 
 def triangle(n):
@@ -82,53 +90,56 @@ def esciclico_ordenado(l, ndc):
     return False
 
 
-def limpiar_listas(l):
 
-    # prefijo serían ya los dos dos primeros números
-    def tiene_prefijo(pre, l):
-        for x in l:
-            if pre == str(x)[0:2]:
-                return True
-        return False
+def lsufijos(elemento, l):
+    lsuf = []
+    for i in l:
+        if str(elemento)[2:] == str(i)[0:2]:
+            lsuf.append(i)
 
-    def tiene_sufijo(suf, l):
-        for i in l:
-            if suf == str(i)[2:4]:
-                return True
-        return False
-
-    def busca_pre_suf(n, l):
-        #print(n, i, l)
-
-        pre = str(n)[0:2]
-        suf = str(n)[2:4]
-        bpre = False
-        bsuf = False
-
-        for lx in l:
-            if tiene_prefijo(pre, lx):
-                bpre = True
-
-            if tiene_sufijo(suf, lx):
-                bsuf = True
-
-        return bpre and bsuf
+    return lsuf
 
 
-    li = 0
-    lcopy = list(l)
-    print(id(lcopy), id(l))
-    for lx in l:
-        lminus = list(l)
-        lminus.pop(li)
-        for i in lx:
-            if not busca_pre_suf(i, lminus):
-                lcopy[li].remove(i)
+def edl(lista, lsolucion):
+    for i in lsolucion:
+        if i in lista:
+            return True
 
-        li += 1
+    return False
+
+def estadiflistas(ltotal, lsolucion):
+    for li in ltotal:
+        if not edl(li, lsolucion):
+            return False
+
+    return True
+        
 
 
 
+def ryp(ltotal, l, lsolucion):
+
+    if len(lsolucion) == 6:
+        if esciclico_quick(lsolucion, 2):
+            if estadiflistas(ltotal, lsolucion):
+                lsolucion.sort()
+                print "Solucion Final:", lsolucion, sum(lsolucion)
+        return
+
+    # sacamos el listado de sufijos
+    ultimo = lsolucion[len(lsolucion)-1]
+    lsuf = lsufijos(ultimo, l)
+    #print "Lista sufijos", ultimo, lsuf
+
+    for i in lsuf:
+        lcopy = list(l)
+        lcopy.remove(i)
+        lcopysolucion = list(lsolucion)
+        lcopysolucion.append(i)
+        #print "Solucion parcial:", lcopysolucion
+        ryp(ltotal, lcopy, lcopysolucion)
+
+    
 
 
 
@@ -145,23 +156,20 @@ l.append(lxnal(hexagonal))
 l.append(lxnal(heptagonal))
 l.append(lxnal(octagonal))
 
-# intentamos limpiar... con un poco de suerte
-#
-#for i in 
-
-limpiar_listas(l)
-
+ltotal = []
 for lx in l:
-    print(len(lx))
-    #print(lx)
+    for i in lx:
+        if i not in ltotal:
+            ltotal.append(i)
 
+ltotal.sort()
 
-
-
-
-
-
-
+for i in ltotal:
+    laux = list(ltotal)
+    laux.remove(i)
+    lsol = []
+    lsol.append(i)
+    ryp(l, laux, lsol)
 
 
 
@@ -174,28 +182,28 @@ total = 0
 
 
 
-for n3 in l[0]:
-    for n4 in l[1]:
-        for n5 in l[2]:
-            for n6 in l[3]:
-                for n7 in l[4]:
-                    for n8 in l[5]:
-                        laux = []
-                        laux.append(n3)
-                        laux.append(n4)
-                        laux.append(n5)
-                        laux.append(n6)
-                        laux.append(n7)
-                        laux.append(n8)
-                        count += 1
-                        total += 1
-                        if count == 1000000:
-                            count = 0
-                            print total
+#for n3 in l[0]:
+    #for n4 in l[1]:
+        #for n5 in l[2]:
+            #for n6 in l[3]:
+                #for n7 in l[4]:
+                    #for n8 in l[5]:
+                        #laux = []
+                        #laux.append(n3)
+                        #laux.append(n4)
+                        #laux.append(n5)
+                        #laux.append(n6)
+                        #laux.append(n7)
+                        #laux.append(n8)
+                        #count += 1
+                        #total += 1
+                        #if count == 1000000:
+                            #count = 0
+                            #print total
 
-                        if esciclico_quick(laux, 2):
-                            print("Resultado provisional:", laux)
-                            lresult = list(laux)
+                        #if esciclico_quick(laux, 2):
+                            #print("Resultado provisional:", laux)
+                            #lresult = list(laux)
 
 
 #print("Resultado 0061:", sum(lresult))
