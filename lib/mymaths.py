@@ -53,6 +53,23 @@ def numdivs(n):
     return t
 
 
+def numdivsprimes(n):
+    """ lista de primos que son divisibles por el numero """
+    ldiv = []
+    p = prime()
+    d = p.next()
+    while n != 1:
+       r, m = divmod(n, d)
+       if m == 0:
+           n = r
+           if d not in ldiv:
+               ldiv.append(d)
+       else:
+           d = p.next()
+
+    return ldiv
+
+
 def factorial(x):
     """ Factorial recursivo """
     if x == 0:
