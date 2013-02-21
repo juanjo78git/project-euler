@@ -6,7 +6,8 @@ sys.path.append(lib_path)
 
 import mymaths
 
-LIMIT = 1000000
+LIMIT = 10000000
+#LIMIT = 100
 
 def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
@@ -59,19 +60,32 @@ def phi(lprimes, n):
     return (n * arriba) / abajo
 
 
-n_max = 0
-n_div_phi_max = 0
+def numperm(n1, n2):
+    return (sorted(str(n1)) == sorted(str(n2)))
+
+n_min = 0
+n_div_phi_min = LIMIT
 lprimes =  genlprimes(LIMIT)
 
+print "generacion de lista de primos terminada."
+
 for n in range(2, LIMIT):
+
+    if n % 100000 == 0:
+        print "vamos por: ", n
+
+
     n_phi = phi(lprimes, n)
-    n_div_phi_aux = n/float(n_phi)
 
-    if n_div_phi_aux > n_div_phi_max:
-            n_div_phi_max = n_div_phi_aux
-            n_max = n
+    if numperm(n, n_phi):
 
-print "Resultado 0069: ", n_max
+        n_div_phi_aux = n/float(n_phi)
+
+        if n_div_phi_aux < n_div_phi_min:
+            n_div_phi_min = n_div_phi_aux
+            n_min = n
+
+print "Resultado 0070: ", n_min
 
 
 
