@@ -116,3 +116,22 @@ def trianglenumber():
         yield n
         n, i = n + i + 1, i + 1
 
+
+
+# LISTAS _______________________________________________________________________
+#
+
+def genlprimes(n):
+    """ genera una lista de primos que pueda dividir n """
+    l = []
+    p = prime()
+    myprime = p.next()
+    # quiero una lista de primos que dividan a n, por lo tanto con
+    # buscar solo la mitad me va bien
+    limit = n + 1
+    while myprime < limit:
+        l.append(myprime)
+        myprime = p.next() 
+
+    return l
+
