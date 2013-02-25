@@ -1,36 +1,86 @@
 #!/usr/bin/pypy
 
-#Consider the fraction, n/d, where n and d are positive integers. If nd and 
-#HCF(n,d)=1, it is called a reduced proper fraction.
-
-#If we list the set of reduced proper fractions for d  8 in ascending order 
-#of size, we get:
-
-#1/8, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 1/2, 4/7, 3/5, 5/8, 2/3, 
-#5/7, 3/4, 4/5, 5/6, 6/7, 7/8
-
-#It can be seen that there are 21 elements in this set.
-
-#How many elements would be contained in the set of reduced proper fractions 
-#for d  1,000,000?
-
-# TODO me falta un detalle, estoy quitando n-1, pero si el número no es primo
-# se puede dar el caso de:
-#
-# 4/1 4/2 4/3 4/4 (fijate en 4/2 ya que aparecería como "divisible"!!!!
+# parto del codigo de 0070, algunas pequenas modificaciones y ya lo tengo
+# totalmente operativo y unos tiempos de menos de 5 minutos en pypy
 
 
-# numproperfraction
-def npf(dmax, n):
-	re = ((dmax-(dmax/n)) - (n-1))
-	print(n, re)
-	return re
+import os, sys
+lib_path = os.path.abspath('../lib')
+sys.path.append(lib_path)
 
-dmax = 8
-total = 0
-for i in range(1, dmax+1):
-	print(i)
-	total += npf(dmax, i) 
+import mymaths
+
+LIMIT = 1000000
+#LIMIT = 100
+
+def genlprimes(n):
+    """ genera una lista de primos que pueda dividir n """
+    l = []
+    p = mymaths.prime()
+    prime = p.next()
+    # quiero una lista de primos que dividan a n, por lo tanto con
+    # buscar solo la mitad me va bien
+    limit = n + 1
+    while prime < limit:
+        l.append(prime)
+        prime = p.next() 
+
+    return l
+
+def numdivsprimes(lprimes, n):
+    """ lista de primos que son divisibles por el numero n, pasandole la lista
+        de primos """
+    ldiv = []
+
+    if n in lprimes:
+        ldiv.append(n)
+        return ldiv
+
+    np = 0
+    d = lprimes[np]
+    while n != 1:
+        r, m = divmod(n, d)
+        if m == 0:
+            n = r
+            if d not in ldiv:
+                ldiv.append(d)
+        else:
+            np += 1
+            d = lprimes[np]
+
+    return ldiv
+
+def phi(lprimes, n):
+    """ funcion phi, a partir de un listado de primos, para facilitar """
+
+    ldivs = numdivsprimes(lprimes, n)
+    arriba = 1
+    abajo = 1
+
+    for div in ldivs:
+        arriba = (div - 1) * arriba
+        abajo = div * abajo
+
+    return (n * arriba) / abajo
 
 
-print("Resultado 0072:", total)
+
+n_min = 0
+n_div_phi_min = LIMIT
+lprimes =  genlprimes(LIMIT)
+n_sum = 0
+
+print "generacion de lista de primos terminada."
+
+for n in range(2, LIMIT + 1):
+
+    if n % 100000 == 0:
+        print "vamos por: ", n
+
+    n_sum += phi(lprimes, n)
+
+
+print "Resultado 0072: ", n_sum
+
+
+
