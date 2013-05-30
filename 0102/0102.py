@@ -39,12 +39,6 @@ class Triangulo:
             return False
 
 
-t1 = Triangulo(Punto(-340,495), Punto(-153,-910), Punto(835,-947))
-t2 = Triangulo(Punto(-175,41), Punto(-421,-714), Punto(574,-645))
-
-print t1.punto_en_triangulo(Punto(0,0))
-print t2.punto_en_triangulo(Punto(0,0))
-
 f = open("triangles.txt")
 
 inside = 0
