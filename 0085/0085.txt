@@ -29,3 +29,18 @@ C1 forma cuadrado con: D2 - Total 1
 Si sumamos todos: 6 + 4 + 2 + 3 + 2 + 1: 18, que es el resultado.
 
 Bien, ya tenemos una manera de calcularlo, ahora solo hay que plasmarlo...
+
+
+3x2=6
+2x2=4
+1x2=2
+3x1=3
+2x1=2
+1x1=1
+
+2x2=4
+1x2=2
+2x1=2
+1x1=1
+
+
