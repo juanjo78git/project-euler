@@ -21,7 +21,7 @@ nd_ant = 0
 total = 0
 for n in range(2, LIMIT):
     nd = mymaths.numdivs(n)
-    if n % 1000 == 0:
+    if n % 100000 == 0:
         print n
     if nd == nd_ant:
         total += 1
