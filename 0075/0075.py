@@ -3,59 +3,43 @@
 #!/usr/bin/pypy
 
 from datetime import datetime
+import math
 
-LIMITE = 100
 LIMITE = 1500000
+#LIMITE = 700
 
 
-def coprime_odd_even(mo, no, limite):
-    """ Generador de coprimos par-impar, impar-par, el limite corresponde
-    a m**2 + n**2 """
-    ms = [mo] * 3
-    ns = [no] * 3
-    # rama del arbol
-    t = 0
-    m = mo
-    n = no
-    g1 = True
-    g2 = True
-    g3 = True
-    while True:
-        yield m, n
+# recursivo
+#
 
-        while g1 or g2 or g3:
-            if t == 0:
-                m = (2 * ms[0]) - ns[0]
-                n = ms[0]
-                ms[0] = m
-                ns[0] = n
-                t = 1
-                if (m ** 2) + (n ** 2) > limite:
-                    g1 = False
-                else:
-                    break
+def all_coprime(m, n, limit, l):
+    mlimit = int(math.sqrt(limit / 2.0))
 
-            elif t == 1:
-                m = (2 * ms[1]) + ns[1]
-                n = ms[1]
-                ms[1] = m
-                ns[1] = n
-                t = 2
-                if (m ** 2) + (n ** 2) > limite:
-                    g2 = False
-                else:
-                    break
+    if m == 2 and n == 1:
+        l.append([m, n])
 
-            elif t == 2:
-                m = ms[2] + (ns[2] * 2)
-                n = ns[2]
-                ms[2] = m
-                ns[2] = n
-                t = 0
-                if (m ** 2) + (n ** 2) > limite:
-                    g3 = False
-                else:
-                    break
+    # rama 1
+    m_next = (2 * m) - n
+    n_next = m
+    if m_next <= mlimit:
+        l.append([m_next, n_next])
+        l = all_coprime(m_next, n_next, limit, l)
+
+    # rama 2
+    m_next = (2 * m) + n
+    n_next = m
+    if m_next <= mlimit:
+        l.append([m_next, n_next])
+        l = all_coprime(m_next, n_next, limit, l)
+
+    # rama 3
+    m_next = m + (n * 2)
+    n_next = n
+    if m_next <= mlimit:
+        l.append([m_next, n_next])
+        l = all_coprime(m_next, n_next, limit, l)
+
+    return l
 
 
 def long_terna_pitagorica(m, n, k):
@@ -76,41 +60,26 @@ eles = {}
 # total de L
 t = 0
 
-co = coprime_odd_even(2, 1, LIMITE)
-exit = 0
-m = 0
-n = 0
-m_ant = 0
-n_ant = 0
+# generamos todas las parejas de coprimos...
+all_cop = all_coprime(2, 1, LIMITE, [])
 
-while True:
-    # obtenemos una tupla m,n, el generador parará cuando sean iguales a las
-    # anteriores
-    # TODO: Mejorar con un límite o algo así, que he visto
-    m, n = co.next()
-    if m == m_ant and n == n_ant:
-        break
-    else:
-        m_ant = m
-        n_ant = n
-
-    if m > n:
-        for k in range(1, LIMITE):
-            l = long_terna_pitagorica(m, n, k)
-            if l > LIMITE:
-                break
+for cop in all_cop:
+    m = cop[0]
+    n = cop[1]
+    for k in range(1, LIMITE):
+        l = long_terna_pitagorica(m, n, k)
+        if l > LIMITE:
+            break
+        else:
+            if l in eles:
+                # solo restamos una vez el elemento que está, imagina que
+                # llega una l por tercera vez, restaríamos demasiados!
+                if eles[l] == 1:
+                    t -= 1
+                    eles[l] = 2
             else:
-                if l in eles:
-                    # solo restamos una vez el elemento que está, imagina que
-                    # llega una l por tercera vez, restaríamos demasiados!
-                    if eles[l] == 1:
-                        t -= 1
-                        eles[l] = 2
-                        print t
-                else:
-                    eles[l] = 1
-                    t += 1
-                    print t
+                eles[l] = 1
+                t += 1
 
 print "Tiempo total: ", datetime.now() - start_time
 print "Resultado de 0075: ", t
