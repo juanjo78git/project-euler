@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
+#!/usr/bin/python
 
+import roman
+from datetime import datetime
 
-class Romans:
+class Roman:
     """ Número romano... """
     def __init__(self, romano):
         self._romval = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500,
@@ -44,27 +46,29 @@ class Romans:
             else:
                 total += self._romval[curr] - self._romval[prev]
 
+        # Para comprobar con la librería roman de python, pero hay números que
+        # no detecta bien la librería y que mi clase si lo hace.
+        #try:
+            #if roman.fromRoman(self._romano) != total:
+                #print "No son iguales!!!", self._romano
+        #except:
+            #print "Error! en, ", self._romano
+
         return total
 
-
-#r1 = Romans('CXIV')
-r1 = Romans('MMMMDCLXXII')
-
-print r1._calc_numero()
-
-
-
-
-
-
-
-
-
-
-
 # controlamos el tiempo de ejecución
-#start_time = datetime.now()
+start_time = datetime.now()
 
+len_org = 0
+len_fin = 0
 
-#print "Tiempo total: ", datetime.now() - start_time
-#print "Resultado de 0179: ", total
+for l in open('roman.txt'):
+    s = l.strip('\n')
+    r = Roman(s)
+
+    len_org += len(s)
+    n = r._calc_numero()
+    len_fin += len(roman.toRoman(n))
+
+print "Tiempo total: ", datetime.now() - start_time
+print "Resultado de 0089: ", len_org - len_fin
