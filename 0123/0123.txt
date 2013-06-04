@@ -1,0 +1,11 @@
+0123
+
+Sea pn el nº primo: 2,3,5,7,11,..., y sea r el resto cuando (pn−1)n + (pn+1)n
+se divide entre pn2.
+
+Por ejemplo, cuando n = 3, p3 = 5, y 43 + 63 = 280 ≡ 5 mod 25
+
+El menor valor de n para el que el resto supera 109 es 7037.
+
+Encuentra el menor valor de n para que el resto supere por primera vez 1010.
+
