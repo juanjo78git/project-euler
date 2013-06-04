@@ -24,28 +24,35 @@ def is_valid_square(s):
         (4 - 8*(n-n^2)) == s^2. toma!
         
         limpiando un poco... '''
-
+    
     rd = ((((s * s) - 4) * 32) + 64) ** 0.5
     if int(rd) == rd:
-        d, m = divmod((8 + rd), 16)
+        d, m = divmod((8 + int(rd)), 16)
         #if int(d) == d:
         if m == 0:
             return True, d
         else:
-            return False
+            return False, None
     else:
-        return False
+        return False, None
+
+def is_valid_sol(b, n):
+    sq = b * (b - 1)
+    sn = n * (n - 1)
+    return ((sq * 2) == sn)
 
 def calc_blue_disk(n):
     fs = first_square(n)
     while True:
-        print fs
+        if fs % 1000000 == 0:
+            print fs
         valid, n = is_valid_square(fs)
         if valid:
             poss_blue = get_poss_blue_disk(fs)
             if poss_blue != None:
-                print 'Resultado encontrado: ', poss_blue, n, fs
-                return poss_blue
-        fs = fs + 1     
+                if is_valid_sol(poss_blue, n):
+                    print 'Resultado encontrado: ', poss_blue, n, fs
+                    return poss_blue
+        fs = fs + 1
 
 calc_blue_disk(1000000000000)
