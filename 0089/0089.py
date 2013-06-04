@@ -20,29 +20,37 @@ class Romans:
 
     def _calc_numero(self):
         """ calculamos a partir del romano el número en arábico """
-        suma = 0
-        resta = 0
         total = 0
-        ant = None
-        for i in self._romano:
-            if ant is None:
-                suma += self._romval[i]
+        prev = None
+        next = None
+        curr = None
+        lenr = len(self._romano)
+        for r in range(0, lenr):
+            # calculamos curr y next...
+            curr = self._romano[r]
+            if r + 1 < lenr:
+                next = self._romano[r + 1]
             else:
-                # vemos si es de tipo resta...
-                if i in self._lawsub:
-                    resta += self._romval[i]
+                next = None
 
-        # nos quedaban unos valores que parecían resta pero no lo son...
-        if resta > 0:
-            suma += resta
+            if r - 1 >= 0:
+                prev = self._romano[r - 1]
 
-        total = suma
+            if (prev is None or self._romval[prev] >= self._romval[curr]):
+                if (next is None or self._romval[curr] >= self._romval[next]):
+                    total += self._romval[curr]
+            # cuando anterior no es ni None ni mayor igual, osea el anterior
+            # es MENOR
+            else:
+                total += self._romval[curr] - self._romval[prev]
+
         return total
 
 
-r = Romans('XI')
+#r1 = Romans('CXIV')
+r1 = Romans('MMMMDCLXXII')
 
-print r._calc_numero()
+print r1._calc_numero()
 
 
 
