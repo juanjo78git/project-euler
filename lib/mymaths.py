@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 # mymaths algunas funciones que uso mucho
+
 
 def ispalindrome(n):
     """ Retorna si un numero es palindromo """
@@ -21,15 +23,17 @@ def isprime(n):
 
     return True
 
+
 def ispythagoreantriplet(a, b, c):
     """ Retorna si es una tripleta pitagorica """
     return a**2 + b**2 == c**2
+
 
 # MUY rapida, eliminamos las demas
 def numdivs(n):
     """ Devuelve el total de divisores de un numero """
     # http://mathschallenge.net/library/number/number_of_divisors
-    # Basado en: 
+    # Basado en:
     # n = p^a * q^b ...
     # d(n) = (a+1)*(b+1)...
     t = 1
@@ -39,7 +43,7 @@ def numdivs(n):
         if n % d == 0:
             n = n / d
             numd += 1
-            
+
             # caso de salida, vaya chapuza, que mal estruturado
             if n == 1:
                 t = t * (numd + 1)
@@ -53,19 +57,28 @@ def numdivs(n):
     return t
 
 
+def lnumdivs(n):
+    """ lista de divisores de un número """
+    lidiv = []
+    for i in range(1, (n / 2) + 1):
+            if (n % i == 0):
+                    lidiv.append(i)
+    return lidiv
+
+
 def numdivsprimes(n):
     """ lista de primos que son divisibles por el numero """
     ldiv = []
     p = prime()
     d = p.next()
     while n != 1:
-       r, m = divmod(n, d)
-       if m == 0:
-           n = r
-           if d not in ldiv:
-               ldiv.append(d)
-       else:
-           d = p.next()
+        r, m = divmod(n, d)
+        if m == 0:
+            n = r
+            if d not in ldiv:
+                ldiv.append(d)
+        else:
+            d = p.next()
 
     return ldiv
 
@@ -78,16 +91,7 @@ def factorial(x):
         return x * factorial(x-1)
 
 
-
-
-
-
-
-
-
-
-
-# GENERADORES __________________________________________________________________
+# GENERADORES _________________________________________________________________
 
 
 def fibonacci():
@@ -97,16 +101,18 @@ def fibonacci():
         yield a
         a, b = b, a + b
 
+
 def prime():
     """ Generador de secuencia numeros primos"""
     p = 2
     while True:
         yield p
-        
+
         while (not isprime(p + 1)):
             p += 1
 
         p = p + 1
+
 
 def trianglenumber():
     """ Generador de secuencia numeros triangulo """
@@ -117,8 +123,7 @@ def trianglenumber():
         n, i = n + i + 1, i + 1
 
 
-
-# LISTAS _______________________________________________________________________
+# LISTAS ______________________________________________________________________
 #
 
 def genlprimes(n):
@@ -131,7 +136,6 @@ def genlprimes(n):
     limit = n + 1
     while myprime < limit:
         l.append(myprime)
-        myprime = p.next() 
+        myprime = p.next()
 
     return l
-
