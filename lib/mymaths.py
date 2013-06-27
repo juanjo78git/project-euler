@@ -61,8 +61,8 @@ def lnumdivs(n):
     """ lista de divisores de un número """
     lidiv = []
     for i in range(1, (n / 2) + 1):
-            if (n % i == 0):
-                    lidiv.append(i)
+        if (n % i == 0):
+            lidiv.append(i)
     return lidiv
 
 
@@ -123,6 +123,22 @@ def trianglenumber():
         n, i = n + i + 1, i + 1
 
 
+def euler_phi(n):
+    """ función phi de euler: número de enteros positivos menores o iguales a n
+        y coprimos con n """
+    # primero obtengo los factores
+    lf = factores(n)
+
+    numerador = 1
+    denominador = 1
+
+    for f in lf:
+        numerador = (f - 1) * numerador
+        denominador = f * denominador
+
+    return (n * numerador) / denominador
+
+
 # LISTAS ______________________________________________________________________
 #
 
@@ -139,3 +155,22 @@ def genlprimes(n):
         myprime = p.next()
 
     return l
+
+
+def factores(n):
+    """ factores, pero sin repetir de n """
+    lf = []
+    f = 2
+    inlist = False
+    while n != 1:
+        d, m = divmod(n, f)
+        if m == 0:
+            if not inlist:
+                lf.append(f)
+                inlist = True
+            n = d
+        else:
+            f += 1
+            inlist = False
+
+    return lf
