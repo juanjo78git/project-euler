@@ -3,6 +3,8 @@
 #!/usr/bin/python
 
 import random
+import operator
+from datetime import datetime
 
 
 class Monopoly(object):
@@ -100,7 +102,6 @@ class Monopoly(object):
 
     def dame_proximo_nu(self):
         """ nos devuelve la proxima compañía eléctrica """
-        actual = self.get_casilla()
         for i in range(1, len(self.tablero) + 1):
             casilla = (i + self.casilla) % len(self.tablero)
             if self.tablero[casilla][0] == 'U':
@@ -161,13 +162,28 @@ class Monopoly(object):
 
         return d1 + d2
 
-m = Monopoly(6)
-for i in range(1, 1000000000):
+    def resultado0084(self):
+        """ retorna el resultado únicamente """
+        sv = sorted(self.visitadas.iteritems(),
+                    key=operator.itemgetter(1))[-3:]
+        r = ''
+        for i in range(0, 3)[::-1]:
+            r = "%s%02d" % (r, self.tablero.index(sv[i][0]))
+        return r
+
+
+# controlamor el tiempo de ejecución
+start_time = datetime.now()
+
+m = Monopoly(4)
+for i in range(1, 100000):
     m.realiza_tirada()
 
 l = []
 for i in m.visitadas:
     l.append([m.visitadas[i], i])
 
-for i in sorted(l):
-    print i, m.tablero.index(i[1])
+ls = sorted(l)[-3:]
+
+print "Tiempo total: ", datetime.now() - start_time
+print "Resultado de 0084: ", m.resultado0084()
