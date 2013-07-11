@@ -126,17 +126,25 @@ def trianglenumber():
 def euler_phi(n):
     """ función phi de euler: número de enteros positivos menores o iguales a n
         y coprimos con n """
-    # primero obtengo los factores
-    lf = factores(n)
-
     numerador = 1
     denominador = 1
+    narg = n
 
-    for f in lf:
-        numerador = (f - 1) * numerador
-        denominador = f * denominador
+    f = 2
+    tratado = False
+    while n != 1:
+        d, m = divmod(n, f)
+        if m == 0:
+            if not tratado:
+                numerador = (f - 1) * numerador
+                denominador = f * denominador
+                tratado = True
+            n = d
+        else:
+            f += 1
+            tratado = False
 
-    return (n * numerador) / denominador
+    return (narg * numerador) / denominador
 
 
 # LISTAS ______________________________________________________________________

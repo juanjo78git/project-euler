@@ -9,6 +9,10 @@ import operator
 # a b c d + + +
 # de igual forma para + y - y para multiplicaciones.
 
+# 20130705: tengo una idea, consiste en buscar por un número dado si existe,
+#           sería ver si por ejemplo se puede formar el número 1, en caso
+#           correcto se lanzaría para el número 2 y así sucesivamente.. pero
+#           claro, necesitamos una función rápida para verificar esto...
 
 def resultados(ia, ib, ic, id, op1, op2, op3):
     ''' entramos sin no asociativa... '''

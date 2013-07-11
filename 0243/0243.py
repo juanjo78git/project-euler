@@ -34,22 +34,43 @@ def R_mayor(n, d, min_n, min_d):
 
 
 #LIMITE = 10000000
+RANGO = 10000000
 
 # controlamor el tiempo de ejecución
 start_time = datetime.now()
 
 min_d = 94744
 min_n = 15499
-d = 1700000
+#min_d = 10
+#min_n = 4
+d = 30
 
-#lp = mymaths.genlprimes(LIMITE)
+p = mymaths.prime()
 
-#print "Generación de lista de primos terminada"
+#while True:
+    #if p.next() == 5:
+        #break
+
+mymin = 0.1856
+mini = 0
+z = 0
+
+d = p.next()
+d = p.next()
+d = p.next()
+
+
+d = 20550002
+
+print min_n / float(min_d)
+nomas = False
 
 while True:
+    #d = p.next() + 1
     d += 1
+    z += 1
 
-    if d % 1000 == 0:
+    if z % 10000 == 0:
         print d
 
     noreducibles = mymaths.euler_phi(d)
@@ -58,6 +79,18 @@ while True:
     if not R_mayor(noreducibles, d, min_n, min_d):
         break
 
+    mini = noreducibles / float(d - 1)
+    if mini < mymin:
+        mymin = mini
+        mini
+        if mini > 0.165:
+            print noreducibles, d - 1, mini
+            if not nomas:
+                d += RANGO
+        else:
+            d -= RANGO
+            nomas = True
+        #print noreducibles, d, mymaths.numdivsprimes(d)
 
 # si salimos es que tenemos solucion...
 print "Tiempo total: ", datetime.now() - start_time
