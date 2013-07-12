@@ -2,6 +2,7 @@
 
 # generamos el iterador
 
+
 def iter14(n):
     while True:
         if n % 2 == 0:
@@ -10,16 +11,16 @@ def iter14(n):
             n = (3 * n) + 1
         yield n
 
+
 def num_terminos_iter14(n):
     it = iter14(n)
     total = 1
     e = 0
     while e != 1:
         e = it.next()
-        total += 1 
-     
+        total += 1
+
     return total
-        
 
 
 maxterminos = 0
@@ -32,4 +33,4 @@ for i in range(2, limite):
         maxterminos = calc
         n = i
 
-print ("Resultado 0014", n)
+print "Resultado 0014: ", n

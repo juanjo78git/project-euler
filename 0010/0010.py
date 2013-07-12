@@ -9,7 +9,8 @@
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 

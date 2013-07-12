@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 
@@ -13,4 +14,4 @@ for i in range(0, len(str(f100))):
     suma += int(str(f100)[i])
 
 
-print ("Resultado 0020", suma)
+print "Resultado 0020: ", suma

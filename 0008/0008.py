@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
+#import mymaths
 
-import mymaths
 
 def multdigits(n):
     c = str(n)
@@ -26,7 +27,7 @@ multmax = 0
 mult = 0
 while len(cadena5) == 5:
     mult = multdigits(int(cadena5))
-    
+
     if mult > multmax:
         multmax = mult
 
@@ -34,4 +35,4 @@ while len(cadena5) == 5:
     cadena5 = cadena[index:lengrupo+index]
 
 
-print ("Resultado 0008", multmax)
+print "Resultado 0008: ", multmax

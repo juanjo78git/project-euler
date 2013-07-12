@@ -1,7 +1,6 @@
 #!/usr/bin/pypy
 
 
-
 class Sudoku:
     """Un sudoku!!"""
     def __init__(self, cadena):
@@ -37,7 +36,7 @@ class Sudoku:
             return []
 
         c, i, j = self.getcord(i)
-        cubo = self.getcube(c)
+        #cubo = self.getcube(c)
         fila = self.getfile(i)
         columna = self.getcolumn(j)
 
@@ -49,30 +48,26 @@ class Sudoku:
                 poss.remove(m)
         return poss
 
-
     def getcord(self, i):
         """ retorna las cordenadas """
         # @TODO repasar, que python3 no me gusta mucho lo de dividir :(
-        cubo = ((i//27)*3 + (i//3)%3)
+        cubo = ((i//27) * 3 + (i//3) % 3)
         fila, columna = divmod(i, 9)
         return cubo, fila, columna
-
 
     def getfile(self, n):
         """ devuelve la fila n """
         return self.__sudoku[(9*n):((9*n)+9)]
 
-
     def getmissnumcube(self, n):
         """ mira que numero falta en el cubo n """
-        miss = [1,2,3,4,5,6,7,8,9]
+        miss = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         cube = self.getcube(n)
         for i in range(9):
             if cube[i] != 0:
                 miss.remove(int(cube[i]))
         return miss
-
 
     def getcolumn(self, n):
         """ le paso una columna de la 0 a la 8 y me devuelve los datos... """
@@ -93,7 +88,7 @@ class Sudoku:
 
     def is_valid_partial(self, partial):
         """ si una linea, cubo y columna es valida """
-        complet = [1,2,3,4,5,6,7,8,9]
+        complet = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         for i in partial:
             if i != 0:
                 if i not in complet:
@@ -113,10 +108,9 @@ class Sudoku:
                 return False
         return True
 
-
     def is_solved_partial(self, partial):
         partial.sort()
-        if [1,2,3,4,5,6,7,8,9] == partial:
+        if [1, 2, 3, 4, 5, 6, 7, 8, 9] == partial:
             return True
         else:
             False
@@ -154,7 +148,8 @@ class Sudoku:
             return False
 
     def getcornerleft(self):
-        return int(str(self.__sudoku[0]) + str(self.__sudoku[1]) + str(self.__sudoku[2]))
+        return int(str(self.__sudoku[0]) + str(self.__sudoku[1])
+                   + str(self.__sudoku[2]))
 
 
 lsudoku = []
@@ -186,4 +181,3 @@ for sudoku in lsudoku:
     i += 1
 
 print("Solucion 0096:", total)
-

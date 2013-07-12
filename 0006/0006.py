@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 
 limite = 100
@@ -12,4 +12,4 @@ for i in range(1, limite + 1):
 resta = cuadradossuma**2 - sumacuadrados
 
 
-print ("Resultado 0006", resta)
+print ("Resultado 0006: ", resta)

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 
@@ -16,4 +17,4 @@ while True:
     if mymaths.numdivs(n) > nmindivs:
         break
 
-print ("Resultado 0012", n)
+print "Resultado 0012: ", n

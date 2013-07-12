@@ -1,6 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 
@@ -17,4 +18,4 @@ for a in range(100, 1000):
             if capicua_max < pcapicua:
                 capicua_max = pcapicua
 
-print ("Resultado 0004", capicua_max)
+print ("Resultado 0004: ", capicua_max)

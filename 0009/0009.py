@@ -9,7 +9,8 @@
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 
@@ -21,7 +22,7 @@ exit = False
 for a in range(1, 1000):
     for b in range(a+1, 1000):
         for c in range(b+1, 1000):
-            if a+b+c == 1000 and mymaths.ispythagoreantriplet(a,b,c):
+            if a+b+c == 1000 and mymaths.ispythagoreantriplet(a, b, c):
                 resultado = a*b*c
                 exit = True
                 break
@@ -29,5 +30,5 @@ for a in range(1, 1000):
             break
     if exit:
         break
-    
-print ("Resultado 0009", resultado)
+
+print "Resultado 0009: ", resultado
