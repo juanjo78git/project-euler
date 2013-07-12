@@ -1,8 +1,9 @@
-#! /usr/bin/python2
+#!/usr/bin/python2
 
 d = ""
-for i in range(0,1000000):
-	d = d + str(i)
+for i in range(0, 1000000):
+    d = d + str(i)
 
 print len(d)
-print int(d[1])*int(d[10])*int(d[100])*int(d[1000])*int(d[10000])*int(d[100000])*int(d[1000000])
+print (int(d[1]) * int(d[10]) * int(d[100]) * int(d[1000]) * int(d[10000])
+       * int(d[100000]) * int(d[1000000]))

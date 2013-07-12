@@ -1,3 +1,6 @@
+#!/usr/bin/python2
+
+
 def lista_restos(dividendo, divisor):
 
     lista = []
@@ -36,4 +39,3 @@ for d in range(2, 1001):
 
 print maxi
 print number
-
