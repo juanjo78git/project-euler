@@ -1,0 +1,23 @@
+0086
+
+Una araña, S, esta sentada en una esquina de una habitación ortoédrica, de
+6 por 5 por 3, y una mosca, F, está sentada en la esquina opuesta. Recorriendo
+las superficies de la habitación, la menor distancia de una "línea recta" de
+S a F es 10, y el camino se muestra en el diagrama inferior.
+
+Sin embargo, hay hasta tres candidatos a camino "más corto" para cualquier
+cuboide determinado y la ruta más corta no siempre es entera.
+
+Teniendo en cuenta todas las habitaciones ortoédricas de dimensiones enteras,
+hasta un tamaño máximo de M por M por M, hay exactamente 2.060 cuboides para
+los que la distancia mínima es entera cuando M=100, y este es el menor valor de
+M para el cual el número de soluciones supera dos mil; el número de soluciones
+para M=99, es 1975.
+
+Halla el menor valor de M cuyo número de soluciones supera el millón.
+
+
+IDEAS:
+
+Usamos Lagrange... 
+http://www.wikimatematica.org/index.php?title=Multiplicadores_de_Lagrange

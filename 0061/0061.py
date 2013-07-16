@@ -1,32 +1,35 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import itertools
 
 def triangle(n):
     return int(n*(n+1)/2)
 
+
 def square(n):
     return int(n**2)
+
 
 def pentagonal(n):
     return int(n*(3*n-1)/2)
 
+
 def hexagonal(n):
     return int(n*(2*n-1))
+
 
 def heptagonal(n):
     return int(n*(5*n-3)/2)
 
+
 def octagonal(n):
     return int(n*(3*n-2))
+
 
 # joder, le paso la función como parámetro y listo, la uso como fn(n)
 def lxnal(fn):
     l = []
     n = 1
-    mini = 99999
-    maxi = 0
     slen = 0
     while slen < 5:
         t = fn(n)
@@ -40,24 +43,20 @@ def lxnal(fn):
     return l
 
 
-
-
 def cumple(l, solucion):
     laux = list(l)
-    solaux = [] 
+    solaux = []
     for s in solucion:
         for l in laux:
             if s in l:
                 laux.remove(l)
                 if s not in solaux:
-                    solaux.append(s)    
+                    solaux.append(s)
 
     if len(laux) == 0 and len(solaux) == 6:
         return True
     else:
         return False
-
-        
 
 
 def siguientes(e, l):
@@ -68,10 +67,11 @@ def siguientes(e, l):
 
     return sig
 
+
 def recursolucion(l, lunida, solucion):
 
     if len(solucion) == 6:
-        if solucion[0] / 100 ==  solucion[5] % 100:
+        if solucion[0] / 100 == solucion[5] % 100:
             if cumple(l, solucion):
                 print "Resultado 0061:", solucion, sum(solucion)
         return
@@ -84,10 +84,11 @@ def recursolucion(l, lunida, solucion):
     for i in sig:
         lunidaaux = list(lunida)
         lunidaaux.remove(i)
-        solucionaux= list(solucion)
+        solucionaux = list(solucion)
         solucionaux.append(i)
         #print "Solucion parcial:", lcopysolucion
         recursolucion(l, lunidaaux, solucionaux)
+
 
 def gensolucion(l, lunida):
     for i in l[0]:
@@ -116,4 +117,3 @@ for lx in l:
             lunida.append(i)
 
 gensolucion(l, lunida)
-

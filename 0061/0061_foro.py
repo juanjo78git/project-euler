@@ -1,12 +1,16 @@
-from copy import deepcopy
+#!/usr/bin/python
+
+#from copy import deepcopy
 
 SIZE = 6
+
 
 def genPolygonals(order):
     i = 1
     while 1:
-        yield i * (2  + (order - 2) * (i - 1)) / 2
+        yield i * (2 + (order - 2) * (i - 1)) / 2
         i += 1
+
 
 def createFourDigitPolygonal(generator, order):
     list = []
@@ -16,6 +20,7 @@ def createFourDigitPolygonal(generator, order):
         if x >= 1000:
             list.append(x)
     return list
+
 
 def getMatches(x, polygonals, available):
     matches = []
@@ -27,6 +32,7 @@ def getMatches(x, polygonals, available):
                     matches.append((n, index))
         index += 1
     return matches
+
 
 def buildChain(chain, polygonals, available):
     if len(available):

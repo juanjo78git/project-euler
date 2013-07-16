@@ -1,12 +1,14 @@
 #!/usr/bin/pypy
 
-import os, sys
+import os
+import sys
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 
 import mymaths
 
 LIMIT = 1000000
+
 
 def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
@@ -18,9 +20,10 @@ def genlprimes(n):
     limit = n + 1
     while prime < limit:
         l.append(prime)
-        prime = p.next() 
+        prime = p.next()
 
     return l
+
 
 def numdivsprimes(lprimes, n):
     """ lista de primos que son divisibles por el numero n, pasandole la lista
@@ -45,6 +48,7 @@ def numdivsprimes(lprimes, n):
 
     return ldiv
 
+
 def phi(lprimes, n):
     """ funcion phi, a partir de un listado de primos, para facilitar """
 
@@ -61,7 +65,7 @@ def phi(lprimes, n):
 
 n_max = 0
 n_div_phi_max = 0
-lprimes =  genlprimes(LIMIT)
+lprimes = genlprimes(LIMIT)
 
 for n in range(2, LIMIT):
     n_phi = phi(lprimes, n)
@@ -72,6 +76,3 @@ for n in range(2, LIMIT):
             n_max = n
 
 print "Resultado 0069: ", n_max
-
-
-

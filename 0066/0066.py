@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 #Por ejemplo, √19 tiene la expansión en fracciones continuas
-#que es recurrente cada 6 fracciones. El término inmediatamente anterior al punto
-#en el que se repite es 170/39 y la teoría de Lagrange dice que
+#que es recurrente cada 6 fracciones. El término inmediatamente anterior al
+#punto en el que se repite es 170/39 y la teoría de Lagrange dice que
 
 #x = 39, y = 170
 
@@ -12,6 +12,7 @@
 #19x2 + 1 = y2.
 
 #http://hojaynumeros.blogspot.com.es/2010/02/ecuacion-de-pell.html
+
 
 def contfrac(r, a, b):
     ''' solo para el calculo de las fracciones '''
@@ -25,7 +26,7 @@ def contfrac(r, a, b):
     # 7 / raiz(23) - 3
     # b / raiz(23) - a
     newi = int(b / ((r ** 0.5) - a))
-    newb = r - (a * a) 
+    newb = r - (a * a)
     # b es divisor de newb
     newb = newb / b
     z = newi * newb
@@ -33,14 +34,17 @@ def contfrac(r, a, b):
     #print r, newi, newa, newb
     return newi, (newa * -1), newb
 
+
 def fracxy(i, xy0, xy1):
     return (i * xy1) + xy0
+
 
 def espell(x, y, d):
     if (x**2) - (d*(y**2)) == 1:
         return True
     else:
         return False
+
 
 def calcfrac(r):
     if r ** 0.5 == int(r ** 0.5):
@@ -71,28 +75,27 @@ def calcfrac(r):
     if espell(x, y, r):
         return x
 
-    count = 0
     while True:
         i, a, b = contfrac(r, a, b)
         x, y = fracxy(i, x0, x1), fracxy(i, y0, y1)
-        
+
         x0 = x1
         x1 = x
         y0 = y1
         y1 = y
-    
+
         if espell(x, y, r):
             break
     return x
 
 LIMITE = 1000
 
-maxx= 0
+maxx = 0
 res = 0
 
 for i in range(1, LIMITE + 1):
     x = calcfrac(i)
-    
+
     if x > maxx:
         maxx = x
         res = i

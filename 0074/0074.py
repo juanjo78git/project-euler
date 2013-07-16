@@ -13,7 +13,7 @@
 #871  45361  871
 #872  45362  872
 
-#It is not difficult to prove that EVERY starting number will eventually get 
+#It is not difficult to prove that EVERY starting number will eventually get
 #stuck in a loop. For example,
 
 #69  363600  1454  169  363601 ( 1454)
@@ -28,47 +28,46 @@
 
 # Funcion para el factorial
 
-fact10 = [1,1,2,6,24,120,720,5040,40320,362880,3628800]
+fact10 = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800]
+
 
 def factorial(x):
-	if x == 0:
-		return 1
-	else:
-		return x * factorial(x-1)
-		
+    if x == 0:
+        return 1
+    else:
+        return x * factorial(x-1)
+
+
 def fact_under_10(x):
-	global fact10
-	return fact10[x]
-	
+    global fact10
+    return fact10[x]
+
+
 def sumfactorial(n):
-	suma = 0
-	for c in str(n):
-		suma += factorial(int(c))
-	return suma
+    suma = 0
+    for c in str(n):
+        suma += factorial(int(c))
+    return suma
+
 
 def ciclossumfactorial(n):
-	ciclos = 0
-	lnext = []
-	next = n
-	while next not in lnext:
-		ciclos += 1
-		lnext.append(next)
-		next = sumfactorial(next)
-	return ciclos
-		
+    ciclos = 0
+    lnext = []
+    next = n
+    while next not in lnext:
+        ciclos += 1
+        lnext.append(next)
+        next = sumfactorial(next)
+    return ciclos
+
 
 limite = 1000000
 total = 0
 
 for n in range(1, limite):
-#	if n % 1000 == 0:
-#		print(n)
-	if ciclossumfactorial(n) == 60:
-		total += 1
-		
+#    if n % 1000 == 0:
+#        print(n)
+    if ciclossumfactorial(n) == 60:
+        total += 1
+
 print("Resultado 0074:", total)
-	
-
-
-
-

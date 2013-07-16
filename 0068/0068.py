@@ -19,6 +19,7 @@ def getlistrestantes(comb):
         a.remove(x)
     return a
 
+
 def magic5_to_str(magic5):
     m5str = ''
 
@@ -65,7 +66,7 @@ for comb in lcomb:
         magic5[2][0] = perm[2]
         magic5[3][0] = perm[3]
         magic5[4][0] = perm[4]
-        
+
         if es_solucion_magic5(magic5):
             if len(magic5_to_str(magic5)) == 16:
                 soluciones.append(magic5_to_str(magic5))

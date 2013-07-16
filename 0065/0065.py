@@ -2,6 +2,7 @@
 
 import fractions
 
+
 def fracterm(k, n, d):
     nuevo_n = ((k * n) + d)
     nuevo_d = n
@@ -10,13 +11,12 @@ def fracterm(k, n, d):
     return nuevo_n, nuevo_d
 
 
-
 def genl_e():
     uno = False
     dos = False
     n = 0
     l = []
-    for i in range(1,150):
+    for i in range(1, 150):
         if uno and dos:
             n = n + 2
             l.append(n)
@@ -30,7 +30,7 @@ def genl_e():
                 dos = True
                 l.append(1)
 
-    return [2,1,2] + l[3:]
+    return [2, 1, 2] + l[3:]
 
 
 def n_fraccion(v):

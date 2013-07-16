@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+
 def contfrac(r, a, b):
     ''' solo para el calculo de las fracciones '''
     # ejemplo, el anterior paso se había quedado así
@@ -13,13 +14,12 @@ def contfrac(r, a, b):
     # 7 / raiz(23) - 3
     # b / raiz(23) - a
     newi = int(b / ((r ** 0.5) - a))
-    newb = r - (a * a) 
+    newb = r - (a * a)
     # b es divisor de newb
     newb = newb / b
     z = newi * newb
     newa = a - z
     return (newa * -1), newb
-
 
 
 def calcfrac(r):
