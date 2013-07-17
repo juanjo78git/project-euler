@@ -20,6 +20,7 @@ def sumdigits(n):
         sumatory += int(i)
     return sumatory
 
+
 def gen_pos_result(N, E):
     powers = []
     for i in range(2, N):

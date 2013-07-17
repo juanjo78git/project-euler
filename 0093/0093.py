@@ -14,29 +14,29 @@ import operator
 #           correcto se lanzaría para el número 2 y así sucesivamente.. pero
 #           claro, necesitamos una función rápida para verificar esto...
 
+
 def resultados(ia, ib, ic, id, op1, op2, op3):
     ''' entramos sin no asociativa... '''
     l = [0]
-    
+
     a = str(ia)
     b = str(ib)
     c = str(ic)
     d = str(id)
 
-
-    s1 = a + op1 + b + op2 + c +  op3 + d  
+    s1 = a + op1 + b + op2 + c + op3 + d
     s2 = '(' + a + op1 + b + ')' + op2 + c + op3 + d
     s3 = a + op1 + '(' + b + op2 + c + ')' + op3 + d
     s4 = a + op1 + b + op2 + '(' + c + op3 + d + ')'
     s5 = '(' + a + op1 + b + op2 + c + ')' + op3 + d
     s6 = a + op1 + '(' + b + op2 + c + op3 + d + ')'
     s7 = '(' + a + op1 + b + ')' + op2 + '(' + c + op3 + d + ')'
-    s8 = '((' + a + op1 + b + ')' + op2 + c + ')'+ op3 + d
+    s8 = '((' + a + op1 + b + ')' + op2 + c + ')' + op3 + d
     s9 = a + op1 + '(' + b + op2 + '(' + c + op3 + d + '))'
     s10 = '(' + a + op1 + '(' + b + op2 + c + '))' + op3 + d
     s11 = a + op1 + '((' + b + op2 + c + ')' + op3 + d + ')'
-    
-    s = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11] 
+
+    s = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11]
 
     for si in s:
         try:
@@ -44,15 +44,14 @@ def resultados(ia, ib, ic, id, op1, op2, op3):
             if r not in l and r > 0:
                 l.append(r)
         except:
-            z = 0
-    
+            #z = 0
+            pass
+
     return l
 
 
-
-
 def asociativa(op):
-    if op[0] in ('-','+') and op[1] in ('+', '-') and op[2] in ('+', '-'):
+    if op[0] in ('-', '+') and op[1] in ('+', '-') and op[2] in ('+', '-'):
         return True
     else:
         if op[0] in ('*') and op[1] in ('*') and op[2] in ('*'):
@@ -62,10 +61,10 @@ def asociativa(op):
 
 
 def rpnvalid(rpn):
-   
+
     if not rpn[0].isdigit():
         return False
-        
+
     if rpn[6].isdigit():
         return False
 
@@ -77,14 +76,15 @@ def rpnvalid(rpn):
 
     return True
 
+
 def p93(a, b, c, d):
     pos_rpns = []
     # para cada union de 3 operadores...
     #element = str(a) + str(b) + str(c) + str(d)
     for op in list(itertools.combinations_with_replacement('+-*/', 3)):
-        
+
         elem = [a, b, c, d, op[0], op[1], op[2]]
-        
+
         if asociativa(op):
             #pos_rpn2.append(op[0])
             #pos_rpn2.append(op[1])
@@ -99,7 +99,7 @@ def p93(a, b, c, d):
 
                 if rpnvalid(rpn):
                     pos_rpns.append(rpn)
-    
+
     return pos_rpns
 
 
@@ -108,15 +108,15 @@ def p93_normal(a, b, c, d):
     # para cada union de 3 operadores...
     element = [a, b, c, d]
     for op in list(itertools.product('+-*/', repeat=3)):
-        
+
         elem = [a, b, c, d, op[0], op[1], op[2]]
-        
+
         if asociativa(op):
             #pos_rpn2.append(op[0])
             #pos_rpn2.append(op[1])
             #pos_rpn2.append(op[2])
             normal.append(elem)
-        else: 
+        else:
             for per in list(itertools.permutations('0123', 4)):
                 nrm = []
                 for i in per:
@@ -125,9 +125,9 @@ def p93_normal(a, b, c, d):
                 nrm.append(op[0])
                 nrm.append(op[1])
                 nrm.append(op[2])
-   
+
                 normal.append(nrm)
-    
+
     return normal
 
 # rpn calculadora...
@@ -137,7 +137,8 @@ operators = {
     '*': lambda a, b: a * b,
     '/': lambda a, b: a / b
 }
- 
+
+
 def polish_eval(expression):
     elements = expression.split()
     pile = []
@@ -153,8 +154,9 @@ def polish_eval(expression):
 
 ARITHMETIC_OPERATORS = {
     '+':  operator.add, '-':  operator.sub,
-    '*':  operator.mul, '/':  operator.div, 
+    '*':  operator.mul, '/':  operator.div,
 }
+
 
 def postfix(expression, operators=ARITHMETIC_OPERATORS):
     stack = []
@@ -168,9 +170,9 @@ def postfix(expression, operators=ARITHMETIC_OPERATORS):
     return stack.pop()
 
 
-
 MAX = 75
 INIT = 1
+
 
 def p93_3():
     maximo = 0
@@ -182,7 +184,7 @@ def p93_3():
                 for d in range(c + 1, MAX):
                     l = []
                     l = p93(a, b, c, d)
-                    
+
                     r = []
 
                     for i in l:
@@ -192,23 +194,23 @@ def p93_3():
                                 if p not in r:
                                     r.append(p)
                         except:
-                            z = 0
+                            #z = 0
+                            pass
                             #print i
 
                     # una vez llegados aqui tenemos una lista de los valores
                     # que hemos ido obteniendo, la pintamos de primeras...
                     sr = sorted(r)
-                    
+
                     n = 1
                     for j in sr:
                         if n != int(j):
                             break
                         n = n + 1
-                    
+
                     if maximo < n - 1:
                         print n - 1, a, b, c, d
                         maximo = n - 1
-
 
 
 def p93_3_normal():
@@ -221,11 +223,12 @@ def p93_3_normal():
                 for d in range(c + 1, MAX):
                     l = []
                     l = p93_normal(a, b, c, d)
-                    
+
                     r = []
 
                     for i in l:
-                        p = resultados(i[0], i[1], i[2], i[3], i[4], i[5], i[6])
+                        p = resultados(i[0], i[1], i[2], i[3], i[4], i[5],
+                                       i[6])
                         for pi in p:
                             if pi > 0:
                                 if pi not in r:
@@ -234,19 +237,16 @@ def p93_3_normal():
                     # una vez llegados aqui tenemos una lista de los valores
                     # que hemos ido obteniendo, la pintamos de primeras...
                     sr = sorted(r)
-                    
+
                     n = 1
                     for j in sr:
                         if n != int(j):
                             break
                         n = n + 1
-                    
+
                     if maximo < n - 1:
                         print n - 1, a, b, c, d
                         maximo = n - 1
-
-
-
 
 #p93_3_normal()
 p93_3()

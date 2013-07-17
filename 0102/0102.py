@@ -19,7 +19,8 @@ class Triangulo:
 
     def orientacion(self):
         """ obtenemos la orientación de un triángulo """
-        if ((self.p1.x - self.p3.x) * (self.p2.y - self.p3.y)) - ((self.p1.y - self.p3.y) * (self.p2.x - self.p3.x)) < 0:
+        if (((self.p1.x - self.p3.x) * (self.p2.y - self.p3.y)) -
+                ((self.p1.y - self.p3.y) * (self.p2.x - self.p3.x))) < 0:
             return False
         else:
             return True

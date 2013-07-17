@@ -1,21 +1,21 @@
 #!/usr/bin/python
 
 #Project Euler 0080
-#It is well known that if the square root of a natural number is not an integer,
-#then it is irrational. The decimal expansion of such square roots is infinite 
-#without any repeating pattern at all.
+#It is well known that if the square root of a natural number is not an
+#integer, then it is irrational. The decimal expansion of such square roots i
+#infinite without any repeating pattern at all.
 
-#The square root of two is 1.41421356237309504880..., and the digital sum of 
+#The square root of two is 1.41421356237309504880..., and the digital sum of
 #the first one hundred decimal digits is 475.
 
-#For the first one hundred natural numbers, find the total of the digital sums 
+#For the first one hundred natural numbers, find the total of the digital sums
 #of the first one hundred decimal digits for all the irrational square roots.
 
 # PNG:
 # joder que mal explicado, no eran los primeros 100 dígitos, eran calculamos
 # los primeros 100 dígitos MAS los dígitos enteros... ¬¬ en fin, que se
 # explican como el puto CU-LO
-	
+
 #Find the square root of 2.
 #          1. 4  1  4  2
 #       /
@@ -31,62 +31,56 @@
 #            01 12 96           y = (2820+x)*x = 2824*4 = 11296
 #               06 04 00      28282*2 <= 60400 < 28283*3     x = 2
 #                             The desired precision is achieved:
-#                             The square root of 2 is about 1.4142	
-	
+#                             The square root of 2 is about 1.4142
+
+
 def raiz_x(p, c):
-	# x(20p+x) <= c
-	x = 0
-	while x*((20*p)+x) <= c:
-		x+=1 
-	
-	return x-1
-	
-	
-	
+    # x(20p+x) <= c
+    x = 0
+    while x*((20*p)+x) <= c:
+        x += 1
+
+    return x-1
+
+
 def raiz_sum_dec(n, decimales):
-	# pasamos el número a cadena, y añadimos un 0 delante si es impar el número
-	# de dígitos
-	if len(str(n)) % 2 == 0:
-		num = str(n)
-	else:
-		num = '0' + str(n)
+    # pasamos el número a cadena, y añadimos un 0 delante si es impar el número
+    # de dígitos
+    if len(str(n)) % 2 == 0:
+        num = str(n)
+    else:
+        num = '0' + str(n)
 
-	c = 0
-	p = 0
-	numdec = 0
-	sumdec = 0
-	while numdec < decimales-1:
-		
-		# los dos dígitos a tratar
-		if len(num) > 0:
-			c = (c*100) + int(num[0:2])
-			num = num[2:]
-		else:
-			if c == 0 and numdec == 0:
-				return 0
-			c = c*100
-			numdec += 1
-		
-		x = raiz_x(p, c)
-		y = ((20*p)+x)*x	
-		p = (p*10)+x
-		
-		# el nuevo c...
-		c = c - y
-		
-		sumdec += x
+    c = 0
+    p = 0
+    numdec = 0
+    sumdec = 0
+    while numdec < decimales-1:
 
-	return sumdec		
+        # los dos dígitos a tratar
+        if len(num) > 0:
+            c = (c*100) + int(num[0:2])
+            num = num[2:]
+        else:
+            if c == 0 and numdec == 0:
+                return 0
+            c = c * 100
+            numdec += 1
 
-		
-		
-sumatory = 0		
+        x = raiz_x(p, c)
+        y = ((20*p)+x)*x
+        p = (p*10)+x
+
+        # el nuevo c...
+        c = c - y
+
+        sumdec += x
+
+    return sumdec
+
+
+sumatory = 0
 for r in range(1, 101):
-	sumatory += raiz_sum_dec(r, 100)
-	
-print("Resultado 0080:", sumatory)	
-	
-	
-	
+    sumatory += raiz_sum_dec(r, 100)
 
-
+print("Resultado 0080:", sumatory)
