@@ -11,6 +11,14 @@ def ispalindrome(n):
     return True
 
 
+def isstringpalindrome(s):
+    """ Retorna si una cadena es palindromo """
+    for i in range(0, len(s)):
+        if s[i] != s[len(s)-i-1]:
+            return False
+    return True
+
+
 def isprime(n):
     """ Retorna si un numero es primo """
     if n == 1:
