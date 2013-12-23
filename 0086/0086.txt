@@ -19,5 +19,27 @@ Halla el menor valor de M cuyo número de soluciones supera el millón.
 
 IDEAS:
 
-Usamos Lagrange... 
-http://www.wikimatematica.org/index.php?title=Multiplicadores_de_Lagrange
+Una vez lo pones sobre 2D es todo más sencillo, un ejemplo que es el que nos
+enseña el problema
+
+    +-----F
+    |     |
+  5 |     |
+    |     |
+    |     |
+    +-----+
+  3 |     |
+    S-----+
+       6
+
+Luego la añara querrá hacer la línea recta, esto es:
+
+Camino más corto = (6^2 + (5 + 3)^2)^1/2 = 10
+
+Cuando hablamos de 3 candidatos es que tenemos:
+
+A2 + (B+C)2
+(A+B)2 + C2
+(A+C)2 + B2
+
+Vamos, creo.... SI!

@@ -2,62 +2,40 @@
 
 #!/usr/bin/python
 
-import os
-import sys
 from datetime import datetime
 
-lib_path = os.path.abspath('../lib')
-sys.path.append(lib_path)
 
-import mymaths
+def get_camino_minimo(a, b, c):
+    return (a**2 + ((b + c)**2))**0.5
 
-LIMITE = 1000000
 
-calculados = []
-cadena_maxima = []
+def tiene_camino_entero(a, b, c):
+
+    l1 = get_camino_minimo(a, b, c)
+    l2 = get_camino_minimo(c, a, b)
+    l3 = get_camino_minimo(b, a, c)
+
+    cm = min(min(l1, l2), l3)
+
+    return cm == int(cm)
 
 # controlamor el tiempo de ejecución
 start_time = datetime.now()
 
-for n in range(4, LIMITE):
+# no
+M = 1815
+count = 0
+LIMITE = 1000000
 
-    if n % 1000 == 0:
-        print n
+while count < LIMITE:
+    print M, count
+    count = 0
+    M += 1
+    for a in range(1, M + 1):
+        for b in range(a, M + 1):
+            for c in range(b, M + 1):
+                if tiene_camino_entero(a, b, c):
+                    count += 1
 
-    # primero vemos que no lo hemos estudiado ya
-    #if n in calculados:
-        #continue
-    #else:
-        #calculados.append(n)
-    cadena = [n]
-
-    nex = n
-    while True:
-        #print n
-        # generamos el siguiente:
-
-        nex = sum(mymaths.lnumdivs(nex))
-        #calculados.append(nex)
-
-        # condiciones de salida
-        if nex == n:
-            if len(cadena_maxima) < len(cadena):
-                print cadena_maxima
-                print cadena
-                cadena_maxima = cadena
-            break
-
-        if nex > LIMITE:
-            break
-
-        # controlamos un ciclo para salir
-        if nex in cadena:
-            break
-
-        cadena.append(nex)
-        #print n, cadena
-
-
-print cadena_maxima
 print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0095: ", cadena_maxima[0]
+print "Resultado de 0085: ", count, M
