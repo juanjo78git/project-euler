@@ -1,63 +1,65 @@
-# -*- coding: utf-8 -*-
-
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import os
 import sys
 from datetime import datetime
+from operator import mul
 
 lib_path = os.path.abspath('../lib')
 sys.path.append(lib_path)
 
-import mymaths
+# import mymaths
 
-LIMITE = 1000000
 
-calculados = []
-cadena_maxima = []
+def get_k(nums):
+    """ a partir de una lista de números nos devuelve el valor de k """
+    sumatory = sum(nums)
+    product = reduce(mul, nums, 1)
+
+    k = len(nums) + ((product - sumatory))
+    # return len(nums) + ((product - sumatory))
+    # print "k: ", k, " -- valor sumatorio: ", product, "lista: ", nums
+    return k
+
+
+def res(k_max, limit):
+    result = {}
+    for n in range(4, limit):
+
+        # tenemos que ir sacando todos los posibles divisores de n
+        if n % 1000 == 0:
+            print n
+        m = n
+        for d1 in range(2, ((n / 2) + 1)):
+            divs = []
+            m = n
+            for d2 in range(d1, ((n / 2) + 1)):
+                while m % d2 == 0:
+                    m = m / d2
+                    if m > 1:
+                        # tenemos un divisor
+                        divs.append(d2)
+                        k = get_k(divs + [m])
+                        
+                        if k < k_max + 1:
+
+                            if result.has_key(k):
+                                if result[k] > n:
+                                    result[k] = n
+                            else:
+                                result[k] = n
+
+    print sum(list(set(result.values())))
+    return res
+
 
 # controlamor el tiempo de ejecución
 start_time = datetime.now()
 
-for n in range(4, LIMITE):
-
-    if n % 1000 == 0:
-        print n
-
-    # primero vemos que no lo hemos estudiado ya
-    #if n in calculados:
-        #continue
-    #else:
-        #calculados.append(n)
-    cadena = [n]
-
-    nex = n
-    while True:
-        #print n
-        # generamos el siguiente:
-
-        nex = sum(mymaths.lnumdivs(nex))
-        #calculados.append(nex)
-
-        # condiciones de salida
-        if nex == n:
-            if len(cadena_maxima) < len(cadena):
-                print cadena_maxima
-                print cadena
-                cadena_maxima = cadena
-            break
-
-        if nex > LIMITE:
-            break
-
-        # controlamos un ciclo para salir
-        if nex in cadena:
-            break
-
-        cadena.append(nex)
-        #print n, cadena
-
+res(12, 100)
+res(12000, 50000)
 
 print cadena_maxima
 print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0095: ", cadena_maxima[0]
+print "Resultado de 0088: ", 
