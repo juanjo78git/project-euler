@@ -28,8 +28,9 @@ def res(k_max, limit):
     for n in range(4, limit):
 
         # tenemos que ir sacando todos los posibles divisores de n
-        if n % 1000 == 0:
-            print n
+        # if n % 1000 == 0:
+        # s = sum(list(set(result.values())))
+        # print n, len(result.keys()), s
         m = n
         for d1 in range(2, ((n / 2) + 1)):
             divs = []
@@ -44,6 +45,10 @@ def res(k_max, limit):
                         
                         if k < k_max + 1:
 
+                            if k == 28:
+                                print divs + [m]
+
+
                             if result.has_key(k):
                                 if result[k] > n:
                                     result[k] = n
@@ -51,6 +56,13 @@ def res(k_max, limit):
                                 result[k] = n
 
     s = sum(list(set(result.values())))
+    # print sorted(result.items(), key=lambda x: x[1])
+    # print result
+    
+    # for i in sorted(result.keys()):
+    #     print i, ":", result[i]
+
+
     print s
     return s
 
@@ -58,9 +70,8 @@ def res(k_max, limit):
 # controlamor el tiempo de ejecución
 start_time = datetime.now()
 
-# s1 = res(12, 100)
-s2 = res(12000, 100000)
+# s2 = res(12, 100)
+s2 = res(28, 60)
 
-print cadena_maxima
 print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0088: s2", 
+print "Resultado de 0088: ", s2
