@@ -50,16 +50,17 @@ def res(k_max, limit):
                             else:
                                 result[k] = n
 
-    print sum(list(set(result.values())))
-    return res
+    s = sum(list(set(result.values())))
+    print s
+    return s
 
 
 # controlamor el tiempo de ejecución
 start_time = datetime.now()
 
-res(12, 100)
-res(12000, 50000)
+# s1 = res(12, 100)
+s2 = res(12000, 100000)
 
 print cadena_maxima
 print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0088: ", 
+print "Resultado de 0088: s2", 
