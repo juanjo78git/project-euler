@@ -94,3 +94,7 @@ Luego falta estudiar este tipo de divisiones, pero está casi...
 no empezar a dividir por 2 y luego por 3 y luego por 4, darle otra vuelta
 luego dividiendo por 3
 y luego otra dividiendo por 4, y así vamos avanzando...
+
+
+primera solución erronea: 18527928
+segunda solución erronea: 
