@@ -1,13 +1,13 @@
-# project euler
+# PROJECT EULER
 
 Mis soluciones a los ejercicios planteados en [projecteuler.net], programados
 en [Python].
 
 Cuando tengo tiempo, intento resolver algunos ejercicios, nunca miro
-soluciones, y aplico la filosofía del proyecto: "...there is a fine line
-between researching ideas and using the answer you found on another website..."
-intentando siempre tener una idea propia, o una intuición e intentar encontrar
-soluciones posibles. Nunca buscar la solución directa.
+soluciones, y aplico la filosofía del proyecto: "*...there is a fine line
+between researching ideas and using the answer you found on another
+website...*" intentando siempre tener una idea propia, o una intuición
+e intentar encontrar soluciones posibles. Nunca buscar la solución directa.
 
 ## Perfil en Project Euler
 
