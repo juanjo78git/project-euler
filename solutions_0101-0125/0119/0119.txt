@@ -1,0 +1,22 @@
+0119
+
+El número 512 es interesante porque es igual a la suma de sus dígitos elevada
+a una potencia: 5 + 1 + 2 = 8, y 8^3 = 512. Otro ejemplo de un número con esta
+propiedad es 614656 = 28^4.
+
+Vamos a definir a[n] como el nº término de esta sucesión, considerando además que
+un número debe tener al menos dos dígitos para realizar la suma.
+
+Dado a[2] = 512 y a[10] = 614656.
+
+Halla a[30].
+
+
+Otro acercamiento:
+
+¿Y si vamos haciendo s^e y vemos el resultado, y si es un posible sum, en ese
+caso lo metemos en una lista, luego le hacemos un sort ordenado, podríamos
+saber los límites?
+
+
+100 a 100...

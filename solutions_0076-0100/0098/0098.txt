@@ -1,0 +1,20 @@
+0098
+
+Reemplazando cada una de las letras de palabra inglesa CARE con 1, 2, 9 y 6,
+respectivamente, formamos un cuadrado perfecto: 1296 = 36^2. Lo interesante es
+que, mediante el uso de las mismas sustituciones de dígitos, el anagrama, RACE,
+también forma un cuadrado perfecto: 9216 = 96^2. Vamos a llamar a CARE (y RACE)
+un pareja de anagramas cuadrados y especificamos además que los ceros a la
+izquierda no están permitidos, así como tampoco pueden tener letras distintas
+un mismo número asociado.
+
+Usando words.txt (clic derecho y "Guardar enlace/destino como..."), un archivo
+de texto de 16 KB que contiene casi dos mil palabras comúnes en inglés,
+encuentra todos las parejas de anagramas cuadrados (las palabras capicúa no se
+consideran un anagrama de sí mismo).
+
+¿Cuál es el mayor número cuadrado formado por cualquier miembro de una pareja
+de este tipo?
+
+NOTA: Todos los anagramas formados deben estar contenidos en el archivo de
+texto dado.

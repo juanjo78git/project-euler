@@ -1,0 +1,12 @@
+0125
+
+El número capicúa 595 es interesante porque puede ser escrito como la suma de
+números consecutivos al cuadrado: 6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2.
+
+Hay exactamente once números capicúa inferiores a mil que se pueden escribir
+como sumas de números cuadrados consecutivos, y la suma de estos palíndromos es
+4164. Ten en cuenta que 1 = 0^2 + 1^2 no se ha incluido ya que este problema
+habla de cuadrados de enteros positivos.
+
+Halla la suma de todos los números menores que 10^8 que sean capicúa y puedan
+ser escritos como la suma de cuadrados consecutivos.
