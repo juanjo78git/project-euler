@@ -1,8 +1,8 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
 from datetime import datetime
+
 
 def chain92(n):
     """ Generador de la secuencia cadena 0092 """
@@ -11,15 +11,16 @@ def chain92(n):
         yield a
         t = 0
         for c in str(a):
-           t += int(c) ** 2
+            t += int(c) ** 2
         a = t
+
 
 def solution_0092():
 
     total_89 = 0
 
     for n in range(1, 10000000):
-        
+
         if n % 100000 == 0:
             print n
 
@@ -38,7 +39,7 @@ def solution_0092():
 
 start_time = datetime.now()
 
-resultado = solution_0092() 
+resultado = solution_0092()
 
 print "Tiempo total: ", datetime.now() - start_time
 

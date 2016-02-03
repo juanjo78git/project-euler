@@ -1,8 +1,9 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
 
 from datetime import datetime
+
 
 def solution_0097():
 
@@ -17,7 +18,7 @@ def solution_0097():
 
 start_time = datetime.now()
 
-resultado = solution_0097() 
+resultado = solution_0097()
 
 print "Tiempo total: ", datetime.now() - start_time
 
