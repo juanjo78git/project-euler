@@ -1,8 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import division
 import itertools
-import operator
+from datetime import datetime
 
 # añadimos la propiedad asociativa, así generaremos muchas menos combinaciones,
 # por ejemplo para el caso de + + + automáticamente se calculará como
@@ -13,240 +14,119 @@ import operator
 #           sería ver si por ejemplo se puede formar el número 1, en caso
 #           correcto se lanzaría para el número 2 y así sucesivamente.. pero
 #           claro, necesitamos una función rápida para verificar esto...
+# 20160204: cansado de probar fuerza bruta, busqué que valores eran el
+#           resultado (que no cómo lo resolvía) y vi que eran valores menos que
+#           10! asi que saqué dos conclusiones:
+#               1. no se leer, ya que el ejercicio dice DIGITOS, y DIGITOS son
+#                  números de menos de 10, tonto!
+#               2. no dice que las divisiones tengan que ser exactas, pueden
+#                  devolver 0.5 que al multiplicar por otro valor devuelve un
+#                  número exacto
+#           tras VER eso, me dí cuenta que el ejercicio YA estaba resuelto
 
 
-def resultados(ia, ib, ic, id, op1, op2, op3):
-    ''' entramos sin no asociativa... '''
-    l = [0]
+def calc_valores_parent(comb_dig_opers):
+    ''' recupera todos los posibles resultados con 4 números y 3 operadoers '''
+    l = []
 
-    a = str(ia)
-    b = str(ib)
-    c = str(ic)
-    d = str(id)
+    a = str(comb_dig_opers[0])
+    b = str(comb_dig_opers[1])
+    c = str(comb_dig_opers[2])
+    d = str(comb_dig_opers[3])
+    op1 = str(comb_dig_opers[4])
+    op2 = str(comb_dig_opers[5])
+    op3 = str(comb_dig_opers[6])
 
-    s1 = a + op1 + b + op2 + c + op3 + d
-    s2 = '(' + a + op1 + b + ')' + op2 + c + op3 + d
-    s3 = a + op1 + '(' + b + op2 + c + ')' + op3 + d
-    s4 = a + op1 + b + op2 + '(' + c + op3 + d + ')'
-    s5 = '(' + a + op1 + b + op2 + c + ')' + op3 + d
-    s6 = a + op1 + '(' + b + op2 + c + op3 + d + ')'
-    s7 = '(' + a + op1 + b + ')' + op2 + '(' + c + op3 + d + ')'
-    s8 = '((' + a + op1 + b + ')' + op2 + c + ')' + op3 + d
-    s9 = a + op1 + '(' + b + op2 + '(' + c + op3 + d + '))'
+    # todas las posibles combinaciones de paréntesis
+    s01 = a + op1 + b + op2 + c + op3 + d
+    s02 = '(' + a + op1 + b + ')' + op2 + c + op3 + d
+    s03 = a + op1 + '(' + b + op2 + c + ')' + op3 + d
+    s04 = a + op1 + b + op2 + '(' + c + op3 + d + ')'
+    s05 = '(' + a + op1 + b + op2 + c + ')' + op3 + d
+    s06 = a + op1 + '(' + b + op2 + c + op3 + d + ')'
+    s07 = '(' + a + op1 + b + ')' + op2 + '(' + c + op3 + d + ')'
+    s08 = '((' + a + op1 + b + ')' + op2 + c + ')' + op3 + d
+    s09 = a + op1 + '(' + b + op2 + '(' + c + op3 + d + '))'
     s10 = '(' + a + op1 + '(' + b + op2 + c + '))' + op3 + d
     s11 = a + op1 + '((' + b + op2 + c + ')' + op3 + d + ')'
 
-    s = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11]
+    s = [s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11]
 
     for si in s:
         try:
             r = eval(si)
-            if r not in l and r > 0:
-                l.append(r)
+            if int(r) == r:
+                if r not in l and r > 0:
+                    l.append(r)
         except:
-            #z = 0
             pass
 
     return l
 
 
-def asociativa(op):
-    if op[0] in ('-', '+') and op[1] in ('+', '-') and op[2] in ('+', '-'):
-        return True
-    else:
-        if op[0] in ('*') and op[1] in ('*') and op[2] in ('*'):
-            return True
-
-    return False
-
-
-def rpnvalid(rpn):
-
-    if not rpn[0].isdigit():
-        return False
-
-    if rpn[6].isdigit():
-        return False
-
-    if not rpn[1].isdigit() and not rpn[2].isdigit():
-        return False
-
-    if rpn[3].isdigit() and rpn[4].isdigit() and rpn[5].isdigit():
-        return False
-
-    return True
-
-
-def p93(a, b, c, d):
-    pos_rpns = []
-    # para cada union de 3 operadores...
-    #element = str(a) + str(b) + str(c) + str(d)
-    for op in list(itertools.combinations_with_replacement('+-*/', 3)):
-
-        elem = [a, b, c, d, op[0], op[1], op[2]]
-
-        if asociativa(op):
-            #pos_rpn2.append(op[0])
-            #pos_rpn2.append(op[1])
-            #pos_rpn2.append(op[2])
-            pos_rpns.append(elem)
-        else:
-            for per in list(itertools.permutations('0123456', 7)):
-                rpn = []
-                for i in per:
-                    # a ver, i sería la convinación 0123456
-                    rpn.append(str(elem[int(i)]))
-
-                if rpnvalid(rpn):
-                    pos_rpns.append(rpn)
-
-    return pos_rpns
-
-
-def p93_normal(a, b, c, d):
+def get_comb_numeros_operadores(dig):
+    """ devuelve una lista de numeros y operadores """
     normal = []
     # para cada union de 3 operadores...
-    element = [a, b, c, d]
     for op in list(itertools.product('+-*/', repeat=3)):
 
-        elem = [a, b, c, d, op[0], op[1], op[2]]
+        for per in list(itertools.permutations('0123', 4)):
+            nrm = []
+            for i in per:
+                nrm.append(dig[int(i)])
 
-        if asociativa(op):
-            #pos_rpn2.append(op[0])
-            #pos_rpn2.append(op[1])
-            #pos_rpn2.append(op[2])
-            normal.append(elem)
-        else:
-            for per in list(itertools.permutations('0123', 4)):
-                nrm = []
-                for i in per:
-                    nrm.append(element[int(i)])
+            nrm.append(op[0])
+            nrm.append(op[1])
+            nrm.append(op[2])
 
-                nrm.append(op[0])
-                nrm.append(op[1])
-                nrm.append(op[2])
-
-                normal.append(nrm)
+            normal.append(nrm)
 
     return normal
 
-# rpn calculadora...
-operators = {
-    '+': lambda a, b: a + b,
-    '-': lambda a, b: a - b,
-    '*': lambda a, b: a * b,
-    '/': lambda a, b: a / b
-}
+
+def get_max_sequence_valor(valores):
+    sr = sorted(valores)
+
+    n = 1
+    for j in sr:
+        if n != int(j):
+            break
+        n = n + 1
+
+    return (n - 1)
 
 
-def polish_eval(expression):
-    elements = expression.split()
-    pile = []
-    while elements:
-        e = elements.pop(0)
-        if e in operators:
-            b = pile.pop()
-            a = pile.pop()
-            pile.append(operators[e](a, b))
-        else:
-            pile.append(int(e))
-    return pile[0]
-
-ARITHMETIC_OPERATORS = {
-    '+':  operator.add, '-':  operator.sub,
-    '*':  operator.mul, '/':  operator.div,
-}
-
-
-def postfix(expression, operators=ARITHMETIC_OPERATORS):
-    stack = []
-    #for val in expression.split():
-    for val in expression:
-        if val in operators:
-            f = operators[val]
-            stack[-2:] = [f(*stack[-2:])]
-        else:
-            stack.append(int(val))
-    return stack.pop()
-
-
-MAX = 75
-INIT = 1
-
-
-def p93_3():
+def calc_0093():
     maximo = 0
-    for a in range(INIT, MAX):
-        print a
-        for b in range(a + 1, MAX):
-            print b
-            for c in range(b + 1, MAX):
-                for d in range(c + 1, MAX):
-                    l = []
-                    l = p93(a, b, c, d)
+    max_digits = [0, 0, 0, 0]
+    for digits in itertools.combinations(range(1, 10), 4):
 
-                    r = []
+        combs_dig_opers = get_comb_numeros_operadores(digits)
 
-                    for i in l:
-                        try:
-                            p = postfix(i)
-                            if p > 0:
-                                if p not in r:
-                                    r.append(p)
-                        except:
-                            #z = 0
-                            pass
-                            #print i
+        all_valores = []
 
-                    # una vez llegados aqui tenemos una lista de los valores
-                    # que hemos ido obteniendo, la pintamos de primeras...
-                    sr = sorted(r)
+        for comb_dig_opers in combs_dig_opers:
+            valores = calc_valores_parent(comb_dig_opers)
 
-                    n = 1
-                    for j in sr:
-                        if n != int(j):
-                            break
-                        n = n + 1
+            # añadimos los valores calculados que no estén en "r"
+            for valor in valores:
+                if valor not in all_valores:
+                    all_valores.append(valor)
 
-                    if maximo < n - 1:
-                        print n - 1, a, b, c, d
-                        maximo = n - 1
+        # print all_valores
+        max_actual = get_max_sequence_valor(all_valores)
+
+        if maximo < max_actual:
+            # print 'Maximo: ', n - 1, ' -- con valores: ', f
+            maximo = max_actual
+            max_digits = digits
+
+    return max_digits
 
 
-def p93_3_normal():
-    maximo = 0
-    for a in range(INIT, MAX):
-        print a
-        for b in range(a + 1, MAX):
-            print b
-            for c in range(b + 1, MAX):
-                for d in range(c + 1, MAX):
-                    l = []
-                    l = p93_normal(a, b, c, d)
+start_time = datetime.now()
 
-                    r = []
+resultado = calc_0093()
 
-                    for i in l:
-                        p = resultados(i[0], i[1], i[2], i[3], i[4], i[5],
-                                       i[6])
-                        for pi in p:
-                            if pi > 0:
-                                if pi not in r:
-                                    r.append(pi)
-
-                    # una vez llegados aqui tenemos una lista de los valores
-                    # que hemos ido obteniendo, la pintamos de primeras...
-                    sr = sorted(r)
-
-                    n = 1
-                    for j in sr:
-                        if n != int(j):
-                            break
-                        n = n + 1
-
-                    if maximo < n - 1:
-                        print n - 1, a, b, c, d
-                        maximo = n - 1
-
-#p93_3_normal()
-p93_3()
+print "Tiempo total: ", datetime.now() - start_time
+print "Resultado de 0093: " + ''.join(str(r) for r in resultado)
