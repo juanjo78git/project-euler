@@ -61,3 +61,4 @@ def calc_blue_disk(n):
         fs = fs + 1
 
 calc_blue_disk(1000000000000)
+# calc_blue_disk(110)

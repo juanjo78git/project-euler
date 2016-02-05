@@ -1,5 +1,0 @@
-Mirando por el foro tras resolver:
-
-a) triangulo de pascal
-
-b) 40! / 20! * 20!
