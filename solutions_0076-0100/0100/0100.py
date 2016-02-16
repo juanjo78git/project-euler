@@ -1,64 +1,41 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import math
 
 
-def first_square(n):
-    ''' a partir del n (numero de discos) saco el primer cuadrado posible '''
+def A011900():
+    """ Generador de cuadrados """
+    # a(n) = 6*a(n-1) - a(n-2) - 2 with a(0) = 1, a(1) = 3.
+    a_0 = 1
+    a_1 = 3
+    a_t = 0
     while True:
-        d = (4 - 8 * (n - (n ** 2)))
-        s = d ** 0.5
-        if s == int(s):
-            return int(s)
-        n = n + 1
+        yield a_1
+        a_t = a_1
+        a_1 = 6*(a_1) - a_0 - 2
+        a_0 = a_t
 
 
-def get_poss_blue_disk(s):
-    ''' determina si el cuadrado es valido, como resultado del num discos'''
-    #blue = (2 + float(s)) / float(4)
-    blue, m = divmod((2 + s), 4)
-    #if int(blue) == blue:
-    if m == 0:
-        return blue
-    else:
-        return None
+def get_total_for_blues(blues):
+
+    # resolvemos la ecuacion
+    tmp_1 = blues * (blues - 1) * 2
+    tmp_2 = (tmp_1 * 4) + 1
+    tmp_3 = math.sqrt(tmp_2) + 1
+    return tmp_3 / 2
 
 
-def is_valid_square(s):
-    ''' debemos validar que existe un n que cumple lo siguiente
-        (4 - 8*(n-n^2)) == s^2. toma!
+n = A011900()
 
-        limpiando un poco... '''
+blues = n.next()
 
-    rd = ((((s * s) - 4) * 32) + 64) ** 0.5
-    if int(rd) == rd:
-        d, m = divmod((8 + int(rd)), 16)
-        #if int(d) == d:
-        if m == 0:
-            return True, d
-        else:
-            return False, None
-    else:
-        return False, None
+while True:
 
+    total = get_total_for_blues(blues)
 
-def is_valid_sol(b, n):
-    sq = b * (b - 1)
-    sn = n * (n - 1)
-    return ((sq * 2) == sn)
+    if total > 1000000000000:
+        print "Solucion 0100:", blues
+        break
 
-
-def calc_blue_disk(n):
-    fs = first_square(n)
-    while True:
-        if fs % 1000000 == 0:
-            print fs
-        valid, n = is_valid_square(fs)
-        if valid:
-            poss_blue = get_poss_blue_disk(fs)
-            if poss_blue is not None:
-                if is_valid_sol(poss_blue, n):
-                    print 'Resultado encontrado: ', poss_blue, n, fs
-                    return poss_blue
-        fs = fs + 1
-
-calc_blue_disk(1000000000000)
-# calc_blue_disk(110)
+    blues = n.next()
