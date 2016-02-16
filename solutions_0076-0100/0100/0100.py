@@ -6,6 +6,7 @@ import math
 
 def A011900():
     """ Generador de cuadrados """
+    # Con bastante trampa: https://oeis.org/A011900
     # a(n) = 6*a(n-1) - a(n-2) - 2 with a(0) = 1, a(1) = 3.
     a_0 = 1
     a_1 = 3
