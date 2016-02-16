@@ -68,66 +68,15 @@ def exist_n_from_b(b):
 
 
 # cuidado, que al final estoy sacando de un cuadrado a otra vez no cuadrado, etc etc
-def exist_n_from_b_v2(b):
-    """ a partir de un cuadrado, obtenemos su valor N --> square = 4N + 1 """
-
-    salida = False
-    # print 'dentro de exist_n_from_b', b
-    # return ((square - 1) / 4)
-    x = 4 * b
-    # print x
-    y = x + 1
-    # print y
-    # ss = math.sqrt(
-    z = math.sqrt(y)
-
-    if z ** 2 == y:
-        z_1 = z + 1
-
-        w = z_1 / 2.0
-
-        if int(w) * 2 == z_1:
-            salida = True
-        else:
-            salida = False
-
-    n = (1 + (((4 * b) + 1) ** 0.5)) / 2
-    # if n.is_integer():
-        # print b, str(n)
-        # print n
-        # print x, y, z, z ** 2
-        # if z ** 2 == y:
-            # print 'YE'
-    # return int(n)
-
-
-    # pero eso no garantiza por ahora nada :(
-    # if z ** 2 == y:
-    # if salida:
-    # if n.is_integer():
-        # return True
-    # else:
-        # return False
-    return salida
-
-
-
-# cuidado, que al final estoy sacando de un cuadrado a otra vez no cuadrado, etc etc
 def exist_n_from_i(i):
     """ a partir de un cuadrado, obtenemos su valor N --> square = 4N + 1 """
 
-    v = (1 + i) / 2.0
-    return v.is_integer()
+    return ((1 + i) % 2 == 0)
 
-"""
-pendiente
 
-quedaria empezar a sacar cuadrados y ver que esas tres funciones van bien...
-
-"""
-
-sq = squares(4)
-# sq = squares(1999999999999)
+# sq = squares(4000)
+# sq = squares(1000000000000)
+sq = squares(999999999999)
 while True:
 
 
