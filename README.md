@@ -19,9 +19,8 @@ En las carpetas `solutions_XXXX-XXXX` se encuentran las soluciones a los
 problemas ya resueltos, tengo algunas lagunas, ejercicios que tengo resueltos
 y no tengo el código fuente.
 
-Por otra parte, tengo empezados algunos otros, que se encuentran en el
-directorio `drafts_0001-9999`, no funcionan y a veces únicamente son ideas
-vagas.
+Por otra parte, tengo empezados algunos otros, que se encuentran marcados
+como `XXXX_draft`, no funcionan y a veces únicamente son ideas vagas.
 
 ## Una librería sencilla: mymaths.py 
 
