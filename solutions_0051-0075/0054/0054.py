@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #!/usr/bin/python
 
 # PROBLEM 0054
@@ -179,13 +181,7 @@ class ManoDeCartas:
     def is_escalera_real(self):
         """Escalera real"""
         escalera_color = ['T', 'J', 'Q', 'K', 'A']
-        if not self.is_color():
-            return False
-        else:
-            if escalera_color == self.get_listavalores():
-                return True
-            else:
-                return False
+        return escalera_color == self.get_listavalores() and self.is_color()
 
     def is_escalera(self):
         for i in range(0, 4):
