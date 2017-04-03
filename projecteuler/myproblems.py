@@ -10,3 +10,4 @@ import projecteuler.problems.d0000.p0007.r0007 as r0007
 import projecteuler.problems.d0000.p0008.r0008 as r0008
 import projecteuler.problems.d0000.p0009.r0009 as r0009
 import projecteuler.problems.d0000.p0010.r0010 as r0010
+import projecteuler.problems.d0000.p0011.r0011 as r0011

@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
 import os
 import sys
-from datetime import datetime
+import functools
 from operator import mul
 
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
 
 matriz = [[8, 2, 22, 97, 38, 15, 0, 40, 0, 75,  4,  5,  7, 78, 52, 12, 50,
           77, 91,  8],
@@ -83,7 +79,7 @@ def getmult_horizontal(m, x, y):
     else:
         ydes = y + 4
 
-    return reduce(mul, m[x][y:ydes], 1)
+    return functools.reduce(mul, m[x][y:ydes], 1)
 
 
 def getmult_vertical(m, x, y):
@@ -122,8 +118,5 @@ def getmult_descendente(m, x, y):
     return r
 
 
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
-
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0011: ", getmax_mult(matriz)
+def result():
+    return getmax_mult(matriz)

@@ -7,6 +7,7 @@ import configparser
 import importlib
 
 from projecteuler import __version__
+from datetime import datetime
 # from projecteuler.myproblems import p0004
 
 def build_parser():
@@ -29,14 +30,21 @@ def main():
     options = parser.parse_args()
 
     rx = 'r{}'.format('%04d' % options.problem)
-    
+
     ns = {}
-    exec('from projecteuler.myproblems import {} as mod'.format(rx), 
+    exec('from projecteuler.myproblems import {} as mod'.format(rx),
          globals(), ns)
     mod = ns['mod']
+
+
+    start_time = datetime.now()
+
     r = mod.result()
+
+    print('Total time: {}'.format(datetime.now() - start_time))
+
     print('Result {}: {}'.format(options.problem, r))
-    
+
 
 if __name__ == '__main__':
     main()
