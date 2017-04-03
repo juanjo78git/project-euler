@@ -28,10 +28,10 @@ def main():
     parser = build_parser()
     options = parser.parse_args()
 
-    module = 'p{}'.format('%04d' % options.problem)
+    rx = 'r{}'.format('%04d' % options.problem)
     
     ns = {}
-    exec('from projecteuler.myproblems import {} as mod'.format(module), 
+    exec('from projecteuler.myproblems import {} as mod'.format(rx), 
          globals(), ns)
     mod = ns['mod']
     r = mod.result()
