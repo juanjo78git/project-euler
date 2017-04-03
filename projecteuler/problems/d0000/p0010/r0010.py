@@ -11,17 +11,16 @@
 
 import os
 import sys
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
 
-import mymaths
+from projecteuler import mymaths
 
-p = mymaths.prime()
-limite = 2000000
-sumprimos = 0
-primo = 0
-while (primo < limite):
-    sumprimos += primo
-    primo = p.next()
+def result():
+    p = mymaths.prime()
+    limite = 2000000
+    sumprimos = 0
+    primo = 0
+    while (primo < limite):
+        sumprimos += primo
+        primo = p.__next__()
 
-print ("Resultado 0010", sumprimos)
+    return sumprimos
