@@ -1,3 +1,0 @@
-[console_scripts]
-projecteuler = projecteuler.projecteuler:main
-
