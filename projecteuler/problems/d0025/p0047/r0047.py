@@ -61,7 +61,7 @@ def f_47(l1, l2, l3, l4):
 
 
 def result():
-    #programa principal
+    # programa principal
     if True:
         l1 = [1]
         l2 = [1]

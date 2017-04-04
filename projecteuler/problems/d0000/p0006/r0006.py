@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def result():
     limite = 100
     sumacuadrados = 0

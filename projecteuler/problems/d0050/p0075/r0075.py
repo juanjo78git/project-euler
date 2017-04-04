@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
-from datetime import datetime
 import math
 
-LIMITE = 1500000
 #LIMITE = 700
 
 
@@ -52,34 +48,34 @@ def long_terna_pitagorica(m, n, k):
     return a + b + c
 
 
-# controlamos el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    LIMITE = 1500000
 
-# lista para guardar los "L" que encontramos con solución
-eles = {}
-# total de L
-t = 0
+    # lista para guardar los "L" que encontramos con solución
+    eles = {}
+    # total de L
+    t = 0
 
-# generamos todas las parejas de coprimos...
-all_cop = all_coprime(2, 1, LIMITE, [])
+    # generamos todas las parejas de coprimos...
+    all_cop = all_coprime(2, 1, LIMITE, [])
 
-for cop in all_cop:
-    m = cop[0]
-    n = cop[1]
-    for k in range(1, LIMITE):
-        l = long_terna_pitagorica(m, n, k)
-        if l > LIMITE:
-            break
-        else:
-            if l in eles:
-                # solo restamos una vez el elemento que está, imagina que
-                # llega una l por tercera vez, restaríamos demasiados!
-                if eles[l] == 1:
-                    t -= 1
-                    eles[l] = 2
+    for cop in all_cop:
+        m = cop[0]
+        n = cop[1]
+        for k in range(1, LIMITE):
+            l = long_terna_pitagorica(m, n, k)
+            if l > LIMITE:
+                break
             else:
-                eles[l] = 1
-                t += 1
+                if l in eles:
+                    # solo restamos una vez el elemento que está, imagina que
+                    # llega una l por tercera vez, restaríamos demasiados!
+                    if eles[l] == 1:
+                        t -= 1
+                        eles[l] = 2
+                else:
+                    eles[l] = 1
+                    t += 1
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0075: ", t
+    # print "Resultado de 0075: ", t
+    return t

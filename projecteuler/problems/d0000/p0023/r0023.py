@@ -22,7 +22,7 @@ def result():
 
     # print abundantes
 
-    #for i in abundantes:
+    # for i in abundantes:
     #    print i
 
     # vamos a buscar n != a1 + a2

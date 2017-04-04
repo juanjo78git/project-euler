@@ -1,13 +1,7 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
-import os
-import sys
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
+from projecteuler import mymaths
 
-import mymaths
-
-LIMIT = 10000000
 #LIMIT = 100
 
 
@@ -15,13 +9,13 @@ def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
     l = []
     p = mymaths.prime()
-    prime = p.next()
+    prime = p.__next__()
     # quiero una lista de primos que dividan a n, por lo tanto con
     # buscar solo la mitad me va bien
     limit = n + 1
     while prime < limit:
         l.append(prime)
-        prime = p.next()
+        prime = p.__next__()
 
     return l
 
@@ -67,25 +61,29 @@ def phi(lprimes, n):
 def numperm(n1, n2):
     return (sorted(str(n1)) == sorted(str(n2)))
 
-n_min = 0
-n_div_phi_min = LIMIT
-lprimes = genlprimes(LIMIT)
 
-print "generacion de lista de primos terminada."
+def result():
+    LIMIT = 10000000
+    n_min = 0
+    n_div_phi_min = LIMIT
+    lprimes = genlprimes(LIMIT)
 
-for n in range(2, LIMIT):
+    # print "generacion de lista de primos terminada."
 
-    if n % 100000 == 0:
-        print "vamos por: ", n
+    for n in range(2, LIMIT):
 
-    n_phi = phi(lprimes, n)
+        # if n % 100000 == 0:
+        #     print "vamos por: ", n
 
-    if numperm(n, n_phi):
+        n_phi = phi(lprimes, n)
 
-        n_div_phi_aux = n/float(n_phi)
+        if numperm(n, n_phi):
 
-        if n_div_phi_aux < n_div_phi_min:
-            n_div_phi_min = n_div_phi_aux
-            n_min = n
+            n_div_phi_aux = n/float(n_phi)
 
-print "Resultado 0070: ", n_min
+            if n_div_phi_aux < n_div_phi_min:
+                n_div_phi_min = n_div_phi_aux
+                n_min = n
+
+    # print "Resultado 0070: ", n_min
+    return n_min

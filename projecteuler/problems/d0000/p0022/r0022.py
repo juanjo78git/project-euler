@@ -14,7 +14,7 @@ def result():
     names = f.read().replace('"', '').split(',')
     names.sort()
 
-    i  = 1
+    i = 1
     total = 0
     for name in names:
         # el orden de la letra es la letra menos la 'A' más 1

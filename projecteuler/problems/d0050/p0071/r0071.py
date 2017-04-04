@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 #Consider the fraction, n/d, where n and d are positive integers. If nd and
 #HCF(n,d)=1, it is called a reduced proper fraction.
@@ -31,28 +31,30 @@ def mcd_it(a, b):
     return a
 
 
-d_fix = 7
-n_fix = 3
-d_ant = 1000000
-n_ant = 1
-limite = 1000000
+def result():
+    d_fix = 7
+    n_fix = 3
+    d_ant = 1000000
+    n_ant = 1
+    limite = 1000000
 
-# n/d
-for d in range(1, limite+1):
+    # n/d
+    for d in range(1, limite+1):
 
-    n_calc, m = divmod(n_fix*d, d_fix)
+        n_calc, m = divmod(n_fix*d, d_fix)
 
-    if m == 0:
-        continue
+        if m == 0:
+            continue
 
-    for n in range(n_calc, 0, -1):
+        for n in range(n_calc, 0, -1):
 
-        if mcd_it(n, d) == 1:
+            if mcd_it(n, d) == 1:
 
-            if (n*d_ant) > (d*n_ant):
-                d_ant = d
-                n_ant = n
-            else:
-                break
+                if (n*d_ant) > (d*n_ant):
+                    d_ant = d
+                    n_ant = n
+                else:
+                    break
 
-print("Resultado 0071", n_ant)
+    # print("Resultado 0071", n_ant)
+    return n_ant

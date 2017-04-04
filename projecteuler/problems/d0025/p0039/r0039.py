@@ -31,7 +31,7 @@ def result():
                     break
 
                 if es_solucion(a, b, p):
-                    #print(a, b, p)
+                    # print(a, b, p)
                     total = total + 1
 
                     if (max_total < total):

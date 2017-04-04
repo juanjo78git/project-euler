@@ -11,6 +11,7 @@
 
 from projecteuler import mymaths
 
+
 def result():
     p = mymaths.prime()
     limite = 2000000

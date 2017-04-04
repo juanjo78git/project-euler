@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 from decimal import Decimal
 
@@ -33,9 +33,9 @@ def inv_hexagono(n):
         return int(x_pos)
 
 
-#consideramos a >= b >= c
+# consideramos a >= b >= c
 
-#completa fuerza bruta
+# completa fuerza bruta
 for a in range(286, 1000000):
     res_a = triangulo(a)
 
@@ -46,5 +46,5 @@ for a in range(286, 1000000):
         inv_p = inv_pentagono(res_a)
 
         if (inv_h == inv_p):
-            print res_a, a
+            print(res_a, a)
             break

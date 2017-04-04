@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
 import functools
 from operator import mul
 

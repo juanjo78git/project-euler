@@ -5,8 +5,8 @@
 
 import math
 
+
 def result():
     n = 40
     k = 20
     return int(math.factorial(n) / (math.factorial(k) * math.factorial(n - k)))
-

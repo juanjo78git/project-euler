@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # It is possible to write five as a sum in exactly six different ways:
 #
@@ -11,8 +11,6 @@
 #
 # How many different ways can one hundred be written as a sum of at least two
 # positive integers?
-
-NUMERO = 100
 
 
 def r(vdestino, nodo, suma, total):
@@ -28,4 +26,8 @@ def r(vdestino, nodo, suma, total):
                 total = r(vdestino, i, suma + i, total)
     return total
 
-print "Resultado 0076:", r(NUMERO, 1, 0, 0)
+
+def result():
+    NUMERO = 100
+    # print "Resultado 0076:", r(NUMERO, 1, 0, 0)
+    return r(NUMERO, 1, 0, 0)

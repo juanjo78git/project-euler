@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 
 # The cube, 41063625 (345**3), can be permuted to produce two other cubes:
@@ -27,23 +27,25 @@ def dcube_add(dcubo, cubo):
 def dcube_busca_n(dcubo, n):
     for k in dcubo:
         if len(dcubo[k]) == n:
-            print("Resultado:", dcubo[k][0])
-            return True
+            # print("Resultado:", dcubo[k][0])
+            return True, dcubo[k][0]
 
-    return False
+    return False, None
 
 
-salida = False
-cubo = 0
-icubo = 1
-dcubo = {}
-while not salida:
-    cubo = icubo ** 3
-    #print(cubo)
-    icubo += 1
-    # se añade
-    dcubo = dcube_add(dcubo, cubo)
-    #print(dcubo)
-    # deberíamos buscar alguno! con un total de n datos!!
-    if dcube_busca_n(dcubo, 5):
-        exit(0)
+def result():
+    salida = False
+    cubo = 0
+    icubo = 1
+    dcubo = {}
+    while not salida:
+        cubo = icubo ** 3
+        #print(cubo)
+        icubo += 1
+        # se añade
+        dcubo = dcube_add(dcubo, cubo)
+        #print(dcubo)
+        # deberíamos buscar alguno! con un total de n datos!!
+        b, r = dcube_busca_n(dcubo, 5)
+        if b:
+            return r

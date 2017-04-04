@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 
@@ -37,13 +36,16 @@ def calcfrac(r):
             break
     return count
 
-LIMITE = 10000
 
-res = 0
-#print calcfrac(23)
-for i in range(2, LIMITE + 1):
-    c = calcfrac(i)
-    if c != -1 and c % 2 != 0:
-        res += 1
+def result():
+    LIMITE = 10000
 
-print("Resultado 0062:", res)
+    res = 0
+    #print calcfrac(23)
+    for i in range(2, LIMITE + 1):
+        c = calcfrac(i)
+        if c != -1 and c % 2 != 0:
+            res += 1
+
+    # print("Resultado 0062:", res)
+    return res

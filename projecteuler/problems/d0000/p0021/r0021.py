@@ -22,7 +22,7 @@ def result():
     for n in range(1, 10000):
         if (n == sum_divisores(sum_divisores(n))):
             if (n != sum_divisores(n)):
-                #lista_amigos.append(n)
+                # lista_amigos.append(n)
                 suma += n
 
     return suma

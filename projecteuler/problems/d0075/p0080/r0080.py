@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 #Project Euler 0080
 #It is well known that if the square root of a natural number is not an
@@ -79,8 +79,10 @@ def raiz_sum_dec(n, decimales):
     return sumdec
 
 
-sumatory = 0
-for r in range(1, 101):
-    sumatory += raiz_sum_dec(r, 100)
+def result():
+    sumatory = 0
+    for r in range(1, 101):
+        sumatory += raiz_sum_dec(r, 100)
 
-print("Resultado 0080:", sumatory)
+    # print("Resultado 0080:", sumatory)
+    return sumatory

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
-
 from projecteuler import mymaths
+
 
 def result():
     # el iterador

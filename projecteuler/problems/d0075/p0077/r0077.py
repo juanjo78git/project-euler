@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # It is possible to write five as a sum in exactly six different ways:
 #
@@ -12,14 +12,9 @@
 # How many different ways can one hundred be written as a sum of at least two
 # positive integers?
 
-import os
-import sys
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
 
-import mymaths
+from projecteuler import mymaths
 
-DIF_MANERAS = 5000
 
 
 def r77(lprimos, vdestino, nodo, suma, total):
@@ -36,11 +31,16 @@ def r77(lprimos, vdestino, nodo, suma, total):
                 total = r77(lprimos, vdestino, i, suma + lprimos[i], total)
     return total
 
-# escogemos un valor suficientemente alto
-lprimos = mymaths.genlprimes(DIF_MANERAS)
 
-n = 10
-while r77(lprimos, n, 0, 0, 0) < DIF_MANERAS:
-    n += 1
+def result():
 
-print "Resultado 0077:", n
+    DIF_MANERAS = 5000
+    # escogemos un valor suficientemente alto
+    lprimos = mymaths.genlprimes(DIF_MANERAS)
+
+    n = 10
+    while r77(lprimos, n, 0, 0, 0) < DIF_MANERAS:
+        n += 1
+
+    # print "Resultado 0077:", n
+    return n

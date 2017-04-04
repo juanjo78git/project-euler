@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 #Por ejemplo, √19 tiene la expansión en fracciones continuas
@@ -88,16 +87,19 @@ def calcfrac(r):
             break
     return x
 
-LIMITE = 1000
 
-maxx = 0
-res = 0
+def result():
+    LIMITE = 1000
 
-for i in range(1, LIMITE + 1):
-    x = calcfrac(i)
+    maxx = 0
+    res = 0
 
-    if x > maxx:
-        maxx = x
-        res = i
+    for i in range(1, LIMITE + 1):
+        x = calcfrac(i)
 
-print("Resultado 0062:", res)
+        if x > maxx:
+            maxx = x
+            res = i
+
+    # print("Resultado 0066:", res)
+    return res

@@ -11,6 +11,7 @@ def isprime(n):
             return False
     return True
 
+
 def result():
     numero = 600851475143
 

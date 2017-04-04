@@ -64,7 +64,7 @@ def matriz_a_grafo(dimension, matriz):
         origen = str(dimension - 1) + '-' + str(i)
         dic[origen] = {}
 
-    #return Graph(dic)
+    # return Graph(dic)
     return dic
 
 
@@ -106,7 +106,6 @@ def result():
 
     mat = obten_matriz_fichero(dim, fich)
 
-
     grafo = matriz_a_grafo(dim, mat)
 
     p, d = bellman_ford(grafo, 'x-x')
@@ -115,5 +114,5 @@ def result():
     for i in p:
         if minimo > p[i]:
             minimo = p[i]
-    
+
     return abs(minimo)

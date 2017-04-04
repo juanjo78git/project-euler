@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
-from datetime import datetime
-
-DIVISOR = 1000000
-
 
 def pentagonal(n):
     """ el termino n es dado por (3n^2-n)/2 """
@@ -29,24 +23,24 @@ def termsign(i):
         return -1
 
 
-# controlamos el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    DIVISOR = 1000000
 
-pt = [1]
-n = 0
-while True:
-    n += 1
-    r = 0
-    i = 0
+    pt = [1]
+    n = 0
     while True:
-        k = generalised_pentagonal(i)
-        if k > n:
+        n += 1
+        r = 0
+        i = 0
+        while True:
+            k = generalised_pentagonal(i)
+            if k > n:
+                break
+            r += termsign(i) * pt[n - k]
+            i += 1
+        pt.append(r)
+        if r % DIVISOR == 0:
             break
-        r += termsign(i) * pt[n - k]
-        i += 1
-    pt.append(r)
-    if r % DIVISOR == 0:
-        break
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0078: ", n
+    # print "Resultado de 0078: ", n
+    return n

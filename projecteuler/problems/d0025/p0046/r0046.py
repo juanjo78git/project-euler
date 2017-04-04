@@ -114,13 +114,8 @@ def result():
                 continue
 
         impar = impar + 2
-        # if (impar % 1001) == 0:
-            # print("Tratamiento del impar:", impar)
-
-    # print(lprimos)
 
     i = pos_primo_mayor(lprimos, 55)
 
     print(lprimos[i], lprimos[i-1])
     return lprimos[i]
-

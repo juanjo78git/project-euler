@@ -1,26 +1,20 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
-import os
-import sys
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
+from projecteuler import mymaths
 
-import mymaths
-
-LIMIT = 1000000
 
 
 def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
     l = []
     p = mymaths.prime()
-    prime = p.next()
+    prime = p.__next__()
     # quiero una lista de primos que dividan a n, por lo tanto con
     # buscar solo la mitad me va bien
     limit = n + 1
     while prime < limit:
         l.append(prime)
-        prime = p.next()
+        prime = p.__next__()
 
     return l
 
@@ -63,16 +57,19 @@ def phi(lprimes, n):
     return (n * arriba) / abajo
 
 
-n_max = 0
-n_div_phi_max = 0
-lprimes = genlprimes(LIMIT)
+def result():
+    LIMIT = 1000000
+    n_max = 0
+    n_div_phi_max = 0
+    lprimes = genlprimes(LIMIT)
 
-for n in range(2, LIMIT):
-    n_phi = phi(lprimes, n)
-    n_div_phi_aux = n/float(n_phi)
+    for n in range(2, LIMIT):
+        n_phi = phi(lprimes, n)
+        n_div_phi_aux = n/float(n_phi)
 
-    if n_div_phi_aux > n_div_phi_max:
-            n_div_phi_max = n_div_phi_aux
-            n_max = n
+        if n_div_phi_aux > n_div_phi_max:
+                n_div_phi_max = n_div_phi_aux
+                n_max = n
 
-print "Resultado 0069: ", n_max
+    # print "Resultado 0069: ", n_max
+    return n_max

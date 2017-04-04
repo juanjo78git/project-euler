@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-
 from projecteuler import mymaths
+
 
 def result():
     f = mymaths.fibonacci()

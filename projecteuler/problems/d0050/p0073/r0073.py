@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 #Consider the fraction, n/d, where n and d are positive integers. If nd
 #and HCF(n,d)=1, it is called a reduced proper fraction.
@@ -32,29 +32,31 @@ def mcd_it(a, b):
     return a
 
 
-n_fix_inf = 1
-d_fix_inf = 3
+def result():
+    n_fix_inf = 1
+    d_fix_inf = 3
 
-n_fix_sup = 1
-d_fix_sup = 2
+    n_fix_sup = 1
+    d_fix_sup = 2
 
-total = 0
+    total = 0
 
-limite = 12000
+    limite = 12000
 
-# n/d
-for d in range(1, limite+1):
+    # n/d
+    for d in range(1, limite+1):
 
-    # limite inferior a la primera facción
-    n_inf, m = divmod(n_fix_inf*d, d_fix_inf)
-    n_sup, m = divmod(n_fix_sup*d, d_fix_sup)
+        # limite inferior a la primera facción
+        n_inf, m = divmod(n_fix_inf*d, d_fix_inf)
+        n_sup, m = divmod(n_fix_sup*d, d_fix_sup)
 
-    for n in range(n_inf-1, n_sup+2):
+        for n in range(n_inf-1, n_sup+2):
 
-        if mcd_it(n, d) == 1:
+            if mcd_it(n, d) == 1:
 
-            if (n*d_fix_inf) > (d*n_fix_inf) and (n*d_fix_sup) < (d*n_fix_sup):
-                #print(n,d)
-                total += 1
+                if (n*d_fix_inf) > (d*n_fix_inf) and (n*d_fix_sup) < (d*n_fix_sup):
+                    #print(n,d)
+                    total += 1
 
-print("Resultado 0073:", total)
+    # print("Resultado 0073:", total)
+    return total

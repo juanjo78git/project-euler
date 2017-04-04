@@ -34,9 +34,8 @@ def inv_hexagono(n):
 
 
 def result():
-    #consideramos a >= b >= c
-
-    #completa fuerza bruta
+    # consideramos a >= b >= c
+    # completa fuerza bruta
     for a in range(286, 10000000):
         res_a = triangulo(a)
 

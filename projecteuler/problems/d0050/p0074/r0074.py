@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 #The number 145 is well known for the property that the sum of the factorial of
 #its digits is equal to 145:
@@ -61,13 +61,15 @@ def ciclossumfactorial(n):
     return ciclos
 
 
-limite = 1000000
-total = 0
+def result():
+    limite = 1000000
+    total = 0
 
-for n in range(1, limite):
-#    if n % 1000 == 0:
-#        print(n)
-    if ciclossumfactorial(n) == 60:
-        total += 1
+    for n in range(1, limite):
+    #    if n % 1000 == 0:
+    #        print(n)
+        if ciclossumfactorial(n) == 60:
+            total += 1
 
-print("Resultado 0074:", total)
+    # print("Resultado 0074:", total)
+    return total
