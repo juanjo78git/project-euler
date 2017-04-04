@@ -39,6 +39,6 @@ def result():
                 # print("Porcentaje ", format(j/x, '06.2%'), " - Pj:",
                 #     Pj, ", Pk:", Pk)
                 if (Pk-Pj) in lpent:
-                    print("Resultado", Pj, Pk, Pk-Pj)
-                    return Pk-Pj
+                    # print("Resultado", Pj, Pk, Pk-Pj)
+                    return (Pk-Pj)
                     # exit(0)
