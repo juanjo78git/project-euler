@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
-from datetime import datetime
-
-CUADRADOS = 2000000
-
 
 def calc_cuadraditos(x, y):
     t = 0
@@ -15,21 +9,22 @@ def calc_cuadraditos(x, y):
     return t
 
 
-start_time = datetime.now()
+def result():
+    CUADRADOS = 2000000
 
-near = 0
-x_res = 0
-y_res = 0
-for x in range(1, 100):
-    for y in range(1, 100):
-        nc = calc_cuadraditos(x, y)
-        if nc > CUADRADOS:
-            break
+    near = 0
+    x_res = 0
+    y_res = 0
+    for x in range(1, 100):
+        for y in range(1, 100):
+            nc = calc_cuadraditos(x, y)
+            if nc > CUADRADOS:
+                break
 
-        if nc > near:
-            near = nc
-            x_res = x
-            y_res = y
+            if nc > near:
+                near = nc
+                x_res = x
+                y_res = y
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0085: ", x_res * y_res
+    # print "Resultado de 0085: ", 
+    return (x_res * y_res)

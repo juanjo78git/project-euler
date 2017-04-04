@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
 import random
 import operator
-from datetime import datetime
 
 
 class Monopoly(object):
@@ -172,18 +169,16 @@ class Monopoly(object):
         return r
 
 
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    m = Monopoly(4)
+    for i in range(1, 100000):
+        m.realiza_tirada()
 
-m = Monopoly(4)
-for i in range(1, 100000):
-    m.realiza_tirada()
+    l = []
+    for i in m.visitadas:
+        l.append([m.visitadas[i], i])
 
-l = []
-for i in m.visitadas:
-    l.append([m.visitadas[i], i])
+    ls = sorted(l)[-3:]
 
-ls = sorted(l)[-3:]
-
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0084: ", m.resultado0084()
+    # print "Resultado de 0084: ", m.resultado0084()
+    return m.resultado0084()

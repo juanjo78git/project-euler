@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 
 def isprime(n):
@@ -42,28 +42,30 @@ def lprimepower(limit):
     return lprimes2, lprimes3, lprimes4
 
 
-limit = 50000000
-l2, l3, l4 = lprimepower(limit)
+def result():
+    limit = 50000000
+    l2, l3, l4 = lprimepower(limit)
 
-print(len(l2))
-print(len(l3))
-print(len(l4))
+    # print(len(l2))
+    # print(len(l3))
+    # print(len(l4))
 
-ltotal = []
-count = 0
-for i2 in l2:
-    count += 1
-    if count % 10 == 0:
-        print(count)
-    for i3 in l3:
-        if i2+i3 > limit:
-            break
-        for i4 in l4:
-            zum = i2+i3+i4
-            if zum < limit:
-                if zum not in ltotal:
-                    ltotal.append(zum)
-            else:
+    ltotal = []
+    count = 0
+    for i2 in l2:
+        count += 1
+        # if count % 10 == 0:
+        #     print(count)
+        for i3 in l3:
+            if i2+i3 > limit:
                 break
+            for i4 in l4:
+                zum = i2+i3+i4
+                if zum < limit:
+                    if zum not in ltotal:
+                        ltotal.append(zum)
+                else:
+                    break
 
-print('Resultado 0087:', len(ltotal))
+    # print('Resultado 0087:', len(ltotal))
+    return len(ltotal)

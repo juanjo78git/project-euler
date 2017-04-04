@@ -1,15 +1,6 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import os
-import sys
-from datetime import datetime
 from operator import mul
-
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
-
-# import mymaths
 
 
 def get_k(nums):
@@ -22,7 +13,9 @@ def get_k(nums):
     # print "k: ", k, " -- valor sumatorio: ", product, "lista: ", nums
     return k
 
-# http://stackoverflow.com/questions/24723721/how-can-i-generate-all-possible-divisor-products-for-a-number 
+
+# http://stackoverflow.com/questions/24723721/
+#      how-can-i-generate-all-possible-divisor-products-for-a-number 
 def products(n, min_divisor=2):
     """Generate expressions of n as a product of ints >= min_divisor."""
     if n == 1:
@@ -56,15 +49,13 @@ def res(k_max):
     
     # for i in sorted(result.keys()):
     #     print i, ":", result[i]
-    print s
+    # print s
     return s
 
 
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
+def result():
 
-# s2 = res(12)
-s2 = res(12000)
+    s2 = res(12000)
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0088: ", s2
+    # print "Resultado de 0088: ", s2
+    return s2
