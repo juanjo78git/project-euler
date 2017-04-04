@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 
 def ispandigital9(n):
@@ -24,30 +24,31 @@ def incluyecero(n):
         return True
 
 
-number = 1
-maxpandigital = -1
+def result():
+    number = 1
+    maxpandigital = -1
 
-while (number < 1000000):
+    while (number < 1000000):
 
-    n = 1
-    concatnumber = ""
-    while (True):
-        prod = n * number
-        if incluyecero(prod):
-            break
+        n = 1
+        concatnumber = ""
+        while (True):
+            prod = n * number
+            if incluyecero(prod):
+                break
 
-        concatnumber = concatnumber + str(prod)
+            concatnumber = concatnumber + str(prod)
 
-        if (len(concatnumber) > 9):
-            break
+            if (len(concatnumber) > 9):
+                break
 
-        if ispandigital9(int(concatnumber)):
-            if (maxpandigital < int(concatnumber)):
-                maxpandigital = int(concatnumber)
-            break
+            if ispandigital9(int(concatnumber)):
+                if (maxpandigital < int(concatnumber)):
+                    maxpandigital = int(concatnumber)
+                break
 
-        n = n + 1
+            n = n + 1
 
-    number = number + 1
+        number = number + 1
 
-print "Máximo pandigital: ", maxpandigital
+    return maxpandigital

@@ -1,15 +1,17 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 
 def divisores_euclides(n):
     divisores = []
-    for i in range(2, n/2+1):
-        print i
+    for i in range(2, int(n/2+1)):
+        print(i)
         while n % i == 0:
-            print "ok"
+            # print "ok"
             n = n / i
             divisores.append(i)
 
     return divisores
 
-print divisores_euclides(49)
+
+def result():
+    return divisores_euclides(49)

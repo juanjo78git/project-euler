@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 
 def isprime(n):
@@ -27,15 +27,16 @@ def rotateprime(n):
             return False
 
 
-n = 1
-total = 0
-while (n < 1000000):
+def result():
+    n = 1
+    total = 0
+    while (n < 1000000):
 
-    if (isprime(n)):
+        if (isprime(n)):
 
-        if (rotateprime(n)):
-            total = total + 1
+            if (rotateprime(n)):
+                total = total + 1
 
-    n = n + 1
+        n = n + 1
 
-print total
+    return total

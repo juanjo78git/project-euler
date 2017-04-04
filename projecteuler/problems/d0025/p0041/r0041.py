@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+# -*- coding: utf-8 -*-
 
 import itertools
 
@@ -13,9 +13,12 @@ def isprime(n):
             return False
     return True
 
-for i in itertools.permutations('7654321'):
-    x = int("".join(i))
 
-    if isprime(x):
-        print x
-        break
+def result():
+    for i in itertools.permutations('7654321'):
+        x = int("".join(i))
+
+        if isprime(x):
+            # print x
+            # break
+            return x

@@ -1,4 +1,4 @@
-#! /usr/bin/python
+# -*- coding: utf-8 -*-
 
 import itertools
 
@@ -33,10 +33,12 @@ def property43(n):
 
     return True
 
-li = []
-for i in itertools.permutations('0123456789'):
-    x = int("".join(i))
-    if (property43(x)):
-        li.append(x)
 
-print(sum(li))
+def result():
+    li = []
+    for i in itertools.permutations('0123456789'):
+        x = int("".join(i))
+        if (property43(x)):
+            li.append(x)
+
+    return (sum(li))

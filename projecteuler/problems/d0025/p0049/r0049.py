@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 #The arithmetic sequence, 1487, 4817, 8147, in which each of the terms
 #increases by 3330, is unusual in two ways:
@@ -38,22 +38,31 @@ def lista_primos_ddigits(d):
         j = j + 1
 
 
-lprimos = lista_primos_ddigits(4)
+def result():
 
-print(lprimos, len(lprimos))
+    maxvalue = 0
 
-for i in range(0, len(lprimos)):
-    for j in range(i+1, len(lprimos)):
+    lprimos = lista_primos_ddigits(4)
 
-        # incrementa en ... (claridad)
-        incr = lprimos[j] - lprimos[i]
-        tercer = lprimos[j] + incr
+    # print(lprimos, len(lprimos))
 
-        if tercer in lprimos:
+    for i in range(0, len(lprimos)):
+        for j in range(i+1, len(lprimos)):
 
-            isort = "".join(sorted(str(lprimos[i])))
-            jsort = "".join(sorted(str(lprimos[j])))
-            ksort = "".join(sorted(str(tercer)))
+            # incrementa en ... (claridad)
+            incr = lprimos[j] - lprimos[i]
+            tercer = lprimos[j] + incr
 
-            if isort == jsort == ksort:
-                print lprimos[i], lprimos[j], tercer
+            if tercer in lprimos:
+
+                isort = "".join(sorted(str(lprimos[i])))
+                jsort = "".join(sorted(str(lprimos[j])))
+                ksort = "".join(sorted(str(tercer)))
+
+                if isort == jsort == ksort:
+                    n = int('{}{}{}'.format(lprimos[i], lprimos[j], tercer))
+                    if n > maxvalue:
+                        maxvalue = n
+                    # print lprimos[i], lprimos[j], tercer
+
+    return maxvalue

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def p23():
+def result():
 
     def es_abundante(n):
         divisores = []
@@ -48,7 +48,3 @@ def p23():
             no_suma_abundantes.append(n)
 
     return sum(no_suma_abundantes)
-
-
-def result():
-    return p23()

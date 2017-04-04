@@ -25,9 +25,12 @@ def lista_restos(dividendo, divisor):
             lista.append(resto)
 
     # vemos el motivo por el que hemos salido
-    print lista
+    # print(lista)
     if resto != 0:
         return len(lista) - lista.index(resto)
+    else:
+        return 0
+
 
 def result():
     maxi = 0
@@ -39,6 +42,3 @@ def result():
             number = d
 
     return number
-
-# print maxi
-# print number

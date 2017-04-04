@@ -1,17 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
-import os
-import sys
-from datetime import datetime
-
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
-
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
-
 
 def es_sumpotx(n, p):
     """ indica si un número es suma de su pontencia p, importante: SUMA, es
@@ -25,10 +13,11 @@ def es_sumpotx(n, p):
 
     return s == n
 
-t = 0
-for n in range(1, 1000000):
-    if es_sumpotx(n, 5):
-        t += n
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0030:", t
+def result():
+    t = 0
+    for n in range(1, 1000000):
+        if es_sumpotx(n, 5):
+            t += n
+
+    return t

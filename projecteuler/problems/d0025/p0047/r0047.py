@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 
 def lista_factores(n):
@@ -60,26 +60,28 @@ def f_47(l1, l2, l3, l4):
     return True
 
 
-#programa principal
-if True:
-    l1 = [1]
-    l2 = [1]
-    l3 = [1]
-    l4 = [1]
-    exit = False
-    n = 2
+def result():
+    #programa principal
+    if True:
+        l1 = [1]
+        l2 = [1]
+        l3 = [1]
+        l4 = [1]
+        exit = False
+        n = 2
 
-while not exit:
+    while not exit:
 
-    l1 = l2
-    l2 = l3
-    l3 = l4
-    l4 = lista_factores(n + 3)
+        l1 = l2
+        l2 = l3
+        l3 = l4
+        l4 = lista_factores(n + 3)
 
-    exit = f_47(l1, l2, l3, l4)
+        exit = f_47(l1, l2, l3, l4)
 
-    if exit:
-        print "resultado", n
+        if exit:
+            # print "resultado", n
+            return n
 
-    print n
-    n += 1
+        # print n
+        n += 1

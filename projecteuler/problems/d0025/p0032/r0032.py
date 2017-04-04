@@ -1,4 +1,4 @@
-#! /usr/bin/python
+# -*- coding: utf-8 -*-
 
 # __ PROBLEMA
 #
@@ -55,24 +55,25 @@ def incluyecero(n):
         return True
 
 
-lproducts = []
-rango = 99999
-# esto se podría acotar claro, pero como siempre, lo que prima es avanzar y
-# avanzar, por lo que vamos a olvidarnos de hacer que vaya rápido!
+def result():
+    lproducts = []
+    rango = 99999
+    # esto se podría acotar claro, pero como siempre, lo que prima es avanzar y
+    # avanzar, por lo que vamos a olvidarnos de hacer que vaya rápido!
 
-for m1 in range(1, rango):
-    for m2 in range(m1, rango):
-        product = m1*m2
-        pandigital = int(str(m1) + str(m2) + str(product))
+    for m1 in range(1, rango):
+        for m2 in range(m1, rango):
+            product = m1*m2
+            pandigital = int(str(m1) + str(m2) + str(product))
 
-        # una vez superado el tamaño 9 break
-        if len(str(pandigital)) > 9:
-            break
+            # una vez superado el tamaño 9 break
+            if len(str(pandigital)) > 9:
+                break
 
-        if ispandigital9(pandigital):
-            # solo guardamos el producto que no haya sido ya obtenido
-            # independiente del multiplicando o multiplicador
-            if product not in lproducts:
-                lproducts.append(product)
+            if ispandigital9(pandigital):
+                # solo guardamos el producto que no haya sido ya obtenido
+                # independiente del multiplicando o multiplicador
+                if product not in lproducts:
+                    lproducts.append(product)
 
-print "Sumatorio de todos los productos: ", sum(lproducts)
+    return sum(lproducts)

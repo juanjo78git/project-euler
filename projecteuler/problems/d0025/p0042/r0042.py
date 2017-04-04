@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 letras = map(chr, range(65, 91))
 words = ["A", "ABILITY", "ABLE", "ABOUT", "ABOVE", "ABSENCE",
@@ -295,9 +295,11 @@ def calc_sum_letras(s):
 
     return sum
 
-n = 0
-for w in words:
-    if istriangle(calc_sum_letras(w)):
-        n = n + 1
 
-print n
+def result():
+    n = 0
+    for w in words:
+        if istriangle(calc_sum_letras(w)):
+            n = n + 1
+
+    return n

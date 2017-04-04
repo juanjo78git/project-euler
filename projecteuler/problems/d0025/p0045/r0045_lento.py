@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-import math
+from decimal import Decimal
 
 
 def triangulo(n):
@@ -16,7 +16,7 @@ def hexagono(n):
 
 
 def inv_pentagono(n):
-    x_pos = (1 + math.sqrt(1 + 24*n)) / float(6)
+    x_pos = (1 + Decimal(1 + 24*n).sqrt()) / 6
 
     if (x_pos != int(x_pos)):
         return -1
@@ -25,7 +25,7 @@ def inv_pentagono(n):
 
 
 def inv_hexagono(n):
-    x_pos = (1 + math.sqrt(1 + 8*n)) / float(4)
+    x_pos = (1 + Decimal(1 + 8*n).sqrt()) / 4
 
     if (x_pos != int(x_pos)):
         return -1
@@ -36,15 +36,15 @@ def inv_hexagono(n):
 #consideramos a >= b >= c
 
 #completa fuerza bruta
-for a in range(286, 10000000):
+for a in range(286, 1000000):
     res_a = triangulo(a)
 
     inv_h = inv_hexagono(res_a)
 
-    if (inv_h != -1):
+    if (inv_h == a):
 
         inv_p = inv_pentagono(res_a)
 
-        if (inv_p != -1):
+        if (inv_h == inv_p):
             print res_a, a
             break

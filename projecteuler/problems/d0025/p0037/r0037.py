@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 
 def isprime(n):
@@ -29,14 +29,17 @@ def is37(n):
     # no hemos pasado todas las pruebas
     return False
 
-numeros = 0
-suma = 0
-n = 9
-while (numeros != 11):
 
-    n += 2
+def result():
+    numeros = 0
+    suma = 0
+    n = 9
+    while (numeros != 11):
 
-    if (is37(n)):
-        print n
-        numeros += 1
-        suma += n
+        n += 2
+
+        if (is37(n)):
+            numeros += 1
+            suma += n
+
+    return suma

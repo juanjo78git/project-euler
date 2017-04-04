@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # It was proposed by Christian Goldbach that every odd composite number can be
 # written as the sum of a prime and twice a square.
@@ -57,8 +57,8 @@ def lista_n_primos(n):
     while len(lprimos) != n:
         if isprime(j):
             lprimos.append(j)
-            if (len(lprimos) % 1000) == 0:
-                print("Procesados", len(lprimos), "primos de un total de", n)
+            # if (len(lprimos) % 1000) == 0:
+            #     print("Procesados", len(lprimos), "primos de un total de", n)
         j = j + 1
 
     return lprimos
@@ -77,45 +77,49 @@ def pos_primo_mayor(l, n):
 # impar = primo + 2    * n^2
 
 
-lprimos = lista_n_primos(100000)
+def result():
+    lprimos = lista_n_primos(100000)
 
-print("Lista de 100000 generada")
+    # print("Lista de 100000 generada")
 
-# primer impar no primo!
-impar = 9
-goldbach = False
+    # primer impar no primo!
+    impar = 9
+    goldbach = False
 
-while True:
-    if not isprime(impar):
+    while True:
+        if not isprime(impar):
 
-        # esto se podría mejorar con el rango de abajo...
-        rango_primo = pos_primo_mayor(lprimos, impar)
-        for n in range(1, int(((impar/2)**0.5)+1)):
-            for iprimo in range(0, rango_primo):
-                goldbach = False
+            # esto se podría mejorar con el rango de abajo...
+            rango_primo = pos_primo_mayor(lprimos, impar)
+            for n in range(1, int(((impar/2)**0.5)+1)):
+                for iprimo in range(0, rango_primo):
+                    goldbach = False
 
-                # y ahroa el cálculo entero
-                if (impar == lprimos[iprimo] + (2*(n**2))):
-                    print("Es Goldbach:", impar, "=", lprimos[iprimo],
-                          "+ 2 x ", n, "^2")
-                    goldbach = True
+                    # y ahroa el cálculo entero
+                    if (impar == lprimos[iprimo] + (2*(n**2))):
+                        # print("Es Goldbach:", impar, "=", lprimos[iprimo],
+                        #     "+ 2 x ", n, "^2")
+                        goldbach = True
+                        break
+
+                # al terminar el bucle comprobamos si existía una combinación
+                # correcta
+                if goldbach:
                     break
 
-            # al terminar el bucle comprobamos si existía una combinación
-            # correcta
-            if goldbach:
-                break
+            if not goldbach:
+                print("No cumple Goldbach el impar", impar)
+                # exit(0)
+                continue
 
-        if not goldbach:
-            print("No cumple Goldbach el impar", impar)
-            exit(0)
+        impar = impar + 2
+        # if (impar % 1001) == 0:
+            # print("Tratamiento del impar:", impar)
 
-    impar = impar + 2
-    if (impar % 1001) == 0:
-        print("Tratamiento del impar:", impar)
+    # print(lprimos)
 
-print(lprimos)
+    i = pos_primo_mayor(lprimos, 55)
 
-i = pos_primo_mayor(lprimos, 55)
+    print(lprimos[i], lprimos[i-1])
+    return lprimos[i]
 
-print(lprimos[i], lprimos[i-1])

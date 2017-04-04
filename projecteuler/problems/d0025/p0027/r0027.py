@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 
 def isprime(n):
@@ -16,18 +16,19 @@ def cuadratic_prime(n, a, b):
     return isprime(n**2 + a*n + b)
 
 
-amax = None
-bmax = None
-nmax = None
-for a in range(-1000, 1000):
-    for b in range(-1000, 1000):
-        n = 0
-        while (cuadratic_prime(n, a, b)):
-            n = n + 1
+def result():
+    amax = 0
+    bmax = 0
+    nmax = 0
+    for a in range(-1000, 1000):
+        for b in range(-1000, 1000):
+            n = 0
+            while (cuadratic_prime(n, a, b)):
+                n = n + 1
 
-        if (n > nmax):
-            nmax = n
-            amax = a
-            bmax = b
+            if (n > nmax):
+                nmax = n
+                amax = a
+                bmax = b
 
-print amax*bmax
+    return amax*bmax
