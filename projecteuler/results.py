@@ -24,3 +24,5 @@ import projecteuler.problems.d0000.p0021.r0021 as r0021
 import projecteuler.problems.d0000.p0022.r0022 as r0022
 import projecteuler.problems.d0000.p0023.r0023 as r0023
 import projecteuler.problems.d0000.p0024.r0024 as r0024
+
+import projecteuler.problems.d0025.p0025.r0025 as r0025

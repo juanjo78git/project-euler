@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 
 def lista_restos(dividendo, divisor):
@@ -29,13 +29,16 @@ def lista_restos(dividendo, divisor):
     if resto != 0:
         return len(lista) - lista.index(resto)
 
-maxi = 0
-number = 0
-for d in range(2, 1001):
-    i = lista_restos(1, d)
-    if i > maxi:
-        maxi = i
-        number = d
+def result():
+    maxi = 0
+    number = 0
+    for d in range(2, 1001):
+        i = lista_restos(1, d)
+        if i > maxi:
+            maxi = i
+            number = d
 
-print maxi
-print number
+    return number
+
+# print maxi
+# print number
