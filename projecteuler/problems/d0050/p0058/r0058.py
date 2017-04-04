@@ -34,7 +34,7 @@ def result():
         sumatorio = sumatorio + 2
         lado = lado + 2
 
-        #print(nprimos, (lado*2)-1, (100*nprimos)/float((lado*2)-1))
+        # print(nprimos, (lado*2)-1, (100*nprimos)/float((lado*2)-1))
 
         if ((100*nprimos)/float((lado*2)-1)) < 10:
             # print("Solucion 0058:", lado)

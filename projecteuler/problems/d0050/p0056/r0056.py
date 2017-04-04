@@ -2,6 +2,7 @@
 
 LIMITE = 100
 
+
 def sumdigits(n):
     return sum([int(i) for i in str(n)])
 

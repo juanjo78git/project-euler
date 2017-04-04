@@ -40,11 +40,11 @@ def result():
     dcubo = {}
     while not salida:
         cubo = icubo ** 3
-        #print(cubo)
+        # print(cubo)
         icubo += 1
         # se añade
         dcubo = dcube_add(dcubo, cubo)
-        #print(dcubo)
+        # print(dcubo)
         # deberíamos buscar alguno! con un total de n datos!!
         b, r = dcube_busca_n(dcubo, 5)
         if b:

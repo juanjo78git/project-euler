@@ -2,8 +2,6 @@
 
 from projecteuler import mymaths
 
-#LIMIT = 100
-
 
 def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """

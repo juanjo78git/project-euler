@@ -6,9 +6,6 @@ from projecteuler import mymaths
 # totalmente operativo y unos tiempos de menos de 5 minutos en pypy
 
 
-#LIMIT = 100
-
-
 def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
     l = []
@@ -64,8 +61,6 @@ def phi(lprimes, n):
 
 def result():
     LIMIT = 1000000
-    n_min = 0
-    n_div_phi_min = LIMIT
     lprimes = genlprimes(LIMIT)
     n_sum = 0
 
@@ -73,11 +68,7 @@ def result():
 
     for n in range(2, LIMIT + 1):
 
-        # if n % 100000 == 0:
-        #     print "vamos por: ", n
-
         n_sum += phi(lprimes, n)
-
 
     # print "Resultado 0072: ", n_sum
     return n_sum

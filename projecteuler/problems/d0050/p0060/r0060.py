@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 
-#The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes
-#and concatenating them in any order the result will always be prime. For
-#example, taking 7 and 109, both 7109 and 1097 are prime. The sum of these four
-#primes, 792, represents the lowest sum for a set of four primes with this
-#property.
+# The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes
+# and concatenating them in any order the result will always be prime. For
+# example, taking 7 and 109, both 7109 and 1097 are prime. The sum of these
+# four primes, 792, represents the lowest sum for a set of four primes with
+# this property.
 
-#Find the lowest sum for a set of five primes for which any two primes
-#concatenate to produce another prime.
+# Find the lowest sum for a set of five primes for which any two primes
+# concatenate to produce another prime.
 
-#lprimes= [2,23,41,73,87]
-#list(itertools.combinations(lprimes, 2))
+# lprimes= [2,23,41,73,87]
+# list(itertools.combinations(lprimes, 2))
 
-#luego con esta lista solo tengo que ir cogiendo cada uno de los elementos
-#y ver que tanto en un orden como en otro es un primo...
+# luego con esta lista solo tengo que ir cogiendo cada uno de los elementos
+# y ver que tanto en un orden como en otro es un primo...
 
 import itertools
 
@@ -29,10 +29,8 @@ def isprime(n):
     return True
 
 
-# una lista de n primos
-
-
 def lprimos(n):
+    """ una lista de n primos """
     nprime = 2
     lprime = []
     while len(lprime) != n:
@@ -108,7 +106,7 @@ def result():
 
                     if not compcombinac(l4primes):
                         continue
-                    #else:
+                    # else:
                     #    print(l4primes)
 
                     for pi5 in range(pi4+1, nprimos):
@@ -123,10 +121,13 @@ def result():
                         l5primes.append(p5)
 
                         if compcombinac(l5primes):
-                            if len(lresult) > 0 and sum(l5primes) < sum(lresult):
+                            lr = len(lresult)
+                            if lr > 0 and sum(l5primes) < sum(lresult):
                                 lresult = l5primes
-                            #print("Un resultado 0060:", sum(l5primes), l5primes)
-                            #exit(0)
+
+                            # print("Un resultado 0060:",
+                            #       sum(l5primes), l5primes)
+                            # exit(0)
 
     # print "Un resultado 0060:", sum(lresult), lresult
     return sum(lresult)

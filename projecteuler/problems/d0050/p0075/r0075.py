@@ -2,11 +2,6 @@
 
 import math
 
-#LIMITE = 700
-
-
-# recursivo
-#
 
 def all_coprime(m, n, limit, l):
     mlimit = int(math.sqrt(limit / 2.0))
@@ -43,8 +38,8 @@ def long_terna_pitagorica(m, n, k):
     a = k * ((m ** 2) - (n ** 2))
     b = k * 2 * m * n
     c = k * ((m ** 2) + (n ** 2))
-    #if (a + b + c) <= LIMITE:
-        #print a, b, c, (a + b + c)
+    # if (a + b + c) <= LIMITE:
+    #     print a, b, c, (a + b + c)
     return a + b + c
 
 

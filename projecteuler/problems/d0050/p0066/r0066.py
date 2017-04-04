@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-#Por ejemplo, √19 tiene la expansión en fracciones continuas
-#que es recurrente cada 6 fracciones. El término inmediatamente anterior al
-#punto en el que se repite es 170/39 y la teoría de Lagrange dice que
-
-#x = 39, y = 170
-
-#será la solución más pequeña a la ecuación de Pell
-
-#19x2 + 1 = y2.
-
-#http://hojaynumeros.blogspot.com.es/2010/02/ecuacion-de-pell.html
+# Por ejemplo, √19 tiene la expansión en fracciones continuas
+# que es recurrente cada 6 fracciones. El término inmediatamente anterior al
+# punto en el que se repite es 170/39 y la teoría de Lagrange dice que
+#
+# x = 39, y = 170
+#
+# será la solución más pequeña a la ecuación de Pell
+#
+# 19x2 + 1 = y2.
+#
+# http://hojaynumeros.blogspot.com.es/2010/02/ecuacion-de-pell.html
 
 
 def contfrac(r, a, b):
@@ -30,7 +30,7 @@ def contfrac(r, a, b):
     newb = newb / b
     z = newi * newb
     newa = a - z
-    #print r, newi, newa, newb
+    # print r, newi, newa, newb
     return newi, (newa * -1), newb
 
 

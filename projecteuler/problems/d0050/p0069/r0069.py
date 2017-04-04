@@ -3,7 +3,6 @@
 from projecteuler import mymaths
 
 
-
 def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
     l = []

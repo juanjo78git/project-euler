@@ -79,14 +79,14 @@ def recursolucion(l, lunida, solucion):
     # sacamos el listado de sufijos
     ultimo = solucion[len(solucion)-1]
     sig = siguientes(ultimo, lunida)
-    #print "Lista sufijos", ultimo, sig
+    # print "Lista sufijos", ultimo, sig
 
     for i in sig:
         lunidaaux = list(lunida)
         lunidaaux.remove(i)
         solucionaux = list(solucion)
         solucionaux.append(i)
-        #print "Solucion parcial:", lcopysolucion
+        # print "Solucion parcial:", lcopysolucion
         recursolucion(l, lunidaaux, solucionaux)
 
 

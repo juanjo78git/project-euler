@@ -41,7 +41,7 @@ def result():
     LIMITE = 10000
 
     res = 0
-    #print calcfrac(23)
+    # print calcfrac(23)
     for i in range(2, LIMITE + 1):
         c = calcfrac(i)
         if c != -1 and c % 2 != 0:
