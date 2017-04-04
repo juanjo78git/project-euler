@@ -78,6 +78,7 @@ def pos_primo_mayor(l, n):
 
 
 def result():
+    return 0
     lprimos = lista_n_primos(100000)
 
     # print("Lista de 100000 generada")

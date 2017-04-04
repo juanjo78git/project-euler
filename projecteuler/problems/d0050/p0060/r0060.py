@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 #The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes
 #and concatenating them in any order the result will always be prime. For
@@ -64,67 +64,69 @@ def compcombinac(lxprimes):
     return True
 
 
-nprimos = 5000
-lprime = lprimos(nprimos)
-lresult = []
+def result():
+    nprimos = 5000
+    lprime = lprimos(nprimos)
+    lresult = []
 
-for pi1 in range(0, nprimos-4):
+    for pi1 in range(0, nprimos-4):
 
-    p1 = lprime[pi1]
+        p1 = lprime[pi1]
 
-    for pi2 in range(pi1+1, nprimos-3):
+        for pi2 in range(pi1+1, nprimos-3):
 
-        l2primes = []
-        p2 = lprime[pi2]
+            l2primes = []
+            p2 = lprime[pi2]
 
-        l2primes.append(p1)
-        l2primes.append(p2)
+            l2primes.append(p1)
+            l2primes.append(p2)
 
-        if not compcombinac(l2primes):
-            continue
-
-        for pi3 in range(pi2+1, nprimos-2):
-
-            l3primes = []
-            p3 = lprime[pi3]
-
-            l3primes.append(p1)
-            l3primes.append(p2)
-            l3primes.append(p3)
-
-            if not compcombinac(l3primes):
+            if not compcombinac(l2primes):
                 continue
 
-            for pi4 in range(pi3+1, nprimos-1):
+            for pi3 in range(pi2+1, nprimos-2):
 
-                l4primes = []
-                p4 = lprime[pi4]
+                l3primes = []
+                p3 = lprime[pi3]
 
-                l4primes.append(p1)
-                l4primes.append(p2)
-                l4primes.append(p3)
-                l4primes.append(p4)
+                l3primes.append(p1)
+                l3primes.append(p2)
+                l3primes.append(p3)
 
-                if not compcombinac(l4primes):
+                if not compcombinac(l3primes):
                     continue
-                #else:
-                #    print(l4primes)
 
-                for pi5 in range(pi4+1, nprimos):
-                    p5 = lprime[pi5]
+                for pi4 in range(pi3+1, nprimos-1):
 
-                    l5primes = []
+                    l4primes = []
+                    p4 = lprime[pi4]
 
-                    l5primes.append(p1)
-                    l5primes.append(p2)
-                    l5primes.append(p3)
-                    l5primes.append(p4)
-                    l5primes.append(p5)
+                    l4primes.append(p1)
+                    l4primes.append(p2)
+                    l4primes.append(p3)
+                    l4primes.append(p4)
 
-                    if compcombinac(l5primes):
-                        if len(lresult) > 0 and sum(l5primes) < sum(lresult):
-                            lresult = l5primes
-                        #print("Un resultado 0060:", sum(l5primes), l5primes)
-                        #exit(0)
+                    if not compcombinac(l4primes):
+                        continue
+                    #else:
+                    #    print(l4primes)
 
-print "Un resultado 0060:", sum(lresult), lresult
+                    for pi5 in range(pi4+1, nprimos):
+                        p5 = lprime[pi5]
+
+                        l5primes = []
+
+                        l5primes.append(p1)
+                        l5primes.append(p2)
+                        l5primes.append(p3)
+                        l5primes.append(p4)
+                        l5primes.append(p5)
+
+                        if compcombinac(l5primes):
+                            if len(lresult) > 0 and sum(l5primes) < sum(lresult):
+                                lresult = l5primes
+                            #print("Un resultado 0060:", sum(l5primes), l5primes)
+                            #exit(0)
+
+    # print "Un resultado 0060:", sum(lresult), lresult
+    return sum(lresult)

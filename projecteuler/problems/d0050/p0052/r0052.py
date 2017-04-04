@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 #It can be seen that the number, 125874, and its double, 251748, contain
 #exactly the same digits, but in a different order.
@@ -14,16 +14,19 @@ def mismosdigitos(n1, n2):
     else:
         return False
 
-n = 1
-while True:
 
-    cumple = True
-    for x in 2, 3, 4, 5, 6:
-        if not mismosdigitos(n, x * n):
-            cumple = False
+def result():
+    n = 1
+    while True:
 
-    if cumple:
-        print("Resultado de 0052:", n)
-        exit(0)
+        cumple = True
+        for x in 2, 3, 4, 5, 6:
+            if not mismosdigitos(n, x * n):
+                cumple = False
 
-    n = n + 1
+        if cumple:
+            # print("Resultado de 0052:", n)
+            # exit(0)
+            return n
+
+        n = n + 1

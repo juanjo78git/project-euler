@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 #It is possible to show that the square root of two can be expressed as an
 #infinite continued fraction.
@@ -26,15 +26,16 @@ def next_numerator_denominator(n, d):
     return nnext, dnext
 
 
-n_iteraciones = 1000
-numerator_more_digits = 0
-n = 3
-d = 2
+def result():
+    n_iteraciones = 1000
+    numerator_more_digits = 0
+    n = 3
+    d = 2
 
-for i in range(0, n_iteraciones):
-    if len(str(n)) > len(str(d)):
-        numerator_more_digits = numerator_more_digits + 1
+    for i in range(0, n_iteraciones):
+        if len(str(n)) > len(str(d)):
+            numerator_more_digits = numerator_more_digits + 1
 
-    n, d = next_numerator_denominator(n, d)
+        n, d = next_numerator_denominator(n, d)
 
-print "Resultado 0057: ", numerator_more_digits
+    return numerator_more_digits

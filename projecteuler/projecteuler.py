@@ -182,9 +182,10 @@ def main():
                                                                  expected))
             # raise NameError('Invalid result')
             sys.exit(2)
-        print('Problem: {}, Result: {}, TotalTime: {}'.format(number,
-                                                              result,
-                                                              totaltime))
+        # print('Problem: {}, Result: {}, TotalTime: {}'.format(number,
+        #                                                       result,
+        #                                                       totaltime))
+        print('{};{};{}'.format(number, result, totaltime))
 
 
 if __name__ == '__main__':

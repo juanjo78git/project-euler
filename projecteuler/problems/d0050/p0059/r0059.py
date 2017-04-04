@@ -1,6 +1,7 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import itertools
+import os
 
 
 def file2list(path):
@@ -34,30 +35,36 @@ def sumASCIIstring(s):
     return suma
 
 
-lis = file2list("./cipher1.txt")
+
+def result():
+
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'cipher1.txt')
+    lis = file2list(fichero)
 
 
-# xor es ^
+    # xor es ^
 
-abc = "abcdefghijklmnopqrstuvwxyz"
+    abc = "abcdefghijklmnopqrstuvwxyz"
 
 
-# obtenemos todos los posibles valores de las tres letras en minuscula
-for i in itertools.product(abc, repeat=3):
-    x = "".join(i)
+    # obtenemos todos los posibles valores de las tres letras en minuscula
+    for i in itertools.product(abc, repeat=3):
+        x = "".join(i)
 
-    lisxor = []
-    for j in range(0, len(lis)):
-        lisxor.append(int(lis[j]) ^ ord(x[j % 3]))
+        lisxor = []
+        for j in range(0, len(lis)):
+            lisxor.append(int(lis[j]) ^ ord(x[j % 3]))
 
-    # vamos a intentar pintar el lisxor pero como cadenas
-    #print(lisxor)
-    s = lisxor2string(lisxor)
+        # vamos a intentar pintar el lisxor pero como cadenas
+        #print(lisxor)
+        s = lisxor2string(lisxor)
 
-    #print(x, s, lisxor, lis)
-    #print(x)
+        #print(x, s, lisxor, lis)
+        #print(x)
 
-    if testwords(s):
-        print(x)
-        print(s)
-        print(sumASCIIstring(s))
+        if testwords(s):
+            # print(x)
+            # print(s)
+            # print(sumASCIIstring(s))
+            return sumASCIIstring(s)

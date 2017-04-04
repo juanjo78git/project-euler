@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 #By replacing the 1st digit of *3, it turns out that six of the nine possible
 #values: 13, 23, 43, 53, 73, and 83, are all prime.
@@ -66,17 +66,23 @@ def maxreplaceprime(n):
         for lcomb in llcomb:
             nprimes, minprimo = replaceprime(n, lcomb)
             if nprimes == 8:
-                print("Resultado es:", minprimo)
-                return 8
+                # print("Resultado es:", minprimo)
+                # return 8
+                return minprimo
 
             if nprimes > maxnprimes:
                 maxnprimes = nprimes
 
-    return
+    return None
 
 
-n = 2
-#nprimes = 8
+def result():
+    n = 2
+    #nprimes = 8
+    r = None
 
-while maxreplaceprime(n) != 8:
-    n = nextprime(n)
+    while r is None:
+        r = maxreplaceprime(n)
+        n = nextprime(n)
+
+    return r

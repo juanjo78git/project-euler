@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 #If we take 47, reverse and add, 47 + 74 = 121, which is palindromic.
 
@@ -46,21 +46,22 @@ def numreverse(n):
     return int(s2)
 
 
-num_max = 10000
-max_iter = 50
-lychrel = 0
-for n in range(1, 10000):
-    ispal = False
-    na = n
-    nr = numreverse(n)
-    for i in range(0, max_iter):
-        if ispalindrome(na + nr):
-            ispal = True
-            break
-        na = na + nr
-        nr = numreverse(na)
+def result():
+    num_max = 10000
+    max_iter = 50
+    lychrel = 0
+    for n in range(1, 10000):
+        ispal = False
+        na = n
+        nr = numreverse(n)
+        for i in range(0, max_iter):
+            if ispalindrome(na + nr):
+                ispal = True
+                break
+            na = na + nr
+            nr = numreverse(na)
 
-    if not ispal:
-        lychrel = lychrel + 1
+        if not ispal:
+            lychrel = lychrel + 1
 
-print("El resultado es:", lychrel)
+    return lychrel

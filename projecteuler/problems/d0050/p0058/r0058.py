@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 
 # es un número primo
@@ -12,29 +12,32 @@ def isprime(n):
     return True
 
 
-cumple = False
+def result():
+    cumple = False
 
-# empezamos en lado 5
-lado = 5
-nprimos = 0
-sumatorio = 2
-d = 1
+    # empezamos en lado 5
+    lado = 5
+    nprimos = 0
+    sumatorio = 2
+    d = 1
 
-while not cumple:
+    while not cumple:
 
-    # añadimos 4 elementos más
-    for i in range(0, 4):
+        # añadimos 4 elementos más
+        for i in range(0, 4):
 
-        if isprime(d):
-            nprimos = nprimos + 1
+            if isprime(d):
+                nprimos = nprimos + 1
 
-        d = d + sumatorio
+            d = d + sumatorio
 
-    sumatorio = sumatorio + 2
-    lado = lado + 2
+        sumatorio = sumatorio + 2
+        lado = lado + 2
 
-    #print(nprimos, (lado*2)-1, (100*nprimos)/float((lado*2)-1))
+        #print(nprimos, (lado*2)-1, (100*nprimos)/float((lado*2)-1))
 
-    if ((100*nprimos)/float((lado*2)-1)) < 10:
-        print("Solucion 0058:", lado)
-        cumple = True
+        if ((100*nprimos)/float((lado*2)-1)) < 10:
+            # print("Solucion 0058:", lado)
+            cumple = True
+
+    return lado

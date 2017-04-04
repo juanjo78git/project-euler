@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
+import os
 
 # PROBLEM 0054
 
@@ -459,17 +459,22 @@ class PartidaPoker:
 
 ## PROBLEMA 0054 ______________________________________________________________
 
-# lectura de todo el fichero...
-f = open('./poker.txt')
+def result():
 
-total = 0
-lista_poker = f.readlines()
+    # lectura de todo el fichero...
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'poker.txt')
+    f = open(fichero)
 
-for poker in lista_poker:
-    poker = poker.replace('\n', '')
-    partida = PartidaPoker(poker)
+    total = 0
+    lista_poker = f.readlines()
 
-    if partida.get_mano_jugador(1) > partida.get_mano_jugador(2):
-        total += 1
+    for poker in lista_poker:
+        poker = poker.replace('\n', '')
+        partida = PartidaPoker(poker)
 
-print("Total partidas ganas por player1: ", total)
+        if partida.get_mano_jugador(1) > partida.get_mano_jugador(2):
+            total += 1
+
+    # print("Total partidas ganas por player1: ", total)
+    return total

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 
 # Funcion para el factorial
@@ -12,11 +12,13 @@ def factorial(x):
 def n_C_r(n, r):
     return (factorial(n) / (factorial(r) * factorial(n - r)))
 
-contador = 0
 
-for n in range(1, 101):
-    for r in range(1, n + 1):
-        if n_C_r(n, r) > 1000000:
-            contador = contador + 1
+def result():
+    contador = 0
 
-print contador
+    for n in range(1, 101):
+        for r in range(1, n + 1):
+            if n_C_r(n, r) > 1000000:
+                contador = contador + 1
+
+    return contador
