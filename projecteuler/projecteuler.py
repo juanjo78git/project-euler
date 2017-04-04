@@ -32,7 +32,7 @@ def main():
     rx = 'r{}'.format('%04d' % options.problem)
 
     ns = {}
-    exec('from projecteuler.myproblems import {} as mod'.format(rx),
+    exec('from projecteuler.results import {} as mod'.format(rx),
          globals(), ns)
     mod = ns['mod']
 

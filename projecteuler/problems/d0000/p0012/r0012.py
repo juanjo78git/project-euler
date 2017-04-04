@@ -1,20 +1,20 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import os
 import sys
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
 
-import mymaths
+from projecteuler import mymaths
 
-# numero de divisores minimo que buscamos
-nmindivs = 500
 
-t = mymaths.trianglenumber()
+def result():
+    # numero de divisores minimo que buscamos
+    nmindivs = 500
 
-while True:
-    n = t.next()
-    if mymaths.numdivs(n) > nmindivs:
-        break
+    t = mymaths.trianglenumber()
 
-print "Resultado 0012: ", n
+    while True:
+        n = t.__next__()
+        if mymaths.numdivs(n) > nmindivs:
+            break
+
+    return n

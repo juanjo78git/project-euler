@@ -1,9 +1,11 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-numero = 2**1000
-suma = 0
 
-for i in range(0, len(str(numero))):
-    suma += int(str(numero)[i])
+def result():
+    numero = 2**1000
+    suma = 0
 
-print "Resultado 0016: ", suma
+    for i in range(0, len(str(numero))):
+        suma += int(str(numero)[i])
+
+    return suma

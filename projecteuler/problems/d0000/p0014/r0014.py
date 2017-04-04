@@ -1,8 +1,7 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 
 # generamos el iterador
-
-
 def iter14(n):
     while True:
         if n % 2 == 0:
@@ -17,20 +16,21 @@ def num_terminos_iter14(n):
     total = 1
     e = 0
     while e != 1:
-        e = it.next()
+        e = it.__next__()
         total += 1
 
     return total
 
 
-maxterminos = 0
-n = 0
-limite = 1000000
+def result():
+    maxterminos = 0
+    n = 0
+    limite = 1000000
 
-for i in range(2, limite):
-    calc = num_terminos_iter14(i)
-    if calc > maxterminos:
-        maxterminos = calc
-        n = i
+    for i in range(2, limite):
+        calc = num_terminos_iter14(i)
+        if calc > maxterminos:
+            maxterminos = calc
+            n = i
 
-print "Resultado 0014: ", n
+    return n

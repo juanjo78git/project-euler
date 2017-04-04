@@ -1,12 +1,17 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-fichero = '0013.txt'
+import os
 
-f = open(fichero, 'r')
-total = 0
 
-for linea in f:
-    total += int(linea)
-f.close()
+def result():
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, '0013.txt')
 
-print "Resultado 0013: ", str(total)[:10]
+    f = open(fichero, 'r')
+    total = 0
+
+    for linea in f:
+        total += int(linea)
+    f.close()
+
+    return str(total)[:10]

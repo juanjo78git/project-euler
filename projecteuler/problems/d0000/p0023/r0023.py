@@ -1,11 +1,11 @@
-#!/usr/bin/python2
+# -*- coding: utf-8 -*-
 
 
 def p23():
 
     def es_abundante(n):
         divisores = []
-        for i in range(1, n/2 + 1):
+        for i in range(1, int(n/2 + 1)):
             if not (n % i):
                 divisores.append(i)
         return sum(divisores) > n
@@ -20,7 +20,7 @@ def p23():
     abundantes = []
     abundantes = lista_abundantes()
 
-    print abundantes
+    # print abundantes
 
     #for i in abundantes:
     #    print i
@@ -44,11 +44,11 @@ def p23():
 
         # si es True no se muestra
         if not es_suma_abundantes:
-            print "resultado: " + str(n) + "=" + str(a1) + "+" + str(a2)
+            # print "resultado: " + str(n) + "=" + str(a1) + "+" + str(a2)
             no_suma_abundantes.append(n)
 
-    #print no_suma_abundantes
-    print sum(no_suma_abundantes)
+    return sum(no_suma_abundantes)
 
 
-p23()
+def result():
+    return p23()

@@ -1,8 +1,10 @@
-#! /usr/bin/python2
+# -*- coding: utf-8 -*-
+
 
 # dos argumentos, la dimensión y el fichero txt
 
-import sys
+# import sys
+import os
 
 
 class Graph:
@@ -95,19 +97,23 @@ def bellman_ford(graph, source):
     return d, p
 
 
-dim = int(sys.argv[1])
-fich = sys.argv[2]
+def result():
+    # dim = int(sys.argv[1])
+    # fich = sys.argv[2]
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fich = os.path.join(ROOT_DIR, 'grafo2.txt')
+    dim = 15
 
-mat = obten_matriz_fichero(dim, fich)
+    mat = obten_matriz_fichero(dim, fich)
 
 
-grafo = matriz_a_grafo(dim, mat)
+    grafo = matriz_a_grafo(dim, mat)
 
-p, d = bellman_ford(grafo, 'x-x')
+    p, d = bellman_ford(grafo, 'x-x')
 
-minimo = 0
-for i in p:
-    if minimo > p[i]:
-        minimo = p[i]
-
-print 'Resultado 0018: ', minimo
+    minimo = 0
+    for i in p:
+        if minimo > p[i]:
+            minimo = p[i]
+    
+    return abs(minimo)

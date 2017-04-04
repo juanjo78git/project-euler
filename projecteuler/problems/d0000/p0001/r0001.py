@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def result():
     suma = 0
     for i in range(1, 1000):

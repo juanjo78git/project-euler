@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+# -*- coding: utf-8 -*-
 
 # esta solucion es superfea pedro
 
@@ -68,13 +68,15 @@ def miles(n):
 
     return ""
 
-suma = 0
-for n in range(1, 1001):
 
-    c = cientos(n)
-    d = decenas(n)
-    m = miles(n)
+def result():
+    suma = 0
+    for n in range(1, 1001):
 
-    suma = suma + len((m + c + d).replace(" ", ""))
+        c = cientos(n)
+        d = decenas(n)
+        m = miles(n)
 
-print 'Resultado 0017:', suma
+        suma = suma + len((m + c + d).replace(" ", ""))
+
+    return suma
