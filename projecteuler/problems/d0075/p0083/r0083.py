@@ -3,7 +3,7 @@
 #Project Euler 0083
 
 
-import sys
+import os
 
 
 def floyd_warshall(ady, nn):
@@ -96,16 +96,20 @@ def printmat(m, dim):
     print(' ')
 
 
-dim = int(sys.argv[1])
-fichero = sys.argv[2]
+def result():
+    # dim = int(sys.argv[1])
+    # fichero = sys.argv[2]
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'matrix.txt')
+    dim = 80
 
-m = fich_to_mat(fichero, dim)
-#printmat(m, dim)
-ady = mat_to_ady(m, dim)
-#printmat(ady, dim*dim)
-p = floyd_warshall(ady, dim*dim)
+    m = fich_to_mat(fichero, dim)
+    # printmat(m, dim)
+    ady = mat_to_ady(m, dim)
+    # printmat(ady, dim*dim)
+    p = floyd_warshall(ady, dim*dim)
 
-#printmat(p, dim*dim)
+    # printmat(p, dim*dim)
 
-
-print('Resultado 0083:', p[0][(dim*dim)-1])
+    # print('Resultado 0083:', p[0][(dim*dim)-1])
+    return int(p[0][(dim*dim)-1])

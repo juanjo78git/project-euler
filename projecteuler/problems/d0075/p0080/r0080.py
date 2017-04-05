@@ -1,26 +1,21 @@
 # -*- coding: utf-8 -*-
 
-#Project Euler 0080
-#It is well known that if the square root of a natural number is not an
-#integer, then it is irrational. The decimal expansion of such square roots i
-#infinite without any repeating pattern at all.
-
-#The square root of two is 1.41421356237309504880..., and the digital sum of
-#the first one hundred decimal digits is 475.
-
-#For the first one hundred natural numbers, find the total of the digital sums
-#of the first one hundred decimal digits for all the irrational square roots.
-
-# PNG:
-# joder que mal explicado, no eran los primeros 100 dígitos, eran calculamos
-# los primeros 100 dígitos MAS los dígitos enteros... ¬¬ en fin, que se
-# explican como el puto CU-LO
-
-#Find the square root of 2.
+# Project Euler 0080
+# It is well known that if the square root of a natural number is not an
+# integer, then it is irrational. The decimal expansion of such square roots i
+# infinite without any repeating pattern at all.
+# The square root of two is 1.41421356237309504880..., and the digital sum of
+# the first one hundred decimal digits is 475.
+# For the first one hundred natural numbers, find the total of the digital sums
+# of the first one hundred decimal digits for all the irrational square roots.
+#  PNG:
+#  joder que mal explicado, no eran los primeros 100 dígitos, eran calculamos
+#  los primeros 100 dígitos MAS los dígitos enteros... ¬¬ en fin, que se
+#  explican como el puto CU-LO
+# Find the square root of 2.
 #          1. 4  1  4  2
 #       /
 #     \/  02.00 00 00 00
-
 #         02                  1*1 <= 2 < 2*2                 x = 1
 #         01                    y = x*x = 1*1 = 1
 #         01 00               24*4 <= 100 < 25*5             x = 4

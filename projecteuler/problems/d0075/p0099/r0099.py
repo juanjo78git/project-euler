@@ -1,30 +1,37 @@
+# -*- coding: utf-8 -*-
+
 import string
 
-file = open("c:\pedro\euler\base_exp.txt", "r")
 
-# nos quedamos con la primera fila como fila mayor
-lvalores = string.split(file.readline(), ',')
+def result():
 
-base_mayor = float(lvalores[0])
-exponente_mayor = float(lvalores[1])
-i = 1
-i_mayor = 1
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'base_exp.txt')
 
-#bucle principal
-for linea in file:
+    file = open(fichero, "r")
 
-    i = i + 1
+    # nos quedamos con la primera fila como fila mayor
+    lvalores = string.split(file.readline(), ',')
 
-    lvalores = string.split(linea, ',')
+    base_mayor = float(lvalores[0])
+    exponente_mayor = float(lvalores[1])
+    i = 1
+    i_mayor = 1
 
-    exponente_dividido = float(lvalores[1]) / exponente_mayor
+    #bucle principal
+    for linea in file:
 
-    calculado = float(lvalores[0]) ** exponente_dividido
+        i = i + 1
 
-    if calculado > base_mayor:
-        base_mayor = float(lvalores[0])
-        exponente_mayor = float(lvalores[1])
-        i_mayor = i
+        lvalores = string.split(linea, ',')
 
+        exponente_dividido = float(lvalores[1]) / exponente_mayor
 
-print i_mayor
+        calculado = float(lvalores[0]) ** exponente_dividido
+
+        if calculado > base_mayor:
+            base_mayor = float(lvalores[0])
+            exponente_mayor = float(lvalores[1])
+            i_mayor = i
+
+    return i_mayor

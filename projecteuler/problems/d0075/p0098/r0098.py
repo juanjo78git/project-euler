@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
-from datetime import datetime
-
 
 def getdicsquares(maximo):
     """ mete los cuadrados en un diccionario por longitud """
@@ -25,7 +21,7 @@ def getdicsquares(maximo):
         n = n + 1
         square = n ** 2
         lensquare = len(str(square))
-        #print square
+        # print square
 
     return d
 
@@ -41,7 +37,7 @@ def readdictsword(f):
         else:
             dw[len(w)] = [w]
 
-        #print w
+        # print w
 
     return dw
 
@@ -99,35 +95,36 @@ def es_posible_resultado(la, relation, squares):
     return maximo
 
 
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'words.txt')
 
-dwords = readdictsword('words.txt')
-maximo = max(dwords.keys())
-squares = getdicsquares(maximo)
-print 'Generación de cuadrados terminada'
-re = 0
-#print dwords
+    dwords = readdictsword(fichero)
+    maximo = max(dwords.keys())
+    squares = getdicsquares(maximo)
+    # print 'Generación de cuadrados terminada'
+    re = 0
+    #print dwords
 
-for k in dwords.keys():
-    for w in dwords[k]:
-        la = get_anagrames(dwords, w)
-        #print w, la
-        # ya tenemos lo que es la lista de anagramas, ahora toca buscar un
-        # número dentro de los cuadrados que nos sirva
-        if len(la) > 0:
-            for n in squares[len(w)]:
+    for k in dwords.keys():
+        for w in dwords[k]:
+            la = get_anagrames(dwords, w)
+            #print w, la
+            # ya tenemos lo que es la lista de anagramas, ahora toca buscar un
+            # número dentro de los cuadrados que nos sirva
+            if len(la) > 0:
+                for n in squares[len(w)]:
 
-                ok, relation = getrelation(w, n)
+                    ok, relation = getrelation(w, n)
 
-                if ok:
-                    #print w, n
-                    # llegamos aquí, tenemos una letra, un cuadrado y sabemos
-                    # que tiene anagramas, pues buscamos en sus anagramas
-                    # si vale la relación que tenemos
-                    pos = es_posible_resultado(la, relation, squares[len(w)])
-                    if re < pos:
-                        re = pos
+                    if ok:
+                        #print w, n
+                        # llegamos aquí, tenemos una letra, un cuadrado y sabemos
+                        # que tiene anagramas, pues buscamos en sus anagramas
+                        # si vale la relación que tenemos
+                        pos = es_posible_resultado(la, relation, squares[len(w)])
+                        if re < pos:
+                            re = pos
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0098: ", re
+    # print "Resultado de 0098: ", re
+    return re

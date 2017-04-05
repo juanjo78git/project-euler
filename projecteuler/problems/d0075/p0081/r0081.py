@@ -1,23 +1,19 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
-#Project Euler 0081
+# Project Euler 0081
+# In the 5 by 5 matrix below, the minimal path sum from the top left to the
+# bottom right, by only moving to the right and down, is indicated in bold red
+# and is equal to 2427.
+# 131    673    234    103    18
+# 201    96    342    965    150
+# 630    803    746    422    111
+# 537    699    497    121    956
+# 805    732    524    37    331
+# Find the minimal path sum, in matrix.txt (right click and 'Save Link/
+# Target As...'), a 31K text file containing a 80 by 80 matrix, from the top
+# left to the bottom right by only moving right and down.
 
-#In the 5 by 5 matrix below, the minimal path sum from the top left to the
-#bottom right, by only moving to the right and down, is indicated in bold red
-#and is equal to 2427.
-
-
-#131    673    234    103    18
-#201    96    342    965    150
-#630    803    746    422    111
-#537    699    497    121    956
-#805    732    524    37    331
-
-#Find the minimal path sum, in matrix.txt (right click and 'Save Link/
-#Target As...'), a 31K text file containing a 80 by 80 matrix, from the top
-#left to the bottom right by only moving right and down.
-
-import sys
+import os
 
 
 def floyd_warshall(ady, nn):
@@ -100,11 +96,17 @@ def printmat(m, dim):
     print(' ')
 
 
-dim = int(sys.argv[1])
-fichero = sys.argv[2]
+def result():
+    # dim = int(sys.argv[1])
+    # fichero = sys.argv[2]
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'matrix.txt')
+    dim = 80
 
-m = fich_to_mat(fichero, dim)
-ady = mat_to_ady(m, dim)
-p = floyd_warshall(ady, dim*dim)
+    m = fich_to_mat(fichero, dim)
+    ady = mat_to_ady(m, dim)
+    p = floyd_warshall(ady, dim*dim)
 
-print('Resultado 0081:', int(p[0][(dim*dim)-1]))
+    # print('Resultado 0081:', int(p[0][(dim*dim)-1]))
+    return int(p[0][(dim*dim)-1])
+

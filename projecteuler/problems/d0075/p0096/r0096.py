@@ -1,5 +1,4 @@
-#!/usr/bin/pypy
-
+# -*- coding: utf-8 -*-
 
 class Sudoku:
     """Un sudoku!!"""
@@ -152,32 +151,37 @@ class Sudoku:
                    + str(self.__sudoku[2]))
 
 
-lsudoku = []
-f = open('./sudoku.txt')
-i = 0
-s = ''
-for l in f:
-    if i == 0:
+def result():
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'sudoku.txt')
+
+    lsudoku = []
+    f = open(fichero)
+    i = 0
+    s = ''
+    for l in f:
+        if i == 0:
+            i += 1
+            continue
+        elif i < 10:
+            s = s + l.replace('\n', '').replace('\r', '')
+
+        if i % 10 == 0:
+            i = 0
+            lsudoku.append(Sudoku(s))
+            s = ''
         i += 1
-        continue
-    elif i < 10:
-        s = s + l.replace('\n', '').replace('\r', '')
 
-    if i % 10 == 0:
-        i = 0
-        lsudoku.append(Sudoku(s))
-        s = ''
-    i += 1
+    lsudoku.append(Sudoku(s))
 
-lsudoku.append(Sudoku(s))
+    total = 0
+    i = 0
+    print(len(lsudoku))
+    for sudoku in lsudoku:
+        # print(i)
+        sudoku.resolve()
+        total += sudoku.getcornerleft()
+        i += 1
 
-total = 0
-i = 0
-print(len(lsudoku))
-for sudoku in lsudoku:
-    print(i)
-    sudoku.resolve()
-    total += sudoku.getcornerleft()
-    i += 1
-
-print("Solucion 0096:", total)
+    # print("Solucion 0096:", total)
+    return total

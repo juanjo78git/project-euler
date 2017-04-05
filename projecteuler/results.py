@@ -88,13 +88,24 @@ import projecteuler.problems.d0075.p0078.r0078 as r0078
 # import projecteuler.problems.d0075.p0079.r0079 as r0079
 
 
-# import projecteuler.problems.d0075.p0080.r0080 as r0080
-# import projecteuler.problems.d0075.p0081.r0081 as r0081
-# import projecteuler.problems.d0075.p0082.r0082 as r0082
-# import projecteuler.problems.d0075.p0083.r0083 as r0083
-# import projecteuler.problems.d0075.p0084.r0084 as r0084
-# import projecteuler.problems.d0075.p0085.r0085 as r0085
-# import projecteuler.problems.d0075.p0086.r0086 as r0086
-# import projecteuler.problems.d0075.p0087.r0087 as r0087
-# import projecteuler.problems.d0075.p0088.r0088 as r0088
-# import projecteuler.problems.d0075.p0089.r0089 as r0089
+import projecteuler.problems.d0075.p0080.r0080 as r0080
+import projecteuler.problems.d0075.p0081.r0081 as r0081
+import projecteuler.problems.d0075.p0082.r0082 as r0082
+import projecteuler.problems.d0075.p0083.r0083 as r0083
+import projecteuler.problems.d0075.p0084.r0084 as r0084
+import projecteuler.problems.d0075.p0085.r0085 as r0085
+import projecteuler.problems.d0075.p0086.r0086 as r0086
+import projecteuler.problems.d0075.p0087.r0087 as r0087
+import projecteuler.problems.d0075.p0088.r0088 as r0088
+import projecteuler.problems.d0075.p0089.r0089 as r0089
+
+import projecteuler.problems.d0075.p0090.r0090 as r0090
+import projecteuler.problems.d0075.p0091.r0091 as r0091
+import projecteuler.problems.d0075.p0092.r0092 as r0092
+import projecteuler.problems.d0075.p0093.r0093 as r0093
+import projecteuler.problems.d0075.p0094.r0094 as r0094
+import projecteuler.problems.d0075.p0095.r0095 as r0095
+import projecteuler.problems.d0075.p0096.r0096 as r0096
+import projecteuler.problems.d0075.p0097.r0097 as r0097
+import projecteuler.problems.d0075.p0098.r0098 as r0098
+import projecteuler.problems.d0075.p0099.r0099 as r0099

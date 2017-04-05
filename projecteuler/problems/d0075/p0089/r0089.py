@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
-from datetime import datetime
-
 
 class Roman:
     """ Número romano... """
@@ -127,20 +123,20 @@ class Roman:
         return ''.join(roman)
 
 
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    len_org = 0
+    len_fin = 0
+    
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'roman.txt')
 
-len_org = 0
-len_fin = 0
+    for l in open('roman.txt'):
+        s = l.strip('\n')
+        r = Roman(s)
 
-for l in open('roman.txt'):
-    s = l.strip('\n')
-    r = Roman(s)
+        len_org += len(s)
+        n = r._calc_numero()
+        len_fin += len(r._calc_roman())
 
-    len_org += len(s)
-    n = r._calc_numero()
-    len_fin += len(r._calc_roman())
-
-
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0089: ", len_org - len_fin
+    # print "Resultado de 0089: ", len_org - len_fin
+    return len_org - len_fin

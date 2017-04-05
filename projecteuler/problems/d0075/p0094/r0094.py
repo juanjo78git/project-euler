@@ -1,13 +1,12 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 # Es fácil probar que no existe ningún triángulo equilátero con lados de
 # longitud entera y área entera. Sin embargo, el triángulo casi equilátero
 # 5-5-6 tiene una área de 12 unidades cuadradas.
-
+#
 # Vamos a definir un triángulo casi equilátero como un triángulo en el que dos
 # lados son iguales y el tercero no difiere en más de una unidad.
-
+#
 # Halla la suma de los perímetros de todos los triángulos casi equiláteros con
 # lados de longitud entera, área entera y cuyos perímetros no excedan mil
 # millones (1.000.000.000).
@@ -33,37 +32,38 @@ def entero(a):
     return int(a) == a
 
 
-LIMITE = 1000000000
-n = 2
-sp = 0
-r1 = True
-r2 = True
+def result():
+    LIMITE = 1000000000
+    n = 2
+    sp = 0
+    r1 = True
+    r2 = True
 
-## podría meter cada sección en un hilo, así vamos el doble de rápidos
-while r1 or r2:
+    ## podría meter cada sección en un hilo, así vamos el doble de rápidos
+    while r1 or r2:
 
-    p = perimetro(n, n, n - 1)
-    # if p % 1000000 == 0:
-    #     print p
+        p = perimetro(n, n, n - 1)
+        # if p % 1000000 == 0:
+        #     print p
 
-    if p <= LIMITE:
-        a = heron(n, n, n - 1)
-        if entero(a):
-            print n, n - 1
-            sp += p
-    else:
-        r1 = False
+        if p <= LIMITE:
+            a = heron(n, n, n - 1)
+            if entero(a):
+                print n, n - 1
+                sp += p
+        else:
+            r1 = False
 
-    p = perimetro(n, n, n + 1)
+        p = perimetro(n, n, n + 1)
 
-    if p <= LIMITE:
-        a = heron(n, n, n + 1)
-        if entero(a):
-            print n, n + 1
-            sp += p
-    else:
-        r2 = False
+        if p <= LIMITE:
+            a = heron(n, n, n + 1)
+            if entero(a):
+                print n, n + 1
+                sp += p
+        else:
+            r2 = False
 
-    n += 1
+        n += 1
 
-print "Resultado 0094: ", sp
+    return sp

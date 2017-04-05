@@ -1,8 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-
-from datetime import datetime
 
 
 def solution_0097():
@@ -16,10 +12,5 @@ def solution_0097():
     return int(str((n * 28433) + 1)[-10:])
 
 
-start_time = datetime.now()
-
-resultado = solution_0097()
-
-print "Tiempo total: ", datetime.now() - start_time
-
-print "Resultado de 0097: ", resultado
+def result():
+    return solution_0097()

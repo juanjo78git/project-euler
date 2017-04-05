@@ -89,23 +89,27 @@ def printmat(m, dim):
     print(' ')
 
 
-dim = int(sys.argv[1])
-fichero = sys.argv[2]
+def result():
+    # dim = int(sys.argv[1])
+    # fichero = sys.argv[2]
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'matrix.txt')
+    dim = 80
 
-m = fich_to_mat(fichero, dim)
-#printmat(m, dim)
-ady = mat_to_ady(m, dim)
-#printmat(ady, dim*dim)
-p = floyd_warshall(ady, dim*dim)
+    m = fich_to_mat(fichero, dim)
+    # printmat(m, dim)
+    ady = mat_to_ady(m, dim)
+    # printmat(ady, dim*dim)
+    p = floyd_warshall(ady, dim*dim)
 
-#printmat(p, dim*dim)
+    # printmat(p, dim*dim)
 
-# claro, ahora sería de las que son origen a las que son destino...
-resultado = float('inf')
-for i in range(0, dim*dim, dim):
-    for j in range(dim-1, dim*dim, dim):
-        if resultado > p[i][j]:
-            resultado = p[i][j]
+    # claro, ahora sería de las que son origen a las que son destino...
+    resultado = float('inf')
+    for i in range(0, dim*dim, dim):
+        for j in range(dim-1, dim*dim, dim):
+            if resultado > p[i][j]:
+                resultado = p[i][j]
 
-
-print('Resultado 0082:', resultado)
+    # print('Resultado 0082:', resultado)
+    return resultado

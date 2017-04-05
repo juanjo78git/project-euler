@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 # Each of the six faces on a cube has a different digit (0 to 9) written on it;
@@ -34,7 +33,6 @@
 # numbers to be displayed?
 
 import itertools
-from datetime import datetime
 
 
 def prepare_list(t):
@@ -60,22 +58,23 @@ def verificar_cuadrados(t1, t2):
             return False
     return True
 
-start_time = datetime.now()
 
-r = []
-for t1 in itertools.combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 6):
-    for t2 in itertools.combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 6):
-        if verificar_cuadrados(t1, t2):
+def result():
+    r = []
+    for t1 in itertools.combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 6):
+        for t2 in itertools.combinations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 6):
+            if verificar_cuadrados(t1, t2):
 
-            n1 = ''.join(str(x) for x in list(t1))
-            n2 = ''.join(str(x) for x in list(t2))
+                n1 = ''.join(str(x) for x in list(t1))
+                n2 = ''.join(str(x) for x in list(t2))
 
-            # mira, para no liarme, los meto dos veces, de un lado y de otro,
-            # así aseguro que no los tenemos dos veces, luego el resultado será
-            # el valor entre dos
-            if n1 + '-' + n2 not in r:
-                r.append(n1 + '-' + n2)
-                r.append(n2 + '-' + n1)
+                # mira, para no liarme, los meto dos veces, de un lado y de
+                # otro, así aseguro que no los tenemos dos veces, luego el
+                # resultado será el valor entre dos
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado 0090: ", len(r) / 2
+                if n1 + '-' + n2 not in r:
+                    r.append(n1 + '-' + n2)
+                    r.append(n2 + '-' + n1)
+
+    # print "Resultado 0090: ", len(r) / 2
+    return len(r) / 2

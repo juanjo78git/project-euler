@@ -1,15 +1,13 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from __future__ import division
 import itertools
-from datetime import datetime
 
 # añadimos la propiedad asociativa, así generaremos muchas menos combinaciones,
 # por ejemplo para el caso de + + + automáticamente se calculará como
 # a b c d + + +
 # de igual forma para + y - y para multiplicaciones.
-
+#
 # 20130705: tengo una idea, consiste en buscar por un número dado si existe,
 #           sería ver si por ejemplo se puede formar el número 1, en caso
 #           correcto se lanzaría para el número 2 y así sucesivamente.. pero
@@ -124,9 +122,9 @@ def calc_0093():
     return max_digits
 
 
-start_time = datetime.now()
+def result():
 
-resultado = calc_0093()
+    resultado = calc_0093()
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0093: " + ''.join(str(r) for r in resultado)
+    # print "Resultado de 0093: " + ''.join(str(r) for r in resultado)
+    return int(''.join(str(r) for r in resultado))

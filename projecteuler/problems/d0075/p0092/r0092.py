@@ -1,7 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-from datetime import datetime
 
 
 def chain92(n):
@@ -37,10 +34,6 @@ def solution_0092():
 
     return total_89
 
-start_time = datetime.now()
 
-resultado = solution_0092()
-
-print "Tiempo total: ", datetime.now() - start_time
-
-print "Resultado de 0092: ", resultado
+def result():
+    return solution_0092()
