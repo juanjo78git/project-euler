@@ -154,7 +154,7 @@ def main():
                       99: 709,
                       100: 756872327473}
 
-    MAX_PROBLEM = 50
+    MAX_PROBLEM = 100
 
     parser = build_parser()
     options = parser.parse_args()
