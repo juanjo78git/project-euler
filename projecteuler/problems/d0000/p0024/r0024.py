@@ -12,4 +12,4 @@ def result():
         result = g.__next__()
         c += 1
 
-    return ''.join([str(x) for x in result])
+    return int(''.join([str(x) for x in result]))

@@ -14,4 +14,4 @@ def result():
         total += int(linea)
     f.close()
 
-    return str(total)[:10]
+    return int(str(total)[:10])
