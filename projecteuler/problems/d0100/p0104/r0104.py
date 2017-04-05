@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 
 def fibonacci():
@@ -29,10 +29,10 @@ def presufpan(n):
     return False
 
 
-f = fibonacci()
-i = 0
-while not (presufpan(f.next())):
-    i += 1
+def result():
+    f = fibonacci()
+    i = 0
+    while not (presufpan(f.__next__())):
+        i += 1
 
-
-print("Resultado 0104:", i)
+    return i

@@ -1,18 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
-import os
-import sys
-from datetime import datetime
-
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
-
-import mymaths
-
-LIMITE = 100000000
-LIMITE = 1000
+from projecteuler import mymaths
 
 
 def gen_list_square(limit):
@@ -54,19 +42,20 @@ def is_0125(squares, p):
     return False
 
 
-# controlamos el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    LIMITE = 100000000
+    LIMITE = 1000
 
-squares = gen_list_square(LIMITE)
-palindromic = gen_list_palindromic(LIMITE)
+    squares = gen_list_square(LIMITE)
+    palindromic = gen_list_palindromic(LIMITE)
 
-print "Total palíndromos: %d" % len(palindromic)
-print "Total cuadrados: %d" % len(squares)
+    # print "Total palíndromos: %d" % len(palindromic)
+    # print "Total cuadrados: %d" % len(squares)
 
-total = 0
-for p in palindromic:
-    if is_0125(squares, p):
-        total += p
+    total = 0
+    for p in palindromic:
+        if is_0125(squares, p):
+            total += p
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0125 ", total
+    # print "Resultado de 0125 ", total
+    return total

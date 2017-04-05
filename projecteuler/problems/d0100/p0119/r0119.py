@@ -1,19 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
-from datetime import datetime
-
-TH = 30
-#L = 10000
-#N = 10000
-
-N = 100
-E = 100
-
-powers = []
-
-
 def sumdigits(n):
     sumatory = 0
     for i in str(n):
@@ -31,11 +17,18 @@ def gen_pos_result(N, E):
     return powers
 
 
-# controlamos el tiempo de ejecución
-start_time = datetime.now()
+def result():
+    TH = 30
+    #L = 10000
+    #N = 10000
 
-powers = gen_pos_result(N, E)
-powers.sort()
+    N = 100
+    E = 100
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0123: ", powers[TH - 1]
+    powers = []
+
+    powers = gen_pos_result(N, E)
+    powers.sort()
+
+    # print "Resultado de 0123: ", powers[TH - 1]
+    result(powers[TH - 1])

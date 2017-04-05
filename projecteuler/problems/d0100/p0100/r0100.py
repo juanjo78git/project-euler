@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import math
@@ -27,16 +26,19 @@ def get_total_for_blues(blues):
     return tmp_3 / 2
 
 
-n = A011900()
 
-blues = n.next()
+def result():
+    n = A011900()
 
-while True:
+    blues = n.__next__()
 
-    total = get_total_for_blues(blues)
+    while True:
 
-    if total > 1000000000000:
-        print "Solucion 0100:", blues
-        break
+        total = get_total_for_blues(blues)
 
-    blues = n.next()
+        if total > 1000000000000:
+            # print "Solucion 0100:", blues
+            return blues
+            break
+
+        blues = n.__next__()

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
 
 class Punto:
     """ Un punto """
@@ -40,20 +38,25 @@ class Triangulo:
             return False
 
 
-f = open("triangles.txt")
+def result():
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'triangles.txt')
+    
+    f = open(fichero)
 
-inside = 0
-po = Punto(0, 0)
+    inside = 0
+    po = Punto(0, 0)
 
-for l in f:
-    lp = l.replace('\n', '').split(',')
-    p1 = Punto(lp[0], lp[1])
-    p2 = Punto(lp[2], lp[3])
-    p3 = Punto(lp[4], lp[5])
+    for l in f:
+        lp = l.replace('\n', '').split(',')
+        p1 = Punto(lp[0], lp[1])
+        p2 = Punto(lp[2], lp[3])
+        p3 = Punto(lp[4], lp[5])
 
-    t = Triangulo(p1, p2, p3)
+        t = Triangulo(p1, p2, p3)
 
-    if t.punto_en_triangulo(po):
-        inside += 1
+        if t.punto_en_triangulo(po):
+            inside += 1
 
-print "Resultado 0102: ", inside
+    # print "Resultado 0102: ", inside
+    return inside

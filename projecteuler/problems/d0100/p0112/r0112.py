@@ -1,26 +1,23 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
-
 # Leyendo un número de izquierda a derecha, si no hay dígitos que se vean
 # superados por el dígito a su izquierda, se le denomina un creciente, por
 # ejemplo, 134468.
-
+#
 # Del mismo modo, si ningún dígito es superado por los dígitos a la derecha, se
 # denomina un número decreciente, por ejemplo, 66420.
-
+#
 # Vamos a denominar a un entero positivo que no crece ni decrece un número
 # "variable", por ejemplo, 155349.
-
+#
 # Es evidente que no puede haber números variables inferiores a cien; sin
 # embargo, algo más de la mitad de los números inferiores a mil (525) son
 # variables. De hecho, el menor número para el que la proporción de números
 # variables alcanza por primera vez 50% es 538.
-
+#
 # Curiosamente, los números variables son cada vez más comunes, y, para cuando
 # llegan a 21780, su proporción es del 90%.
-
+#
 # Halla el menor número para el que la proporción de números variables es
 # exactamente del 99%.
 
@@ -77,4 +74,6 @@ def percent_bouncy(p):
         n += 1
 
 
-print "Resultado 0112: ", percent_bouncy(99)
+def result():
+    # print "Resultado 0112: ", percent_bouncy(99)
+    return percent_bouncy(99)

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/pypy
 
 
 def calc_resto_pe120(a, n):
@@ -25,6 +24,9 @@ def calc_max_resto_pe120(a):
 
     return resto_max
 
-sumatorio = 0
-for a in range(3, 1001):
-    sumatorio = sumatorio + calc_max_resto_pe120(a)
+def result():
+    sumatorio = 0
+    for a in range(3, 1001):
+        sumatorio = sumatorio + calc_max_resto_pe120(a)
+    
+    return sumatorio
