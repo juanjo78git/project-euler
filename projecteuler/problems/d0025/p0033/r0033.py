@@ -4,7 +4,7 @@
 def divisores_euclides(n):
     divisores = []
     for i in range(2, int(n/2+1)):
-        print(i)
+        # print(i)
         while n % i == 0:
             # print "ok"
             n = n / i
@@ -13,5 +13,51 @@ def divisores_euclides(n):
     return divisores
 
 
+def numeros_que_comparten(n1, n2):
+    l = []
+    for i in str(n1):
+        if i in str(n2):
+            l.append(int(i))
+
+    l.sort()
+    return l
+
+def delete_number(number, n):
+    s = str(number).replace(str(n), '')
+
+    if len(s) == 0:
+        s = str(n)
+
+    return int(s)
+
+
+def es_p33(numerador, denominador):
+    comparten = numeros_que_comparten(numerador, denominador)
+
+    if 0 in comparten:
+        return False
+
+    for c in comparten:
+        new_numerador = delete_number(numerador, c)
+        new_denominador = delete_number(denominador, c)
+
+        return ((new_numerador * denominador) == (numerador * new_denominador))
+
+
 def result():
-    return divisores_euclides(49)
+    for numerador in range(10, 99):
+        for denominador in range(10, 99):
+            if numerador < denominador:
+                # print('{} / {}'.format(numerador, denominador))
+                if es_p33(numerador, denominador):
+                    print('{} / {}'.format(numerador, denominador))
+
+
+    t = divisores_euclides(38729600)
+    t.sort()
+    print(t)
+
+
+
+    # return divisores_euclides(49)
+    return 0

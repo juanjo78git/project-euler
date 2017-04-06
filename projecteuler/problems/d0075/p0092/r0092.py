@@ -18,8 +18,8 @@ def solution_0092():
 
     for n in range(1, 10000000):
 
-        if n % 100000 == 0:
-            print n
+        # if n % 100000 == 0:
+        #     print n
 
         # el generador
         c = chain92(n)

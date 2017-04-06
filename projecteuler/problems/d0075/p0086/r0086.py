@@ -23,7 +23,7 @@ def result():
     LIMITE = 1000000
 
     while count < LIMITE:
-        print M, count
+        # print M, count
         count = 0
         M += 1
         for a in range(1, M + 1):

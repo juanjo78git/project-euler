@@ -49,7 +49,7 @@ def result():
         if p <= LIMITE:
             a = heron(n, n, n - 1)
             if entero(a):
-                print n, n - 1
+                # print n, n - 1
                 sp += p
         else:
             r1 = False
@@ -59,7 +59,7 @@ def result():
         if p <= LIMITE:
             a = heron(n, n, n + 1)
             if entero(a):
-                print n, n + 1
+                # print n, n + 1
                 sp += p
         else:
             r2 = False

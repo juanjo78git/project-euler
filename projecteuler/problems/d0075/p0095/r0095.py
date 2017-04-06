@@ -13,8 +13,8 @@ def result():
 
     for n in range(4, LIMITE):
 
-        if n % 1000 == 0:
-            print n
+        # if n % 1000 == 0:
+        #     print n
 
         # primero vemos que no lo hemos estudiado ya
         #if n in calculados:
@@ -25,17 +25,17 @@ def result():
 
         nex = n
         while True:
-            #print n
+            # print n
             # generamos el siguiente:
 
             nex = sum(mymaths.lnumdivs(nex))
-            #calculados.append(nex)
+            # calculados.append(nex)
 
             # condiciones de salida
             if nex == n:
                 if len(cadena_maxima) < len(cadena):
-                    print cadena_maxima
-                    print cadena
+                    # print cadena_maxima
+                    # print cadena
                     cadena_maxima = cadena
                 break
 
@@ -47,7 +47,7 @@ def result():
                 break
 
             cadena.append(nex)
-            #print n, cadena
+            # print n, cadena
 
     # print cadena_maxima
     return int(cadena_maxima[0])
