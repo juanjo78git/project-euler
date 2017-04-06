@@ -25,7 +25,7 @@ def solution_0092():
         c = chain92(n)
 
         while True:
-            r = c.next()
+            r = c.__next__()
             if r == 1:
                 break
             elif r == 89:
