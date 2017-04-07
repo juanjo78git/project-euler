@@ -78,7 +78,6 @@ def pos_primo_mayor(l, n):
 
 
 def result():
-    return 0
     lprimos = lista_n_primos(100000)
 
     # print("Lista de 100000 generada")
@@ -92,7 +91,7 @@ def result():
 
             # esto se podría mejorar con el rango de abajo...
             rango_primo = pos_primo_mayor(lprimos, impar)
-            for n in range(1, int(((impar/2)**0.5)+1)):
+            for n in range(1, int(((impar//2)**0.5)+1)):
                 for iprimo in range(0, rango_primo):
                     goldbach = False
 
@@ -109,13 +108,13 @@ def result():
                     break
 
             if not goldbach:
-                print("No cumple Goldbach el impar", impar)
-                # exit(0)
-                continue
+                # print("No cumple Goldbach el impar", impar)
+                break
 
         impar = impar + 2
 
-    i = pos_primo_mayor(lprimos, 55)
+    # i = pos_primo_mayor(lprimos, 55)
 
-    print(lprimos[i], lprimos[i-1])
-    return lprimos[i]
+    # print(lprimos[i], lprimos[i-1])
+    # return lprimos[i]
+    return impar
