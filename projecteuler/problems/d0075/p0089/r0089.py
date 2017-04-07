@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 
 class Roman:
     """ Número romano... """
@@ -130,7 +131,7 @@ def result():
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     fichero = os.path.join(ROOT_DIR, 'roman.txt')
 
-    for l in open('roman.txt'):
+    for l in open(fichero):
         s = l.strip('\n')
         r = Roman(s)
 

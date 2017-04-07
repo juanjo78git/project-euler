@@ -78,7 +78,7 @@ def numdivsprimes(n):
     """ lista de primos que son divisibles por el numero """
     ldiv = []
     p = prime()
-    d = p.next()
+    d = p.__next__()
     while n != 1:
         r, m = divmod(n, d)
         if m == 0:
@@ -86,7 +86,7 @@ def numdivsprimes(n):
             if d not in ldiv:
                 ldiv.append(d)
         else:
-            d = p.next()
+            d = p.__next__()
 
     return ldiv
 
@@ -162,13 +162,13 @@ def genlprimes(n):
     """ genera una lista de primos que pueda dividir n """
     l = []
     p = prime()
-    myprime = p.next()
+    myprime = p.__next__()
     # quiero una lista de primos que dividan a n, por lo tanto con
     # buscar solo la mitad me va bien
     limit = n + 1
     while myprime < limit:
         l.append(myprime)
-        myprime = p.next()
+        myprime = p.__next__()
 
     return l
 

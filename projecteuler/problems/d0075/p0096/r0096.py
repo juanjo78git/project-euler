@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 class Sudoku:
     """Un sudoku!!"""
     def __init__(self, cadena):
@@ -176,7 +178,7 @@ def result():
 
     total = 0
     i = 0
-    print(len(lsudoku))
+    # print(len(lsudoku))
     for sudoku in lsudoku:
         # print(i)
         sudoku.resolve()
