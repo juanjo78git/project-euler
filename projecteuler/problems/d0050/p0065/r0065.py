@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import fractions
 
@@ -6,8 +6,8 @@ import fractions
 def fracterm(k, n, d):
     nuevo_n = ((k * n) + d)
     nuevo_d = n
-    nuevo_n = nuevo_n / fractions.gcd(nuevo_n, nuevo_d)
-    nuevo_d = nuevo_d / fractions.gcd(nuevo_n, nuevo_d)
+    nuevo_n = nuevo_n // fractions.gcd(nuevo_n, nuevo_d)
+    nuevo_d = nuevo_d // fractions.gcd(nuevo_n, nuevo_d)
     return nuevo_n, nuevo_d
 
 
@@ -52,6 +52,9 @@ def r65(v):
     for i in list(str(n)):
         s = s + int(i)
 
-    print "Resultado 0065:", s
+    # print "Resultado 0065:", s
+    return s
 
-r65(100)
+
+def result():
+    return r65(100)

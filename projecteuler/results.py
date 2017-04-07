@@ -24,7 +24,6 @@ import projecteuler.problems.d0000.p0021.r0021 as r0021
 import projecteuler.problems.d0000.p0022.r0022 as r0022
 import projecteuler.problems.d0000.p0023.r0023 as r0023
 import projecteuler.problems.d0000.p0024.r0024 as r0024
-
 import projecteuler.problems.d0025.p0025.r0025 as r0025
 import projecteuler.problems.d0025.p0026.r0026 as r0026
 import projecteuler.problems.d0025.p0027.r0027 as r0027
@@ -50,7 +49,6 @@ import projecteuler.problems.d0025.p0046.r0046 as r0046
 import projecteuler.problems.d0025.p0047.r0047 as r0047
 import projecteuler.problems.d0025.p0048.r0048 as r0048
 import projecteuler.problems.d0025.p0049.r0049 as r0049
-
 import projecteuler.problems.d0050.p0050.r0050 as r0050
 import projecteuler.problems.d0050.p0051.r0051 as r0051
 import projecteuler.problems.d0050.p0052.r0052 as r0052
@@ -67,8 +65,7 @@ import projecteuler.problems.d0050.p0060.r0060 as r0060
 import projecteuler.problems.d0050.p0062.r0062 as r0062
 import projecteuler.problems.d0050.p0063.r0063 as r0063
 import projecteuler.problems.d0050.p0064.r0064 as r0064
-# da error
-# import projecteuler.problems.d0050.p0065.r0065 as r0065
+import projecteuler.problems.d0050.p0065.r0065 as r0065
 import projecteuler.problems.d0050.p0066.r0066 as r0066
 # import projecteuler.problems.d0050.p0067.r0067 as r0067
 import projecteuler.problems.d0050.p0068.r0068 as r0068
