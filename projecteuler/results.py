@@ -67,7 +67,7 @@ import projecteuler.problems.d0050.p0063.r0063 as r0063
 import projecteuler.problems.d0050.p0064.r0064 as r0064
 import projecteuler.problems.d0050.p0065.r0065 as r0065
 import projecteuler.problems.d0050.p0066.r0066 as r0066
-# import projecteuler.problems.d0050.p0067.r0067 as r0067
+import projecteuler.problems.d0050.p0067.r0067 as r0067
 import projecteuler.problems.d0050.p0068.r0068 as r0068
 import projecteuler.problems.d0050.p0069.r0069 as r0069
 
