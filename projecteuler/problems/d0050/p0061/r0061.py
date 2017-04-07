@@ -1,9 +1,10 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# chapuza extrema
+RESULTADO = 0
 
 def triangle(n):
-    return int(n*(n+1)/2)
+    return int(n*(n+1)//2)
 
 
 def square(n):
@@ -11,7 +12,7 @@ def square(n):
 
 
 def pentagonal(n):
-    return int(n*(3*n-1)/2)
+    return int(n*(3*n-1)//2)
 
 
 def hexagonal(n):
@@ -19,7 +20,7 @@ def hexagonal(n):
 
 
 def heptagonal(n):
-    return int(n*(5*n-3)/2)
+    return int(n*(5*n-3)//2)
 
 
 def octagonal(n):
@@ -62,7 +63,7 @@ def cumple(l, solucion):
 def siguientes(e, l):
     sig = []
     for i in l:
-        if e % 100 == i / 100:
+        if e % 100 == i // 100:
             sig.append(i)
 
     return sig
@@ -71,9 +72,11 @@ def siguientes(e, l):
 def recursolucion(l, lunida, solucion):
 
     if len(solucion) == 6:
-        if solucion[0] / 100 == solucion[5] % 100:
+        if solucion[0] // 100 == solucion[5] % 100:
             if cumple(l, solucion):
-                print "Resultado 0061:", solucion, sum(solucion)
+                # print("Resultado 0061:", solucion, sum(solucion))
+                global RESULTADO
+                RESULTADO = sum(solucion)
         return
 
     # sacamos el listado de sufijos
@@ -91,6 +94,7 @@ def recursolucion(l, lunida, solucion):
 
 
 def gensolucion(l, lunida):
+    resultado = 0
     for i in l[0]:
         lunidaaux = list(lunida)
         lunidaaux.remove(i)
@@ -99,21 +103,24 @@ def gensolucion(l, lunida):
         recursolucion(l, lunidaaux, solucion)
 
 
-# variables
-l = []
+def result():
+    # variables
+    l = []
 
-# increiblemente facil
-l.append(lxnal(triangle))
-l.append(lxnal(square))
-l.append(lxnal(pentagonal))
-l.append(lxnal(hexagonal))
-l.append(lxnal(heptagonal))
-l.append(lxnal(octagonal))
+    # increiblemente facil
+    l.append(lxnal(triangle))
+    l.append(lxnal(square))
+    l.append(lxnal(pentagonal))
+    l.append(lxnal(hexagonal))
+    l.append(lxnal(heptagonal))
+    l.append(lxnal(octagonal))
 
-lunida = []
-for lx in l:
-    for i in lx:
-        if i not in lunida:
-            lunida.append(i)
+    lunida = []
+    for lx in l:
+        for i in lx:
+            if i not in lunida:
+                lunida.append(i)
 
-gensolucion(l, lunida)
+    gensolucion(l, lunida)
+    global RESULTADO
+    return RESULTADO
