@@ -190,3 +190,19 @@ def factores(n):
             inlist = False
 
     return lf
+
+
+# -----------------------------------------------------------------------------
+
+class Fraccion:
+
+    def __init__(self, d, n):
+        self.d = d
+        self.n = n
+
+    def __mul__(self, other):
+        return Fraccion(self.d * other.d, self.n * other.n)
+
+    def __str__(self):
+        return '{}/{}'.format(self.d, self.n)
+
