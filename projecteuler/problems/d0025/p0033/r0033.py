@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from projecteuler import mymaths
+
 
 def divisores_euclides(n):
     divisores = []
@@ -45,19 +47,13 @@ def es_p33(numerador, denominador):
 
 
 def result():
+    total = mymaths.Fraccion(1, 1)
     for numerador in range(10, 99):
         for denominador in range(10, 99):
             if numerador < denominador:
-                # print('{} / {}'.format(numerador, denominador))
                 if es_p33(numerador, denominador):
-                    print('{} / {}'.format(numerador, denominador))
+                    total = total * mymaths.Fraccion(numerador, denominador)
 
+    total.simplify()
 
-    t = divisores_euclides(38729600)
-    t.sort()
-    print(t)
-
-
-
-    # return divisores_euclides(49)
-    return 0
+    return total.d
