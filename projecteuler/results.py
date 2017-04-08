@@ -53,8 +53,7 @@ import projecteuler.problems.d0050.p0050.r0050 as r0050
 import projecteuler.problems.d0050.p0051.r0051 as r0051
 import projecteuler.problems.d0050.p0052.r0052 as r0052
 import projecteuler.problems.d0050.p0053.r0053 as r0053
-# precioso poker
-import projecteuler.problems.d0050.p0054.r0054 as r0054
+import projecteuler.problems.d0050.p0054.r0054 as r0054     # precioso poker
 import projecteuler.problems.d0050.p0055.r0055 as r0055
 import projecteuler.problems.d0050.p0056.r0056 as r0056
 import projecteuler.problems.d0050.p0057.r0057 as r0057
@@ -70,15 +69,12 @@ import projecteuler.problems.d0050.p0066.r0066 as r0066
 import projecteuler.problems.d0050.p0067.r0067 as r0067
 import projecteuler.problems.d0050.p0068.r0068 as r0068
 import projecteuler.problems.d0050.p0069.r0069 as r0069
-
-
 import projecteuler.problems.d0050.p0070.r0070 as r0070
 import projecteuler.problems.d0050.p0071.r0071 as r0071
 import projecteuler.problems.d0050.p0072.r0072 as r0072
 import projecteuler.problems.d0050.p0073.r0073 as r0073
 import projecteuler.problems.d0050.p0074.r0074 as r0074
-
-# import projecteuler.problems.d0075.p0075.r0075 as r0075
+import projecteuler.problems.d0075.p0075.r0075 as r0075
 import projecteuler.problems.d0075.p0076.r0076 as r0076
 import projecteuler.problems.d0075.p0077.r0077 as r0077
 import projecteuler.problems.d0075.p0078.r0078 as r0078

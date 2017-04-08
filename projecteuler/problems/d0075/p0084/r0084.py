@@ -161,7 +161,7 @@ class Monopoly(object):
 
     def resultado0084(self):
         """ retorna el resultado únicamente """
-        sv = sorted(self.visitadas.iteritems(),
+        sv = sorted(self.visitadas.items(),
                     key=operator.itemgetter(1))[-3:]
         r = ''
         for i in range(0, 3)[::-1]:
@@ -181,4 +181,4 @@ def result():
     ls = sorted(l)[-3:]
 
     # print "Resultado de 0084: ", m.resultado0084()
-    return m.resultado0084()
+    return int(m.resultado0084())

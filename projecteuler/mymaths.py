@@ -68,7 +68,7 @@ def numdivs(n):
 def lnumdivs(n):
     """ lista de divisores de un número """
     lidiv = []
-    for i in range(1, (n / 2) + 1):
+    for i in range(1, int((n // 2) + 1)):
         if (n % i == 0):
             lidiv.append(i)
     return lidiv

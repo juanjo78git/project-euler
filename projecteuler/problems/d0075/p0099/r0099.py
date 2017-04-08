@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import string
+# import string
+import os
 
 
 def result():
@@ -11,7 +12,9 @@ def result():
     file = open(fichero, "r")
 
     # nos quedamos con la primera fila como fila mayor
-    lvalores = string.split(file.readline(), ',')
+    # lvalores = string.split(file.readline(), ',')
+    s = file.readline()
+    lvalores = s.split(',')
 
     base_mayor = float(lvalores[0])
     exponente_mayor = float(lvalores[1])
@@ -23,7 +26,8 @@ def result():
 
         i = i + 1
 
-        lvalores = string.split(linea, ',')
+        # lvalores = string.split(linea, ',')
+        lvalores = linea.split(',')
 
         exponente_dividido = float(lvalores[1]) / exponente_mayor
 

@@ -83,7 +83,7 @@ class Sudoku:
         cubo = []
         for f in range(3):
             for i in range(3):
-                e = (27 * (n / 3)) + (f * 9) + i + ((n % 3) * 3)
+                e = int((27 * (n // 3)) + (f * 9) + i + ((n % 3) * 3))
                 cubo.append(self.__sudoku[e])
         return cubo
 

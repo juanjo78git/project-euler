@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 
 def getdicsquares(maximo):
     """ mete los cuadrados en un diccionario por longitud """

@@ -53,7 +53,7 @@ def phi(lprimes, n):
         arriba = (div - 1) * arriba
         abajo = div * abajo
 
-    return (n * arriba) / abajo
+    return (n * arriba) // abajo
 
 
 def numperm(n1, n2):
