@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def sumdigits(n):
     sumatory = 0
     for i in str(n):
@@ -19,8 +20,8 @@ def gen_pos_result(N, E):
 
 def result():
     TH = 30
-    #L = 10000
-    #N = 10000
+    # L = 10000
+    # N = 10000
 
     N = 100
     E = 100

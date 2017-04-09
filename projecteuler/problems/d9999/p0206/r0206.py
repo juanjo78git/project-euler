@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/pypy
-
 import math
-from datetime import datetime
 
 
 def is_0206(n):
@@ -16,17 +13,17 @@ def is_0206(n):
         return False
 
 
-start_time = datetime.now()
+def result():
 
-maximo = int(math.sqrt(1929394959697989990)) + 1
-minimo = int(math.sqrt(1020304050607080900)) - 1
+    maximo = int(math.sqrt(1929394959697989990)) + 1
+    minimo = int(math.sqrt(1020304050607080900)) - 1
 
-for n in range(minimo, maximo):
-    if n % 1000000 == 0:
-        print n
-    square = n * n
-    if is_0206(square):
-        break
+    for n in range(minimo, maximo):
+        # if n % 1000000 == 0:
+        #     print n
+        square = n * n
+        if is_0206(square):
+            break
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0206: ", square, n
+    print(square, n)
+    return n

@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 # In the following equation x, y, and n are positive integers.
@@ -40,11 +39,11 @@ LIMITE = 1000
 n = 4
 while True:
     t = calc_n(n)
-    if n % 10000 == 0:
-        print n, t
+    # if n % 10000 == 0:
+    #     print n, t
 
     if t > 1000:
         break
     n += 1
 
-print "Resultado 0108: ", n
+print("Resultado 0108: ", n)

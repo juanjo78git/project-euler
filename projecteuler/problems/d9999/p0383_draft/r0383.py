@@ -18,9 +18,8 @@ def f5(n):
         x = x + 1
 
 
-#print(math.factorial(30000))
-
-#print(f5(625000))
+# print(math.factorial(30000))
+# print(f5(625000))
 
 n = 10**4
 total = 0

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
 # A positive fraction whose numerator is less than its denominator is called
 # a proper fraction.
 #
@@ -17,14 +15,8 @@
 #
 # Find the smallest denominator d, having a resilience R(d) < 15499/94744 .
 
-import os
-import sys
-lib_path = os.path.abspath('../../lib')
-sys.path.append(lib_path)
 
-import mymaths
-
-from datetime import datetime
+from projeceuler import mymaths
 
 
 def R_mayor(n, d, min_n, min_d):
@@ -33,65 +25,62 @@ def R_mayor(n, d, min_n, min_d):
     return (min_d * n) >= ((d - 1) * min_n)
 
 
-#LIMITE = 10000000
-RANGO = 10000000
+def result():
+    # LIMITE = 10000000
+    RANGO = 10000000
 
-# controlamor el tiempo de ejecución
-start_time = datetime.now()
+    min_d = 94744
+    min_n = 15499
+    # min_d = 10
+    # min_n = 4
+    d = 30
 
-min_d = 94744
-min_n = 15499
-#min_d = 10
-#min_n = 4
-d = 30
+    p = mymaths.prime()
 
-p = mymaths.prime()
+    # while True:
+    #     if p.next() == 5:
+    #         break
 
-#while True:
-    #if p.next() == 5:
-        #break
+    mymin = 0.1856
+    mini = 0
+    z = 0
 
-mymin = 0.1856
-mini = 0
-z = 0
+    d = p.next()
+    d = p.next()
+    d = p.next()
 
-d = p.next()
-d = p.next()
-d = p.next()
+    d = 20550002
 
+    # print min_n / float(min_d)
+    nomas = False
 
-d = 20550002
+    while True:
+        # d = p.next() + 1
+        d += 1
+        z += 1
 
-print min_n / float(min_d)
-nomas = False
+        # if z % 10000 == 0:
+        #     print d
 
-while True:
-    #d = p.next() + 1
-    d += 1
-    z += 1
+        noreducibles = mymaths.euler_phi(d)
 
-    if z % 10000 == 0:
-        print d
+        # vemos si es posible que sea solucion
+        if not R_mayor(noreducibles, d, min_n, min_d):
+            break
 
-    noreducibles = mymaths.euler_phi(d)
+        mini = noreducibles / float(d - 1)
+        if mini < mymin:
+            mymin = mini
+            mini
+            if mini > 0.165:
+                # print noreducibles, d - 1, mini
+                if not nomas:
+                    d += RANGO
+            else:
+                d -= RANGO
+                nomas = True
+            # print noreducibles, d, mymaths.numdivsprimes(d)
 
-    # vemos si es posible que sea solucion
-    if not R_mayor(noreducibles, d, min_n, min_d):
-        break
-
-    mini = noreducibles / float(d - 1)
-    if mini < mymin:
-        mymin = mini
-        mini
-        if mini > 0.165:
-            print noreducibles, d - 1, mini
-            if not nomas:
-                d += RANGO
-        else:
-            d -= RANGO
-            nomas = True
-        #print noreducibles, d, mymaths.numdivsprimes(d)
-
-# si salimos es que tenemos solucion...
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 243: ", d
+    # si salimos es que tenemos solucion...
+    # print "Resultado de 243: ", d
+    return d

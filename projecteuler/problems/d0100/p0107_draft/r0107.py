@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
 # primero una clase que sea una DisjointSet
 
 
@@ -33,9 +31,9 @@ class DisjoinSet(object):
             xroot.rank += 1
 
 
-#http://programmingpraxis.com/2010/04/06/
+# http://programmingpraxis.com/2010/04/06/
 #       minimum-spanning-tree-kruskals-algorithm/
-#http://programmingpraxis.com/2010/04/02/disjoint-sets/
+# http://programmingpraxis.com/2010/04/02/disjoint-sets/
 class DisjointSet(dict):
     def add(self, item):
         self[item] = item

@@ -24,9 +24,10 @@ def calc_max_resto_pe120(a):
 
     return resto_max
 
+
 def result():
     sumatorio = 0
     for a in range(3, 1001):
         sumatorio = sumatorio + calc_max_resto_pe120(a)
-    
+
     return sumatorio

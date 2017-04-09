@@ -16,7 +16,6 @@
 from projecteuler import mymaths
 
 
-
 def r77(lprimos, vdestino, nodo, suma, total):
     """ valor destino, nodo de partida, suma actual, total de aciertos """
     for i in range(nodo, vdestino):
@@ -25,7 +24,7 @@ def r77(lprimos, vdestino, nodo, suma, total):
             continue
         else:
             if suma + lprimos[i] > vdestino:
-                #continue
+                # continue
                 return total
             else:
                 total = r77(lprimos, vdestino, i, suma + lprimos[i], total)

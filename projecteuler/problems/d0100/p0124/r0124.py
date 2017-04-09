@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import operator
+import functools
 
 from projecteuler import mymaths
 
@@ -9,7 +10,7 @@ def rad(n):
     if n == 1:
         return 1
     else:
-        return reduce(operator.mul, mymaths.numdivsprimes(n), 1)
+        return functools.reduce(operator.mul, mymaths.numdivsprimes(n), 1)
 
 
 def result():

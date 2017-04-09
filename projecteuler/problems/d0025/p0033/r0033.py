@@ -24,6 +24,7 @@ def numeros_que_comparten(n1, n2):
     l.sort()
     return l
 
+
 def delete_number(number, n):
     s = str(number).replace(str(n), '')
 

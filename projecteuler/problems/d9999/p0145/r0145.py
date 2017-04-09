@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#!/usr/bin/python
-
 # Algunos enteros positivos n tienen la propiedad de que la suma
 # [ n + invertido(n) ] se compone enteramente de dígitos impares (decimales).
 # Por ejemplo, 36 + 63 = 99 y 409 + 904 = 1313. Vamos a llamar a estos números
@@ -11,9 +9,6 @@
 # Hay 120 números reversibles por debajo de mil.
 #
 # ¿Cuántos números reversibles hay por debajo de mil millones (10^9)?
-
-
-from datetime import datetime
 
 
 def is_reversible(n):
@@ -29,19 +24,19 @@ def is_reversible(n):
     return True
 
 
-start_time = datetime.now()
+def result():
 
-LIMITE = 1000000000
-# LIMITE = 100000
-total = 0
+    LIMITE = 1000000000
+    # LIMITE = 100000
+    total = 0
 
-for n in range(1, LIMITE):
+    for n in range(1, LIMITE):
 
-    if n % 1000000 == 0:
-        print n, total
+        # if n % 1000000 == 0:
+        #     print n, total
 
-    if is_reversible(n):
-        total += 1
+        if is_reversible(n):
+            total += 1
 
-print "Tiempo total: ", datetime.now() - start_time
-print "Resultado de 0145: ", total
+    # print "Resultado de 0145: ", total
+    return total

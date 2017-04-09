@@ -43,7 +43,7 @@ class Triangulo:
 def result():
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     fichero = os.path.join(ROOT_DIR, 'triangles.txt')
-    
+
     f = open(fichero)
 
     inside = 0

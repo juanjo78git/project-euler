@@ -70,7 +70,7 @@ class Monopoly(object):
 
         if goto in ('GO', 'JAIL'):
             # nos vamos a donde esté la casilla definida
-            #self.casilla = self.index(goto)
+            # self.casilla = self.index(goto)
             self.salta_a(goto)
 
     def mueve_ch(self):
@@ -81,7 +81,7 @@ class Monopoly(object):
 
         if goto in ('GO', 'JAIL', 'C1', 'E3', 'H2', 'R1'):
             # nos vamos a donde esté la casilla del 'GO'
-            #self.casilla = self.index(goto)
+            # self.casilla = self.index(goto)
             self.salta_a(goto)
         elif goto == 'NR':
             self.mueve(self.dame_proximo_nr())
@@ -178,7 +178,7 @@ def result():
     for i in m.visitadas:
         l.append([m.visitadas[i], i])
 
-    ls = sorted(l)[-3:]
+    sorted(l)[-3:]
 
     # print "Resultado de 0084: ", m.resultado0084()
     return int(m.resultado0084())

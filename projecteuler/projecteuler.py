@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import os
 import argparse
-import configparser
-import importlib
 import time
 
 from projecteuler import __version__
 from projecteuler import answers
-from datetime import datetime
-# from projecteuler.myproblems import p0004
+
 
 def build_parser():
     """ Parser args """
@@ -19,11 +15,11 @@ def build_parser():
     parser.add_argument('-p', '--problem', type=int, required=True,
                         dest='problem', metavar='PROBLEM',
                         help='Problem from projecteuler.net')
-    
+
     parser.add_argument('-b', '--batch-mode', action='store_true',
                         dest='batch', default=False,
                         help='Batch mode')
-    
+
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s ' + __version__)
 
@@ -35,16 +31,16 @@ def _seconds_to_str(seconds):
     h, m = divmod(m, 60)
     return "%d:%02d:%02d" % (h, m, s)
 
+
 def exec_problem(problem):
     """ Launch problem, return result and time """
-    
+
     pmodule = 'r{}'.format('%04d' % problem)
 
     ns = {}
     fs = 'from projecteuler.results import {} as mod'
     exec(fs.format(pmodule), globals(), ns)
     mod = ns['mod']
-
 
     start_time = time.process_time()
     # start_time = datetime.now()
@@ -55,9 +51,6 @@ def exec_problem(problem):
     tt = time.process_time() - start_time
 
     return r, _seconds_to_str(tt)
-
-
-
 
 
 def main():

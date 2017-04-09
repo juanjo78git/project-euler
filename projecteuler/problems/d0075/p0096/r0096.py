@@ -2,6 +2,7 @@
 
 import os
 
+
 class Sudoku:
     """Un sudoku!!"""
     def __init__(self, cadena):
@@ -9,8 +10,6 @@ class Sudoku:
         for i in range(len(cadena)):
             self.__sudoku.append(int(cadena[i]))
 
-    #def __str__(self):
-    #       return self."
     def __str__(self):
         s = ""
         for i in range(9):
@@ -37,7 +36,7 @@ class Sudoku:
             return []
 
         c, i, j = self.getcord(i)
-        #cubo = self.getcube(c)
+        # cubo = self.getcube(c)
         fila = self.getfile(i)
         columna = self.getcolumn(j)
 

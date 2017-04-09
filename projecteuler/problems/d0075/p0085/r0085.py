@@ -26,5 +26,5 @@ def result():
                 x_res = x
                 y_res = y
 
-    # print "Resultado de 0085: ", 
+    # print "Resultado de 0085: ",
     return (x_res * y_res)

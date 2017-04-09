@@ -3,6 +3,7 @@
 # chapuza extrema
 RESULTADO = 0
 
+
 def triangle(n):
     return int(n*(n+1)//2)
 
@@ -94,7 +95,7 @@ def recursolucion(l, lunida, solucion):
 
 
 def gensolucion(l, lunida):
-    resultado = 0
+    # resultado = 0
     for i in l[0]:
         lunidaaux = list(lunida)
         lunidaaux.remove(i)

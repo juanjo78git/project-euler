@@ -27,7 +27,7 @@ def floyd_warshall(ady, nn):
         path[i][i] = 0
 
     for k in range(0, nn):
-        #print('fw:', k)
+        # print('fw:', k)
         for i in range(0, nn):
             for j in range(0, nn):
                 # estos valores no nos interesan, ya que de la diagonal
@@ -109,4 +109,3 @@ def result():
 
     # print('Resultado 0081:', int(p[0][(dim*dim)-1]))
     return int(p[0][(dim*dim)-1])
-

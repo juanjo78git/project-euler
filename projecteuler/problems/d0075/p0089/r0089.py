@@ -2,6 +2,7 @@
 
 import os
 
+
 class Roman:
     """ Número romano... """
     def __init__(self, romano):
@@ -51,11 +52,11 @@ class Roman:
 
         # Para comprobar con la librería roman de python, pero hay números que
         # no detecta bien la librería y que mi clase si lo hace.
-        #try:
-            #if roman.fromRoman(self._romano) != total:
-                #print "No son iguales!!!", self._romano
-        #except:
-            #print "Error! en, ", self._romano
+        # try:
+            # if roman.fromRoman(self._romano) != total:
+                # print "No son iguales!!!", self._romano
+        # except:
+            # print "Error! en, ", self._romano
 
         return total
 
@@ -127,7 +128,7 @@ class Roman:
 def result():
     len_org = 0
     len_fin = 0
-    
+
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     fichero = os.path.join(ROOT_DIR, 'roman.txt')
 
@@ -136,7 +137,8 @@ def result():
         r = Roman(s)
 
         len_org += len(s)
-        n = r._calc_numero()
+        # n = r._calc_numero()
+        r._calc_numero()
         len_fin += len(r._calc_roman())
 
     # print "Resultado de 0089: ", len_org - len_fin

@@ -1,4 +1,4 @@
-#!/usr/bin/pypy
+# -*- coding: utf-8 -*-
 
 # Consider the divisors of 30: 1,2,3,5,6,10,15,30.
 # It can be seen that for every divisor d of 30, d+30/d is prime.
@@ -15,7 +15,8 @@ def miller_rabin_pass(a, s, d, n):
     a_to_power = pow(a, d, n)
     if a_to_power == 1:
         return True
-    for i in xrange(s-1):
+    # for i in xrange(s-1):
+    for i in range(s-1):
         if a_to_power == n - 1:
             return True
         a_to_power = (a_to_power * a_to_power) % n
@@ -29,7 +30,8 @@ def miller_rabin(n):
         d >>= 1
         s += 1
 
-    for repeat in xrange(20):
+    # for repeat in xrange(20):
+    for repeat in range(20):
         a = 0
         while a == 0:
             a = random.randrange(n)
@@ -74,25 +76,26 @@ def isnumdivprimes(n):
 
             p = d + di
 
-            #if not isprime(p):
+            # if not isprime(p):
             if not miller_rabin(p):
                 return False
     return True
 
 
-rango = 100000000
+def result():
+    rango = 100000000
 
-# 1 cumple, lo ponemos a mano
-total = 1
+    # 1 cumple, lo ponemos a mano
+    total = 1
 
-# solo tratamos los pares
-for n in range(2, rango + 1, 2):
+    # solo tratamos los pares
+    for n in range(2, rango + 1, 2):
 
-    if n % 100000 == 0:
-        print (100*n)/float(rango)
+        # if n % 100000 == 0:
+        #     print (100*n)/float(rango)
 
-    if isnumdivprimes(n):
-        total = total + n
+        if isnumdivprimes(n):
+            total = total + n
 
-
-print("Resultado para 0357:", total)
+    # print("Resultado para 0357:", total)
+    return total

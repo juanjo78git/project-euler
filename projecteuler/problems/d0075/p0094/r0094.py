@@ -39,7 +39,7 @@ def result():
     r1 = True
     r2 = True
 
-    ## podría meter cada sección en un hilo, así vamos el doble de rápidos
+    # podría meter cada sección en un hilo, así vamos el doble de rápidos
     while r1 or r2:
 
         p = perimetro(n, n, n - 1)

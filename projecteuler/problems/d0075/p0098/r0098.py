@@ -106,12 +106,12 @@ def result():
     squares = getdicsquares(maximo)
     # print 'Generación de cuadrados terminada'
     re = 0
-    #print dwords
+    # print dwords
 
     for k in dwords.keys():
         for w in dwords[k]:
             la = get_anagrames(dwords, w)
-            #print w, la
+            # print w, la
             # ya tenemos lo que es la lista de anagramas, ahora toca buscar un
             # número dentro de los cuadrados que nos sirva
             if len(la) > 0:
@@ -120,11 +120,15 @@ def result():
                     ok, relation = getrelation(w, n)
 
                     if ok:
-                        #print w, n
-                        # llegamos aquí, tenemos una letra, un cuadrado y sabemos
-                        # que tiene anagramas, pues buscamos en sus anagramas
-                        # si vale la relación que tenemos
-                        pos = es_posible_resultado(la, relation, squares[len(w)])
+                        # print w, n
+
+                        # llegamos aquí, tenemos una letra, un cuadrado
+                        # y sabemos que tiene anagramas, pues buscamos en sus
+                        # anagramas si vale la relación que tenemos
+
+                        pos = es_posible_resultado(la,
+                                                   relation,
+                                                   squares[len(w)])
                         if re < pos:
                             re = pos
 

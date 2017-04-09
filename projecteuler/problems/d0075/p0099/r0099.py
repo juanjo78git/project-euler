@@ -21,7 +21,7 @@ def result():
     i = 1
     i_mayor = 1
 
-    #bucle principal
+    # bucle principal
     for linea in file:
 
         i = i + 1

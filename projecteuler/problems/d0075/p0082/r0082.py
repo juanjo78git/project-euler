@@ -1,7 +1,6 @@
 #!/usr/bin/pypy
 
-#Project Euler 0082
-
+# Project Euler 0082
 
 import os
 

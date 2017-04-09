@@ -26,7 +26,6 @@ def get_total_for_blues(blues):
     return tmp_3 / 2
 
 
-
 def result():
     n = A011900()
 
