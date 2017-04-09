@@ -32,4 +32,4 @@ def result():
     powers.sort()
 
     # print "Resultado de 0123: ", powers[TH - 1]
-    result(powers[TH - 1])
+    return powers[TH - 1]

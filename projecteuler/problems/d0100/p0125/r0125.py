@@ -44,7 +44,7 @@ def is_0125(squares, p):
 
 def result():
     LIMITE = 100000000
-    LIMITE = 1000
+    # LIMITE = 1000
 
     squares = gen_list_square(LIMITE)
     palindromic = gen_list_palindromic(LIMITE)

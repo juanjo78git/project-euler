@@ -7,7 +7,7 @@ def genlistprimeslimit(LIMIT):
     l = []
     genp = mymaths.prime()
     while True:
-        p = genp.next()
+        p = genp.__next__()
         if p < ((LIMIT // 2) + 1):
             l.append(p)
         else:

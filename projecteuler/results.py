@@ -78,7 +78,7 @@ import projecteuler.problems.d0075.p0075.r0075 as r0075
 import projecteuler.problems.d0075.p0076.r0076 as r0076
 import projecteuler.problems.d0075.p0077.r0077 as r0077
 import projecteuler.problems.d0075.p0078.r0078 as r0078
-# import projecteuler.problems.d0075.p0079.r0079 as r0079
+import projecteuler.problems.d0075.p0079.r0079 as r0079
 import projecteuler.problems.d0075.p0080.r0080 as r0080
 import projecteuler.problems.d0075.p0081.r0081 as r0081
 import projecteuler.problems.d0075.p0082.r0082 as r0082

@@ -11,8 +11,8 @@ def result():
 
     for n in range(4, LIMITE):
 
-        if n % 1000 == 0:
-            print(n)
+        # if n % 1000 == 0:
+        #     print(n)
 
         # primero vemos que no lo hemos estudiado ya
         # if n in calculados:
@@ -32,8 +32,8 @@ def result():
             # condiciones de salida
             if nex == n:
                 if len(cadena_maxima) < len(cadena):
-                    print(cadena_maxima)
-                    print(cadena)
+                    # print(cadena_maxima)
+                    # print(cadena)
                     cadena_maxima = cadena
                 break
 

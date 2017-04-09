@@ -25,5 +25,5 @@ def result():
         if is_0206(square):
             break
 
-    print(square, n)
+    # print(square, n)
     return n

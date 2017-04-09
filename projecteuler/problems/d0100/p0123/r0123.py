@@ -15,7 +15,7 @@ def result():
 
     n = 0
     while True:
-        p = primegen.next()
+        p = primegen.__next__()
         n += 1
         r = get_resto(n, p)
         if r > MAXIMO:
