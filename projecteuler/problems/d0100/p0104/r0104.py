@@ -23,7 +23,7 @@ def presufpan(n):
     suf = str(n % 1000000000)[-9:]
 
     if pandigital(suf):
-        pre = str(n / 1000000000)[0:9]
+        pre = str(n // 1000000000)[0:9]
         if pandigital(pre):
             return True
     return False

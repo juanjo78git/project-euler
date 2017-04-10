@@ -69,7 +69,7 @@ def percent_bouncy(p):
 
         if ((t / float(n)) * 100) >= p:
             # print n
-            return
+            return n
 
         n += 1
 
