@@ -71,4 +71,4 @@ def result():
         n_sum += phi(lprimes, n)
 
     # print "Resultado 0072: ", n_sum
-    return n_sum
+    return int(n_sum)

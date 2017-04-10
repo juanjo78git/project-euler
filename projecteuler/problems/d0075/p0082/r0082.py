@@ -111,4 +111,4 @@ def result():
                 resultado = p[i][j]
 
     # print('Resultado 0082:', resultado)
-    return resultado
+    return int(resultado)
