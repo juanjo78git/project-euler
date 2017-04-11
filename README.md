@@ -7,7 +7,8 @@ Cuando tengo tiempo, intento resolver algunos ejercicios, nunca miro
 soluciones, y aplico la filosofía del proyecto: "*...there is a fine line
 between researching ideas and using the answer you found on another
 website...*" intentando siempre tener una idea propia, o una intuición
-e intentar encontrar soluciones posibles. Nunca buscar la solución directa.
+y luego explorar a partir de ese primer punto.
+Nunca buscar la solución directa.
 
 ## Perfil en Project Euler
 
@@ -101,9 +102,9 @@ Etc.
 ## Repositorio antiguo
 
 Anteriormente el repositorio estaba en [Bitbucket] como privado, ya que no
-quería que nadie hiciera trampas, eso fue hace casi 4 años. Hoy en día hay
+quería que nadie hiciera trampas, eso fue en [2012]. Hoy en día hay
 suficientes repositorios en GitHub con las soluciones que no tiene sentido no
-publicar ya mi repositorio.
+publicar mi repositorio.
 
 ## Licencia
 
@@ -115,3 +116,4 @@ Todo el código bajo la [licencia MIT][license]
 [profile]:https://projecteuler.net/profile/pnicolas.png
 [license]:LICENSE
 [Tiempos]:TIME.md
+[2012]:bdd064a
