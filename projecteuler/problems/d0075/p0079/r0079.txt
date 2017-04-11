@@ -1,0 +1,47 @@
+A common security method used for online banking is to ask the user for three
+random characters from a passcode. For example, if the passcode was 531278,
+they may ask for the 2nd, 3rd, and 5th characters; the expected reply would be:
+317.
+
+The text file, keylog.txt, contains fifty successful login attempts.
+
+Given that the three characters are always asked for in order, analyse the file
+so as to determine the shortest possible secret passcode of unknown length.
+
+IDEAS
+-----
+
+Imagina que el número secreto fuera 53178 y tenemos el keylog siguiente:
+317, 578, 178, 538
+
+Dibujo un grafo dirigido
+Número 317:
+
+         (3) --> (1) --> (7)
+
+Añado número 578:
+
+         (3) --> (1) --> (7) --> (8)
+                          ^
+                          |
+         (5) ------------ +
+
+Añadimos número 178: Igual, ya que la ruta 1->7->8 ya está
+
+Añadimos el número 538, que únicamente añade un nuevo arco del 3->8
+
+          +-----------------------+
+          |                       v
+         (3) --> (1) --> (7) --> (8)
+          ^               ^
+          |               |
+         (5) ------------ +
+
+Ya tenemos nuestro grafo, ahora únicamente hay que realizar dos acciones:
+
+  1. Localizar el inicio, que será el nodo con únicamente salidas: 5
+  2. Utilizar algún algoritmo que pase por todos los nodos:
+
+      Algoritmo: 5->3->1->7->8
+
+Bien, ya tendríamos nuestro número: 53178
