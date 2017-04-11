@@ -116,4 +116,4 @@ Todo el código bajo la [licencia MIT][license]
 [profile]:https://projecteuler.net/profile/pnicolas.png
 [license]:LICENSE
 [Tiempos]:TIME.md
-[2012]:bdd064a
+[2012]:https://github.com/penicolas/project-euler/commit/bdd064ab688d16a17ec19976ced31fcf0b9fb38a
