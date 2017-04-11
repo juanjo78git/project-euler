@@ -11,7 +11,7 @@ e intentar encontrar soluciones posibles. Nunca buscar la solución directa.
 
 ## Perfil en Project Euler
 
-[profile]
+![profile]
 
 ## Cómo instalar el repositorio
 
