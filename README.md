@@ -11,7 +11,7 @@ e intentar encontrar soluciones posibles. Nunca buscar la solución directa.
 
 ## Perfil en Project Euler
 
-![profile]
+[profile]
 
 ## Cómo instalar el repositorio
 
@@ -35,8 +35,6 @@ $ python -m projecteuler.projecteuler
 
 Fácil, ahora que está todo pasado a un ejecutable unitario:
 
-Uso:
-
 ```
 usage: projecteuler [-h] -p PROBLEM [-b] [-v]
 
@@ -52,7 +50,7 @@ Ejemplo:
 
 ```Shell
 $ projecteuler -p 1
-Problem: 26, Result: 983, TotalTime: 0:00:00.460004
+1;233168;0:00:00
 # Ejemplo modo batch
 $ projecteuler -p 26 -b
 26;983;0:00:00.410004
@@ -68,11 +66,9 @@ $ projecteuler -p 26 -b
 ## Cómo está organizado el repositorio
 
 En las carpetas `projecteuler\problems` se encuentran las soluciones a los
-problemas ya resueltos, existen algunos errores todavía de ejercicios sin
-soluciones que funcionen (ejemplo 33) pero que se irán añadiendo.
-
-Por otra parte, tengo empezados algunos otros, que se encuentran marcados como
-XXXX_draft, no funcionan y a veces únicamente son ideas vagas.
+problemas ya resueltos. Por otra parte, tengo empezados algunos otros, que se
+encuentran marcados como XXXX_draft, no funcionan y a veces únicamente son
+ideas vagas.
 
 
 ## Tiempos
@@ -83,14 +79,6 @@ Para ver en detalle los tiempos de cada uno de los problemas:
 
 Algunos son desastrosos...
 
-
-## Ejercicios que fallan (por ahora)
-
-Reescribiendo en Python3 y para que todo sea un único ejecutable he dado con
-los siguientes ejercicios que no funcionan o no estaban completos:
-
- * 33 (Programado a medio, seguramente lo terminé en IDE y no se guardó)
- * 46 (No termina, testeando en pypy la versión original)
 
 ## Una librería sencilla: mymaths.py 
 
@@ -108,6 +96,7 @@ En `mymaths.py` incluyo algunas funciones típicas que estoy usando mucho:
 - `prime()`
 - `trianglenumber()`
 
+Etc.
 
 ## Repositorio antiguo
 
