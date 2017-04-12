@@ -9,8 +9,8 @@
 # Find the lowest sum for a set of five primes for which any two primes
 # concatenate to produce another prime.
 
-# lprimes= [2,23,41,73,87]
-# list(itertools.combinations(lprimes, 2))
+# primess= [2,23,41,73,87]
+# list(itertools.combinations(primess, 2))
 
 # luego con esta lista solo tengo que ir cogiendo cada uno de los elementos
 # y ver que tanto en un orden como en otro es un primo...
@@ -30,21 +30,21 @@ def isprime(n):
 def lprimos(n):
     """ una lista de n primos """
     nprime = 2
-    lprime = []
-    while len(lprime) != n:
+    primes = []
+    while len(primes) != n:
         if isprime(nprime):
-            lprime.append(nprime)
+            primes.append(nprime)
         nprime = nprime + 1
-    return lprime
+    return primes
 
 
 def concatprimes(lcomb):
-    p1 = lcomb[0]
-    p2 = lcomb[1]
-    p12 = int(str(p1) + str(p2))
-    p21 = int(str(p2) + str(p1))
+    prime1 = lcomb[0]
+    prime2 = lcomb[1]
+    prime12 = int(str(prime1) + str(prime2))
+    prime21 = int(str(prime2) + str(prime1))
 
-    if isprime(p12) and isprime(p21):
+    if isprime(prime12) and isprime(prime21):
         return True
     else:
         return False
@@ -63,89 +63,64 @@ def compcombinac(lxprimes, newprime):
 
     return True
 
+def test_posible_solution(primes, newprime, current_solution):
+
+    if current_solution:
+        if sum(primes) + newprime > current_solution:
+            return False
+
+    return compcombinac(primes, newprime)
+
 
 def result():
+
     TOTAL_PRIMES = 5000
-    lprime = lprimos(TOTAL_PRIMES)
-    lresult = []
+    primes = lprimos(TOTAL_PRIMES)
+    solution = None
 
     for pi1 in range(0, TOTAL_PRIMES-4):
         print(pi1)
 
-        p1 = lprime[pi1]
+        prime1 = primes[pi1]
 
         for pi2 in range(pi1+1, TOTAL_PRIMES-3):
 
-            l2primes = []
-            p2 = lprime[pi2]
+            prime2 = primes[pi2]
+            lp = [prime1]
 
-            l2primes.append(p1)
-            # l2primes.append(p2)
-
-            if sum(l2primes) + p2 > sum(lresult) and len(lresult) > 0:
-                continue
-
-            if not compcombinac(l2primes, p2):
+            if not test_posible_solution(lp, prime2, solution):
                 continue
 
             for pi3 in range(pi2+1, TOTAL_PRIMES-2):
 
-                l3primes = []
-                p3 = lprime[pi3]
+                prime3 = primes[pi3]
+                lp = [prime1, prime2]
 
-                l3primes.append(p1)
-                l3primes.append(p2)
-                # l3primes.append(p3)
-
-                if sum(l3primes) + p3 > sum(lresult) and len(lresult) > 0:
-                    continue
-
-                if not compcombinac(l3primes, p3):
+                if not test_posible_solution(lp, prime3, solution):
                     continue
 
                 for pi4 in range(pi3+1, TOTAL_PRIMES-1):
 
-                    l4primes = []
-                    p4 = lprime[pi4]
+                    prime4 = primes[pi4]
+                    lp = [prime1, prime2, prime3]
 
-                    l4primes.append(p1)
-                    l4primes.append(p2)
-                    l4primes.append(p3)
-                    # l4primes.append(p4)
-
-                    if sum(l4primes) + p4 > sum(lresult) and len(lresult) > 0:
+                    if not test_posible_solution(lp, prime4, solution):
                         continue
-
-                    if not compcombinac(l4primes, p4):
-                        continue
-                    # else:
-                    #    print(l4primes)
 
                     for pi5 in range(pi4+1, TOTAL_PRIMES):
-                        p5 = lprime[pi5]
 
-                        l5primes = []
+                        prime5 = primes[pi5]
+                        lp = [prime1, prime2, prime3, prime4]
 
-                        l5primes.append(p1)
-                        l5primes.append(p2)
-                        l5primes.append(p3)
-                        l5primes.append(p4)
-                        # l5primes.append(p5)
-
-                        partial_sum = sum(l5primes) + p5
-
-                        if partial_sum > sum(lresult) and len(lresult) > 0:
+                        if not test_posible_solution(lp, prime5, solution):
                             continue
+                        else:
+                            ls = [prime1, prime2, prime3, prime4, prime5]
+                            solution = sum(ls)
+                            print('Possible solution: ', ls, solution)
+                            
 
-                        if compcombinac(l5primes, p5):
-                            lr = len(lresult)
-                            l5primes.append(p5)
-                            if lr > 0 and sum(l5primes) < sum(lresult):
-                                lresult = l5primes
-
-                            print("Un resultado 0060:",
-                                  sum(l5primes), l5primes)
                             # exit(0)
 
-    # print "Un resultado 0060:", sum(lresult), lresult
-    return sum(lresult)
+    # print "Un resultado 0060:", sum(solution), solution
+    return solution
