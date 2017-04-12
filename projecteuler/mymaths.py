@@ -173,6 +173,23 @@ def genlprimes(n):
     return l
 
 
+def genprimes(n1, n2):
+    """ genera una lista de primos entre n1 <= prime <= n2 """
+    l = []
+    p = prime()
+    myprime = p.__next__()
+    
+    # primero saltamos los que sean menores
+    while myprime < n1:
+        myprime = p.__next__()
+
+    while myprime <= n2:
+        l.append(myprime)
+        myprime = p.__next__()
+
+    return l
+
+
 def factores(n):
     """ factores, pero sin repetir de n """
     lf = []

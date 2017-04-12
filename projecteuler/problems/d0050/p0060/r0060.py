@@ -15,8 +15,6 @@
 # luego con esta lista solo tengo que ir cogiendo cada uno de los elementos
 # y ver que tanto en un orden como en otro es un primo...
 
-import itertools
-
 
 # es un número primo
 def isprime(n):
@@ -52,49 +50,60 @@ def concatprimes(lcomb):
         return False
 
 
-def compcombinac(lxprimes):
-    llcomb = list(itertools.combinations(lxprimes, 2))
+def compcombinac(lxprimes, newprime):
+    # llcomb = list(itertools.combinations(lxprimes, 2))
 
-    for lcomb in llcomb:
-        if not concatprimes(lcomb):
+    for prime in lxprimes:
+        if not concatprimes([prime, newprime]):
             return False
+
+    # for lcomb in llcomb:
+    #     if not concatprimes(lcomb):
+    #         return False
 
     return True
 
 
 def result():
-    nprimos = 5000
-    lprime = lprimos(nprimos)
+    TOTAL_PRIMES = 5000
+    lprime = lprimos(TOTAL_PRIMES)
     lresult = []
 
-    for pi1 in range(0, nprimos-4):
+    for pi1 in range(0, TOTAL_PRIMES-4):
+        print(pi1)
 
         p1 = lprime[pi1]
 
-        for pi2 in range(pi1+1, nprimos-3):
+        for pi2 in range(pi1+1, TOTAL_PRIMES-3):
 
             l2primes = []
             p2 = lprime[pi2]
 
             l2primes.append(p1)
-            l2primes.append(p2)
+            # l2primes.append(p2)
 
-            if not compcombinac(l2primes):
+            if sum(l2primes) + p2 > sum(lresult) and len(lresult) > 0:
                 continue
 
-            for pi3 in range(pi2+1, nprimos-2):
+            if not compcombinac(l2primes, p2):
+                continue
+
+            for pi3 in range(pi2+1, TOTAL_PRIMES-2):
 
                 l3primes = []
                 p3 = lprime[pi3]
 
                 l3primes.append(p1)
                 l3primes.append(p2)
-                l3primes.append(p3)
+                # l3primes.append(p3)
 
-                if not compcombinac(l3primes):
+                if sum(l3primes) + p3 > sum(lresult) and len(lresult) > 0:
                     continue
 
-                for pi4 in range(pi3+1, nprimos-1):
+                if not compcombinac(l3primes, p3):
+                    continue
+
+                for pi4 in range(pi3+1, TOTAL_PRIMES-1):
 
                     l4primes = []
                     p4 = lprime[pi4]
@@ -102,14 +111,17 @@ def result():
                     l4primes.append(p1)
                     l4primes.append(p2)
                     l4primes.append(p3)
-                    l4primes.append(p4)
+                    # l4primes.append(p4)
 
-                    if not compcombinac(l4primes):
+                    if sum(l4primes) + p4 > sum(lresult) and len(lresult) > 0:
+                        continue
+
+                    if not compcombinac(l4primes, p4):
                         continue
                     # else:
                     #    print(l4primes)
 
-                    for pi5 in range(pi4+1, nprimos):
+                    for pi5 in range(pi4+1, TOTAL_PRIMES):
                         p5 = lprime[pi5]
 
                         l5primes = []
@@ -118,15 +130,21 @@ def result():
                         l5primes.append(p2)
                         l5primes.append(p3)
                         l5primes.append(p4)
-                        l5primes.append(p5)
+                        # l5primes.append(p5)
 
-                        if compcombinac(l5primes):
+                        partial_sum = sum(l5primes) + p5
+
+                        if partial_sum > sum(lresult) and len(lresult) > 0:
+                            continue
+
+                        if compcombinac(l5primes, p5):
                             lr = len(lresult)
+                            l5primes.append(p5)
                             if lr > 0 and sum(l5primes) < sum(lresult):
                                 lresult = l5primes
 
-                            # print("Un resultado 0060:",
-                            #       sum(l5primes), l5primes)
+                            print("Un resultado 0060:",
+                                  sum(l5primes), l5primes)
                             # exit(0)
 
     # print "Un resultado 0060:", sum(lresult), lresult

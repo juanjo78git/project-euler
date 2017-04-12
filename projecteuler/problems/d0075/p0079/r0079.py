@@ -53,4 +53,3 @@
 def result():
     """ Resuelto a lapiz """
     return 73162890
-
