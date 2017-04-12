@@ -118,4 +118,7 @@ def solution(p):
                  206: 1389019170,
                  357: 1739023853137}
 
-    return solutions[p]
+    if p in solutions:
+        return solutions[p]
+    else:
+        return None

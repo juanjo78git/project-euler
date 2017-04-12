@@ -53,6 +53,20 @@ def exec_problem(problem):
     return r, _seconds_to_str(tt)
 
 
+def print_result(problem, result, totaltime, expected):
+
+    s = '{};{};{}'.format(problem, result, totaltime)
+
+    if expected:
+        if result != expected:
+            print('{};ERROR_EXPECTED:{}'.format(s, expected))
+        else:
+            print(s)
+    else:
+        print('{};ERROR_NO_ANSWER'.format(s))
+
+
+
 def main():
 
     MAX_PROBLEM = 500
@@ -68,26 +82,12 @@ def main():
             result, totaltime = exec_problem(n)
             # expected = solutions[n]
             expected = answers.solution(n)
-            if result != expected:
-                print('Problem: {}, Result: {}, Expected: {}'.format(n,
-                                                                     result,
-                                                                     expected))
-                # raise NameError('Invalid result')
-                sys.exit(2)
-            print('{};{};{}'.format(n, result, totaltime))
+            print_result(n, result, totaltime, expected)
+
     else:
         result, totaltime = exec_problem(number)
         expected = answers.solution(number)
-        if result != expected:
-            print('Problem: {}, Result: {}, Expected: {}'.format(number,
-                                                                 result,
-                                                                 expected))
-            # raise NameError('Invalid result')
-            sys.exit(2)
-        # print('Problem: {}, Result: {}, TotalTime: {}'.format(number,
-        #                                                       result,
-        #                                                       totaltime))
-        print('{};{};{}'.format(number, result, totaltime))
+        print_result(number, result, totaltime, expected)
 
 
 if __name__ == '__main__':
