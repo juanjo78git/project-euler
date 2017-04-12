@@ -32,9 +32,23 @@ def result():
     LIMITE = 1000000
     # LIMITE = 100
     total = 0
+    primos = []
 
     # Genera unos 70 mil
-    primos = mymaths.genprimes(5, LIMITE)
+    # primos = mymaths.genprimes(5, LIMITE)
+    p = mymaths.prime()
+    
+    while True:
+        p1 = p.__next__()
+
+        if p1 >= 5:
+            primos.append(p1)
+
+            # salimos cuando hemos metido p2
+            if p1 > LIMITE:
+                break
+
+    print(primos)
 
     for i in range(0, len(primos) - 1):
         p1 = primos[i]
