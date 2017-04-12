@@ -79,7 +79,6 @@ def result():
     solution = None
 
     for pi1 in range(0, TOTAL_PRIMES-4):
-        print(pi1)
 
         prime1 = primes[pi1]
 
@@ -117,7 +116,7 @@ def result():
                         else:
                             ls = [prime1, prime2, prime3, prime4, prime5]
                             solution = sum(ls)
-                            print('Possible solution: ', ls, solution)
+                            # print('Possible solution: ', ls, solution)
                             
 
                             # exit(0)
