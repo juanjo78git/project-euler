@@ -48,13 +48,11 @@ def result():
             if p1 > LIMITE:
                 break
 
-    print(primos)
-
     for i in range(0, len(primos) - 1):
         p1 = primos[i]
         p2 = primos[i + 1]
         s = calcula_s(p1, p2)
-        print(p1, p2, s)
+        # print(p1, p2, s)
         total += s
 
     return total
