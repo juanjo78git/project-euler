@@ -21,6 +21,9 @@ def isstringpalindrome(s):
 
 def isprime(n):
     """ Retorna si un numero es primo """
+    if n == 0:
+        return False
+
     if n == 1:
         return False
 
