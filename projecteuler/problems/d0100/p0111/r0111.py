@@ -44,26 +44,20 @@ from projecteuler import mymaths
 
 def M(n, d):
     """ Calcula el máximo número de repeticiones del número d de tamaño n """
-    
+
     # Tratamos caso que ddd...d sea primo
     if mymaths.isprime(int(str(d) * n)):
         return n
 
     for i in range(1, n):
-        # print('i', i)
 
         dx = str(d) * (n - i)
-        # print('dx', dx)
 
         for j in range(0, 10 ** i):
-            # print('j', j)
 
             v = ('0' * (i - len(str(j)))) + str(j)
-            # print('v', v)
-
             dxv = dx + v
-            # print('dxv', dxv)
-            
+
             for p in list(set(itertools.permutations(dxv))):
                 p1 = ''.join(p)
 
@@ -72,30 +66,24 @@ def M(n, d):
                     continue
 
                 if mymaths.isprime(int(p1)):
-                    # print('p', p)
                     return n - i
 
 
 def N_S(n, d):
-    
+
     primes = []
-    
+
     m = M(n, d)
     i = n - m
-    # print('m i', m, i)
 
-    # print('dx', dx)
     dx = str(d) * (n - i)
 
     for j in range(0, 10 ** i):
-        # print('j', j)
 
         v = ('0' * (i - len(str(j)))) + str(j)
-        # print('v', v)
 
         dxv = dx + v
-        # print('dxv', dxv)
-        
+
         for p in list(set(itertools.permutations(dxv))):
             p1 = int(''.join(p))
 
@@ -104,26 +92,19 @@ def N_S(n, d):
                 continue
 
             if mymaths.isprime(p1):
-                # print(p1)
-                # total += 1
-                # summ += int(p1)
-                if not p1 in primes:
+                if p1 not in primes:
                     primes.append(p1)
 
     return len(primes), sum(primes)
 
 
-    
-
 def result():
 
     d = 10
     t = 0
-   
+
     for i in range(0, 10):
         v_N, v_S = N_S(d, i)
-        # print(i, v_N, v_S)
         t += v_S
-    
-    
+
     return t

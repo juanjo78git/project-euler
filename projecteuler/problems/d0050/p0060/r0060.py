@@ -16,7 +16,6 @@
 # y ver que tanto en un orden como en otro es un primo...
 
 
-# es un número primo
 def isprime(n):
     if n == 1:
         return False
@@ -51,20 +50,14 @@ def concatprimes(lcomb):
 
 
 def compcombinac(lxprimes, newprime):
-    # llcomb = list(itertools.combinations(lxprimes, 2))
-
     for prime in lxprimes:
         if not concatprimes([prime, newprime]):
             return False
 
-    # for lcomb in llcomb:
-    #     if not concatprimes(lcomb):
-    #         return False
-
     return True
 
-def test_posible_solution(primes, newprime, current_solution):
 
+def test_posible_solution(primes, newprime, current_solution):
     if current_solution:
         if sum(primes) + newprime > current_solution:
             return False
@@ -116,10 +109,5 @@ def result():
                         else:
                             ls = [prime1, prime2, prime3, prime4, prime5]
                             solution = sum(ls)
-                            # print('Possible solution: ', ls, solution)
-                            
 
-                            # exit(0)
-
-    # print "Un resultado 0060:", sum(solution), solution
     return solution

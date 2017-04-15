@@ -37,7 +37,7 @@ def result():
     # Genera unos 70 mil
     # primos = mymaths.genprimes(5, LIMITE)
     p = mymaths.prime()
-    
+
     while True:
         p1 = p.__next__()
 
