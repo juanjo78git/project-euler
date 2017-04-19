@@ -1,0 +1,153 @@
+ideas:
+
+2017/04/19
+
+Podemos ver que
+
+n = xy / x + y
+
+Y luego no tengo ni idea de como seguir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hemos llegado a ver que:
+
+1/x + 1/y = 1/n
+
+
+
+    n = numero
+    x = m*n
+    y = a
+
+Luego tenemos que:
+
+y = m*n/m-1
+
+Luego como (m) y (m-1) NUNCA van a ser divisibles tiene que ser a la fuerza
+que (m-1) sea divisible de n.
+
+Ejemplo de lo que comento arriba:
+
+n = 4 m=(2, 3, 5) ya que m-1=(1, 2, 4) que son TODOS los divisibles de 4
+
+n = 6 m=(2, 3, 4, 7) ya que m-1(1, 2, 3, 6) son TODOS los divisibles de 6
+
+Me lleva a pensar que únicamente tengo que calcular los divisores de un número
+en plan:
+
+total_de_divisores(4) --> 3
+total_de_divisores(6) --> 4
+total_de_divisores(30) --> 8
+
+Pero ésto, tampoco me es válido, ya que no sirve, tras muuuucho rato procesando
+solo tengo valores de "n" con 100 divisores...
+
+Ok, simplificamos
+
+¿Y si obtengo los números primos?
+
+Tenemos n = 24 con 8 divisores
+
+    1. primos: 1, 2, 3
+    2. 2 pas : 4, 6, 8
+    3. 3 pas : 12, 24   
+
+Otra idea:
+
+divisores | n
+01 1
+02 2
+03 4
+04 6
+05 16
+06 12
+07 64
+08 24
+09 36
+10 48
+12 60
+14 192
+15 144
+16 120
+18 180
+20 240
+21 576
+24 360
+27 900
+28 960
+30 720
+32 840
+
+
+otra idea:
+
+divisores, n, lista de primos...
+120 55440 [2, 3, 5, 7, 11]
+112 60480 [2, 3, 5, 7]
+52 61440 [2, 3, 5]
+17 65536 [2]
+55 82944 [2, 3]
+128 83160 [2, 3, 5, 7, 11]
+126 100800 [2, 3, 5, 7]
+88 107520 [2, 3, 5, 7]
+
+144 110880 [2, 3, 5, 7, 11]
+
+Nos centramos en éste último, que como vemos, tiene esos números primos quizás
+consiste en combinar esos números para obtener todos los posibles divisores
+
+>>> lnumdivs(110880)
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 20, 21, 22, 24, 28, 30,
+32, 33, 35, 36, 40, 42, 44, 45, 48, 55, 56, 60, 63, 66, 70, 72, 77, 80, 84, 88,
+90, 96, 99, 105, 110, 112, 120, 126, 132, 140, 144, 154, 160, 165, 168, 176,
+180, 198, 210, 220, 224, 231, 240, 252, 264, 280, 288, 308, 315, 330, 336, 352,
+360, 385, 396, 420, 440, 462, 480, 495, 504, 528, 560, 616, 630, 660, 672, 693,
+720, 770, 792, 840, 880, 924, 990, 1008, 1056, 1120, 1155, 1232, 1260, 1320,
+1386, 1440, 1540, 1584, 1680, 1760, 1848, 1980, 2016, 2310, 2464, 2520, 2640,
+2772, 3080, 3168, 3360, 3465, 3696, 3960, 4620, 5040, 5280, 5544, 6160, 6930,
+7392, 7920, 9240, 10080, 11088, 12320, 13860, 15840, 18480, 22176, 27720,
+36960, 55440]
+
+¿Lo ves, va montando TODOS los posibles números con esos primos?
+
+
+xy - nx -ny = 0
