@@ -22,6 +22,11 @@
 # exactamente del 99%.
 
 
+def b(n):
+    """ funciona """
+    return n*(n+1)*(n+2)*(n+3)*(n+4)*(n+5)*(n+6)*(n+7)*(n+8)//math.factorial(9)
+
+
 def is_bouncy(n):
     """ devuelve si es de tipo variable (bouncy en ingles) """
     decreciente = False
@@ -29,7 +34,7 @@ def is_bouncy(n):
     c_ant = None
 
     if len(str(n)) == 1:
-        return False
+        return False, 0
 
     for c in str(n):
 
@@ -48,15 +53,18 @@ def is_bouncy(n):
 
         elif creciente:
             if c_ant > c:
-                return True
+                return True, 0
 
         elif decreciente:
             if c_ant < c:
-                return True
+                return True, 0
 
         c_ant = c
 
-    return False
+    if decreciente:
+        return False, 1
+    else:
+        return False, 2
 
 
 def result():
@@ -70,7 +78,12 @@ def result():
     #     print(10 ** exp, t)
 
     t = 0
-    for i in range(1, 1000):
-        if not is_bouncy(i):
-            print(i)
+    mode = 0
+    b = True
+    for i in range(1, 1000000):
+        b, mode = is_bouncy(i)
+        if not b:
+            # if mode == 1:
+            #     print(mode, "%04d" % i)
             t += 1
+    return t
