@@ -10,6 +10,13 @@ website...*" intentando siempre tener una idea propia, o una intuición
 y luego explorar a partir de ese primer punto.
 Nunca buscar la solución directa.
 
+## Los inicios
+
+Era 2008 y en la empresa donde trabajaba nos dejaron mucho tiempo para
+formarnos libremente en diferentes tecnologías o lenguajes. Di con
+[projecteuler.net] y empecé a programar con Python. Aunque el repositorio nació
+en 2012 las primeras soluciones datan de ese primer año.
+
 ## Perfil en Project Euler
 
 ![profile]
