@@ -34,13 +34,13 @@ def is_bouncy(n):
     c_ant = None
 
     if len(str(n)) == 1:
-        return False, 2
+        return False, 0
 
     p = str(n)
     a = p[0]
 
     if len(p.replace(a, '')) == 0:
-        return False, 2
+        return False, 0
 
     for c in str(n):
 
@@ -86,11 +86,49 @@ def result():
     t = 0
     mode = 0
     b = True
-    for i in range(1, 1000):
+
+    # 
+    l1 = [0,0,0]
+    l2 = [0,0,0]
+    l3 = [0,0,0]
+    l4 = [0,0,0]
+    l5 = [0,0,0]
+    l6 = [0,0,0]
+
+    # 
+
+
+    for i in range(1, 1000000):
         b, mode = is_bouncy(i)
         if not b:
             # if mode == 1:
             #     print(mode, "%04d" % i)
-            print(mode, len(str(i)), "%03d" % i)
+            # print(mode, len(str(i)), "%03d" % i)
+            if len(str(i)) == 1:
+                l1[mode] += 1
+            elif len(str(i)) == 2:
+                l2[mode] += 1
+            elif len(str(i)) == 3:
+                l3[mode] += 1
+            elif len(str(i)) == 4:
+                l4[mode] += 1
+            elif len(str(i)) == 5:
+                l5[mode] += 1
+            elif len(str(i)) == 6:
+                l6[mode] += 1
+
             t += 1
+
+    # GRR 1, 10, 55, 220, 715, 2002, 5005, 11440
+    print(l1, sum(l1))
+    print(l2, sum(l2))
+    print(l3, sum(l3))
+    print(l4, sum(l4))
+    print(l5, sum(l5))
+    print(l6, sum(l6))
+
+    ss = sum(l1) + sum(l2) + sum(l3) + sum(l4) + sum(l5) + sum(l6)
+    print(ss)
+
+
     return t
