@@ -34,7 +34,13 @@ def is_bouncy(n):
     c_ant = None
 
     if len(str(n)) == 1:
-        return False, 0
+        return False, 2
+
+    p = str(n)
+    a = p[0]
+
+    if len(p.replace(a, '')) == 0:
+        return False, 2
 
     for c in str(n):
 
@@ -80,10 +86,11 @@ def result():
     t = 0
     mode = 0
     b = True
-    for i in range(1, 1000000):
+    for i in range(1, 1000):
         b, mode = is_bouncy(i)
         if not b:
             # if mode == 1:
             #     print(mode, "%04d" % i)
+            print(mode, len(str(i)), "%03d" % i)
             t += 1
     return t

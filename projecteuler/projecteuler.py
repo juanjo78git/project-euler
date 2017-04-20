@@ -37,18 +37,21 @@ def exec_problem(problem):
 
     pmodule = 'r{}'.format('%04d' % problem)
 
-    ns = {}
-    fs = 'from projecteuler.results import {} as mod'
-    exec(fs.format(pmodule), globals(), ns)
-    mod = ns['mod']
+    try:
+        ns = {}
+        fs = 'from projecteuler.results import {} as mod'
+        exec(fs.format(pmodule), globals(), ns)
+        mod = ns['mod']
 
-    start_time = time.process_time()
-    # start_time = datetime.now()
+        start_time = time.process_time()
+        # start_time = datetime.now()
 
-    # exec_problem
-    r = mod.result()
+        # exec_problem
+        r = mod.result()
 
-    tt = time.process_time() - start_time
+        tt = time.process_time() - start_time
+    except:
+        return None, _seconds_to_str(0)
 
     return r, _seconds_to_str(tt)
 
@@ -57,14 +60,17 @@ def print_result(problem, result, totaltime, expected):
 
     s = '{};{};{}'.format(problem, result, totaltime)
 
-    if expected:
-        if result != expected:
-            print('{};ERROR_EXPECTED:{}'.format(s, expected))
+    if result:
+        if expected:
+            if result != expected:
+                print('{};ERROR_EXPECTED:{}'.format(s, expected))
+            else:
+                print(s)
         else:
-            print(s)
+            print('{};ERROR_NO_ANSWER'.format(s))
     else:
-        print('{};ERROR_NO_ANSWER'.format(s))
-
+        # no hay resultado
+        print('{};ERROR_NO_PROBLEM_FOUND'.format(s))
 
 
 def main():
