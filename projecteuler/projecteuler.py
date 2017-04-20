@@ -37,21 +37,21 @@ def exec_problem(problem):
 
     pmodule = 'r{}'.format('%04d' % problem)
 
-    try:
-        ns = {}
-        fs = 'from projecteuler.results import {} as mod'
-        exec(fs.format(pmodule), globals(), ns)
-        mod = ns['mod']
+    # try:
+    ns = {}
+    fs = 'from projecteuler.results import {} as mod'
+    exec(fs.format(pmodule), globals(), ns)
+    mod = ns['mod']
 
-        start_time = time.process_time()
-        # start_time = datetime.now()
+    start_time = time.process_time()
+    # start_time = datetime.now()
 
-        # exec_problem
-        r = mod.result()
+    # exec_problem
+    r = mod.result()
 
-        tt = time.process_time() - start_time
-    except:
-        return None, _seconds_to_str(0)
+    tt = time.process_time() - start_time
+    # except:
+        # return None, _seconds_to_str(0)
 
     return r, _seconds_to_str(tt)
 

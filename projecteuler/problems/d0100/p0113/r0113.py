@@ -21,114 +21,34 @@
 # Halla el menor número para el que la proporción de números variables es
 # exactamente del 99%.
 
+import math
 
-def b(n):
+
+def coef_b(n):
     """ funciona """
     return n*(n+1)*(n+2)*(n+3)*(n+4)*(n+5)*(n+6)*(n+7)*(n+8)//math.factorial(9)
 
 
-def is_bouncy(n):
-    """ devuelve si es de tipo variable (bouncy en ingles) """
-    decreciente = False
-    creciente = False
-    c_ant = None
+def calc_n_bouncy(zeroes):
+    """ total de números variables donde zeores: 10^zeroes """
 
-    if len(str(n)) == 1:
-        return False, 0
+    total = -1
+    
+    n_ant = 0
+    nb_igual = 9
+    for d in range(2, 2 + zeroes):
+        n = coef_b(d)
+        nb_decre = n - 10
+        nb_incre = nb_decre - n_ant + 1
+        # print(nb_igual, nb_decre, nb_incre)
+        total += nb_igual + nb_decre + nb_incre
+        n_ant = n
 
-    p = str(n)
-    a = p[0]
-
-    if len(p.replace(a, '')) == 0:
-        return False, 0
-
-    for c in str(n):
-
-        if c_ant is None:
-            c_ant = c
-            continue
-
-        if c_ant == c:
-            continue
-
-        if not decreciente and not creciente:
-            if c_ant < c:
-                creciente = True
-            elif c_ant > c:
-                decreciente = True
-
-        elif creciente:
-            if c_ant > c:
-                return True, 0
-
-        elif decreciente:
-            if c_ant < c:
-                return True, 0
-
-        c_ant = c
-
-    if decreciente:
-        return False, 1
-    else:
-        return False, 2
+    return total
 
 
 def result():
-    # for exp in range(1, 10):
-    #     t = 0
-    #     for i in range(1, 10 ** exp):
-    #         if not is_bouncy(i):
-    #             print(i)
-    #             t += 1
 
-    #     print(10 ** exp, t)
-
-    t = 0
-    mode = 0
-    b = True
-
-    # 
-    l1 = [0,0,0]
-    l2 = [0,0,0]
-    l3 = [0,0,0]
-    l4 = [0,0,0]
-    l5 = [0,0,0]
-    l6 = [0,0,0]
-
-    # 
-
-
-    for i in range(1, 1000000):
-        b, mode = is_bouncy(i)
-        if not b:
-            # if mode == 1:
-            #     print(mode, "%04d" % i)
-            # print(mode, len(str(i)), "%03d" % i)
-            if len(str(i)) == 1:
-                l1[mode] += 1
-            elif len(str(i)) == 2:
-                l2[mode] += 1
-            elif len(str(i)) == 3:
-                l3[mode] += 1
-            elif len(str(i)) == 4:
-                l4[mode] += 1
-            elif len(str(i)) == 5:
-                l5[mode] += 1
-            elif len(str(i)) == 6:
-                l6[mode] += 1
-
-            t += 1
-
-    # GRR 1, 10, 55, 220, 715, 2002, 5005, 11440
-    print(l1, sum(l1))
-    print(l2, sum(l2))
-    print(l3, sum(l3))
-    print(l4, sum(l4))
-    print(l5, sum(l5))
-    print(l6, sum(l6))
-
-    ss = sum(l1) + sum(l2) + sum(l3) + sum(l4) + sum(l5) + sum(l6)
-    print(ss)
-
-
-    return t
+    # x ^ zeroes
+    zeroes = 100
+    return calc_n_bouncy(zeroes)
