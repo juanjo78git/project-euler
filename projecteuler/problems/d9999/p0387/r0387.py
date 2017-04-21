@@ -2,7 +2,6 @@
 
 from projecteuler import mymaths
 
-R = 0
 
 def _sum_digits_int(n):
     t = 0
@@ -11,62 +10,39 @@ def _sum_digits_int(n):
 
     return t
 
-def h(n, maxlen):
 
-    # testeamos si n es H
+def h(n, maxlen, t):
+    """ strong, right truncatable Harshad primes """
+
     len_n = len(str(n))
 
-    if len_n < maxlen:
+    if len_n < maxlen + 1:
         if mymaths.isprime(n) and len(str(n)) > 1:
-            # print('n', n)
             m = int(str(n)[:-1])
-            # print('m', m)
             d = divmod(m, _sum_digits_int(m))
-            # print('d', d)
             if mymaths.isprime(d[0]):
-                # print(n)
-                global R
-                R += n
-                return
+                return (t + n)
 
-        d = divmod(n, _sum_digits_int(n))
+        if n > 0:
+            d = divmod(n, _sum_digits_int(n))
 
-        if d[1] != 0:
-            return
+            if d[1] != 0:
+                return t
         
-        # if not mymaths.isprime(d[0]):
-        #     return
-
         for i in range(0, 10):
+            if n == 0 and i == 0:
+                continue
             new_n = int(str(n) + str(i))
-            h(new_n, maxlen)
-    else:
-        return
+            t = h(new_n, maxlen, t)
+    return t
 
 
 def result():
-    global R
-    R = 0
+    t = 0
+    
+    # 2^LIMITE
+    LIMITE = 14
 
-    LIMITE = 15
+    t = h(0, LIMITE, 0)
 
-    print('1')
-    h(1, LIMITE)
-    print('2')
-    h(2, LIMITE)
-    print('3')
-    h(3, LIMITE)
-    print('4')
-    h(4, LIMITE)
-    print('5')
-    h(5, LIMITE)
-    print('6')
-    h(6, LIMITE)
-    print('7')
-    h(7, LIMITE)
-    print('8')
-    h(8, LIMITE)
-    print('9')
-    h(9, LIMITE)
-
-    return R
+    return t
