@@ -33,7 +33,7 @@ def calc_n_bouncy(zeroes):
     """ total de números variables donde zeores: 10^zeroes """
 
     total = -1
-    
+
     n_ant = 0
     nb_igual = 9
     for d in range(2, 2 + zeroes):

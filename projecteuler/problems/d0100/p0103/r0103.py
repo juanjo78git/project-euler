@@ -3,6 +3,7 @@
 import copy
 import itertools
 
+
 def check_S(values):
 
     v_ant = []

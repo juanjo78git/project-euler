@@ -36,7 +36,7 @@ def calc_n(n):
 
 
 def result():
-    
+
     LIMITE = 1000
     n = 0
     soluciones = 0
@@ -44,5 +44,5 @@ def result():
     while soluciones < LIMITE:
         n += 1
         soluciones = calc_n(n)
-        
+
     return n
