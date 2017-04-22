@@ -28,7 +28,7 @@ def h(n, maxlen, t):
 
             if d[1] != 0:
                 return t
-        
+
         for i in range(0, 10):
             if n == 0 and i == 0:
                 continue
@@ -39,7 +39,7 @@ def h(n, maxlen, t):
 
 def result():
     t = 0
-    
+
     # 2^LIMITE
     LIMITE = 14
 

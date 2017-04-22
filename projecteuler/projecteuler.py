@@ -37,13 +37,13 @@ def exec_problem(problem):
 
     pmodule = 'r{}'.format('%04d' % problem)
 
-    try:
-        ns = {}
-        fs = 'from projecteuler.results import {} as mod'
-        exec(fs.format(pmodule), globals(), ns)
-        mod = ns['mod']
-    except ImportError:
-        return None, _seconds_to_str(0)
+    # try:
+    ns = {}
+    fs = 'from projecteuler.results import {} as mod'
+    exec(fs.format(pmodule), globals(), ns)
+    mod = ns['mod']
+    # except ImportError:
+    #     return None, _seconds_to_str(0)
 
     start_time = time.process_time()
     # start_time = datetime.now()

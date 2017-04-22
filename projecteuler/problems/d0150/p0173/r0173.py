@@ -1,58 +1,53 @@
 # -*- coding: utf-8 -*-
 
-# Project Euler: 134 Consider the consecutive primes p1 = 19 and p2 = 23. It
-# can be verified that 1219 is the smallest number such that the last digits
-# are formed by p1 whilst also being divisible by p2.
-#
-# In fact, with the exception of p1 = 3 and p2 = 5, for every pair of
-# consecutive primes, p2 > p1, there exist values of n for which the last
-# digits are formed by p1 and n is divisible by p2. Let S be the smallest of
-# these values of n.
-#
-# Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
-
-from projecteuler import mymaths
-
-
-def calcula_s(p1, p2):
-
-    n = 1
-
-    while True:
-        test = int(str(n) + str(p1))
-
-        if divmod(test, p2)[1] == 0:
-            return test
-
-        n += 1
-
 
 def result():
 
-    LIMITE = 1000000
-    # LIMITE = 100
-    total = 0
-    primos = []
+    MAX_TILES = 1000000
+    num_solutions = 0
 
-    # Genera unos 70 mil
-    # primos = mymaths.genprimes(5, LIMITE)
-    p = mymaths.prime()
+    LIMIT = (MAX_TILES // 8) + 1
 
-    while True:
-        p1 = p.__next__()
+    # impares
+    for i in range(1, LIMIT):
 
-        if p1 >= 5:
-            primos.append(p1)
+        tiles = 0
+        tiles = (8 * i)
 
-            # salimos cuando hemos metido p2
-            if p1 > LIMITE:
+        if tiles <= MAX_TILES:
+            num_solutions += 1
+        else:
+            continue
+
+        for j in range(i + 1, LIMIT):
+
+            new_tiles_to_add = (8 * j)
+            tiles += new_tiles_to_add
+
+            if tiles <= MAX_TILES:
+                num_solutions += 1
+            else:
                 break
 
-    for i in range(0, len(primos) - 1):
-        p1 = primos[i]
-        p2 = primos[i + 1]
-        s = calcula_s(p1, p2)
-        # print(p1, p2, s)
-        total += s
+    # pares
+    for i in range(1, LIMIT):
 
-    return total
+        tiles = 0
+        tiles = (8 * i) + 4
+
+        if tiles <= MAX_TILES:
+            num_solutions += 1
+        else:
+            continue
+
+        for j in range(i + 1, LIMIT):
+
+            new_tiles_to_add = (8 * j) + 4
+            tiles += new_tiles_to_add
+
+            if tiles <= MAX_TILES:
+                num_solutions += 1
+            else:
+                break
+
+    return num_solutions
