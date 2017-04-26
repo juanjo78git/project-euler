@@ -20,7 +20,7 @@ def discgame(blues, reds, curr_blues, curr_reds, turn, turns, total, visual):
 
     if turn == turns:
         if curr_blues > curr_reds:
-            print(visual, total)
+            # print(visual, total)
             return total, den
         else:
             return 0, 0
@@ -37,9 +37,9 @@ def discgame(blues, reds, curr_blues, curr_reds, turn, turns, total, visual):
 
 
 def result():
-    print('hola')
+    # print('hola')
     
-    MAX_TURNS = 5
+    MAX_TURNS = 15
 
     total, total2 = discgame(1, 1, 0, 0, 0, MAX_TURNS, 1, [])
     print(total, total2)
