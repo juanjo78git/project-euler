@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import math
 
 def m(get, exps, step, better):
 
@@ -31,7 +30,7 @@ def m(get, exps, step, better):
                     return None
 
     return better
-            
+
 
 def result():
     # por definicion al inicio, el mejor será 15

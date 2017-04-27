@@ -9,9 +9,11 @@ def count_perm(l, size):
 
 def prob_pyram_cubic(pyramidal_dice, cubic_dice):
 
-    cs = list(itertools.combinations_with_replacement([1, 2, 3, 4, 5, 6], cubic_dice))
-    ps = list(itertools.combinations_with_replacement([1, 2, 3, 4], pyramidal_dice))
-    
+    cs = list(itertools.combinations_with_replacement([1, 2, 3, 4, 5, 6],
+                                                      cubic_dice))
+    ps = list(itertools.combinations_with_replacement([1, 2, 3, 4],
+                                                      pyramidal_dice))
+
     win_p = 0
     t_p = 1
     t_c = 1
@@ -29,7 +31,8 @@ def prob_pyram_cubic(pyramidal_dice, cubic_dice):
                 now = False
                 t_c = count_perm(c, cubic_dice)
 
-                win_p += ((1 / (6 ** cubic_dice)) * (1 / (4 ** pyramidal_dice))) * t_p * t_c
+                win_p += ((1 / (6 ** cubic_dice)) *
+                          (1 / (4 ** pyramidal_dice))) * t_p * t_c
 
     return win_p
 

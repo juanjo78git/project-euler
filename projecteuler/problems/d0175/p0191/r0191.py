@@ -20,14 +20,16 @@ def prize(max_step, step, absent, last_2_days, prizes):
 
     # En tiempo
     prizes = prize(max_step, step + 1, absent, last_2_days[-2:] + [0], prizes)
-    
+
     # Tarde
     if not absent:
-        prizes = prize(max_step, step + 1, True, last_2_days[-2:] + [1], prizes)
+        prizes = prize(max_step, step + 1, True, last_2_days[-2:] + [1],
+                       prizes)
 
     # Falta
     if sum(last_2_days[-2:]) != 4:
-        prizes = prize(max_step, step + 1, absent, last_2_days[-2:] + [2], prizes)
+        prizes = prize(max_step, step + 1, absent, last_2_days[-2:] + [2],
+                       prizes)
 
     return prizes
 

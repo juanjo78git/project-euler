@@ -16,12 +16,14 @@ import copy
 
 from projecteuler import mymaths
 
+
 def multlist(l):
     t = 1
     for i in l:
         t = t * i
 
     return t
+
 
 def catch_divs_to_n(primes, ndivs):
     # 120 55440 [2, 3, 5, 7, 11]
@@ -57,7 +59,7 @@ def catch_divs_to_n(primes, ndivs):
 
 def calc_a(n, m):
     """ esta función está mal de cojones """
-    
+
     # y = m*n/m-1
 
     d = divmod(n * m, m - 1)
@@ -67,6 +69,7 @@ def calc_a(n, m):
         return d[0]
     else:
         return None
+
 
 def check(x, y, n):
     return (n * (x + y)) < (x * y)
@@ -90,19 +93,14 @@ def calc_n(n):
     return total
 
 
-
-
-
-
-
 def result():
-    
+
     LIMITE = 1000
 
     # for n in range(180180, 180181):
     # for n in range(1, 20):
     #     print(calc_n(n))
-   
+
     n = 0
     t = 0
 
@@ -112,7 +110,6 @@ def result():
         t = calc_n(n)
         if t > LIMITE:
             return n
-        
 
     # catch_divs_to_n([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37], 1000)
     # catch_divs_to_n([2, 3, 5, 7, 11], 1000)
@@ -137,5 +134,5 @@ def result():
     #         else:
     #             r += 1
 
-
     # print('r', r)
+    return 0

@@ -3,6 +3,7 @@
 import copy
 import itertools
 
+
 def check_S(values):
 
     v_ant = []
@@ -20,7 +21,7 @@ def check_S(values):
             if s in v:
                 print('ERROR-1', s, v_ant)
                 return False
-            elif  s < max(v_ant):
+            elif s < max(v_ant):
                 print('ERROR-2', s, v_ant)
                 return False
             elif s in v_ant:
@@ -35,14 +36,15 @@ def check_S(values):
     print(v)
     return True
 
+
 def check_S_v2(values):
 
-    v_ant = []
+    # v_ant = []
     v = []
-    v_cur = []
-    v_ant = copy.deepcopy(values)
-    t = 0 
-    sumun = []
+    # v_cur = []
+    # v_ant = copy.deepcopy(values)
+    t = 0
+    # sumun = []
 
     # TODO falta ver si hay elementos repetidos...
 
@@ -61,10 +63,10 @@ def check_S_v2(values):
                 for b in itertools.combinations(v, r2):
                     print(c, b, r2)
                     t += 1
-    
-                        
+
     print(t // 2)
     return True
+
 
 def result():
 
