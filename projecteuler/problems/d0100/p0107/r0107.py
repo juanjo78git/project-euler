@@ -3,6 +3,7 @@
 # Vaya vaya, vaya un robo, pero limpio el algoritmo que vaya una guarra de
 # variables globales...
 
+import os
 
 
 def kruskal(graph):
@@ -61,21 +62,34 @@ def kruskal(graph):
 # print(kruskal(graph))
 # assert kruskal(graph) == minimum_spanning_tree
 
-graph = {
-        'vertices': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-        'edges': set([
-            (16, 'A', 'B'),
-            (12, 'A', 'C'),
-            (21, 'A', 'D'),
-            (17, 'B', 'D'),
-            (20, 'B', 'E'),
-            (28, 'C', 'D'),
-            (31, 'C', 'F'),
-            (18, 'D', 'E'),
-            (19, 'D', 'F'),
-            (23, 'D', 'G'),
-            (11, 'E', 'G'),
-            (27, 'F', 'G'),
-            ])
-        }
-print(kruskal(graph))
+# graph = {
+#         'vertices': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+#         'edges': set([
+#             (16, 'A', 'B'),
+#             (12, 'A', 'C'),
+#             (21, 'A', 'D'),
+#             (17, 'B', 'D'),
+#             (20, 'B', 'E'),
+#             (28, 'C', 'D'),
+#             (31, 'C', 'F'),
+#             (18, 'D', 'E'),
+#             (19, 'D', 'F'),
+#             (23, 'D', 'G'),
+#             (11, 'E', 'G'),
+#             (27, 'F', 'G'),
+#             ])
+#         }
+# print(kruskal(graph))
+def result():
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    fichero = os.path.join(ROOT_DIR, 'p107_network_example.txt')
+
+    f = open(fichero, 'r') 
+
+    m = []
+    for line in f:
+        # print(line.replace('\n', ''))
+        a = line.replace('\n', '').split(',')
+        # print(a)
+        m.append(a)
+    print(m)
