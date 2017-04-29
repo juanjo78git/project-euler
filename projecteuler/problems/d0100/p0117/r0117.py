@@ -25,6 +25,27 @@ def tiles(total, offset, sizes, blocks):
     return total
 
 
+
+def tetranacci():
+    """ Tetranacci numbers: a(n) = a(n-1) + a(n-2) + a(n-3) + a(n-4)
+        with a(0)=a(1)=a(2)=0, a(3)=1. 
+        (Formerly M1108 N0423)
+        https://oeis.org/A000078 """
+
+    a_0 = 0
+    a_1 = 0
+    a_2 = 0
+    a_3 = 1
+    while True:
+        a_n = a_0 + a_1 + a_2 + a_3
+        yield a_n
+        a_4 = a_3
+        a_3 = a_2
+        a_2 = a_1
+        a_1 = a_0
+        a_0 = a_n
+
+
 def result():
 
     total = 0
@@ -34,9 +55,16 @@ def result():
     TILE_B_SIZE = 3
     TILE_C_SIZE = 4
 
-    total = tiles(0, 0, [TILE_A_SIZE, TILE_B_SIZE, TILE_C_SIZE], N_BLOCKS)
+    # La solución recursiva no termina
+    # total = tiles(0, 0, [TILE_A_SIZE, TILE_B_SIZE, TILE_C_SIZE], N_BLOCKS)
+
+    t = tetranacci()
+
+    for i in range(0, N_BLOCKS + 1):
+        solucion = next(t)
+        # print(i, solucion)
 
     # falta incluir la que no tiene NINGÚNA tile
-    total += 1
+    # total += 1
 
-    return total
+    return solucion
