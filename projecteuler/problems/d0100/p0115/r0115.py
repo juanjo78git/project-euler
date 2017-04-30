@@ -13,13 +13,13 @@ def tiles_114(total, offset, min_size, total_blocks, was_last_space, solution):
         return total
 
     # podemos intentar meter un espacio
-    total = tiles_114(total, offset + 1, min_size, total_blocks, True, 
+    total = tiles_114(total, offset + 1, min_size, total_blocks, True,
                       solution + ['S'])
 
     # Si lo ultimo fue un espacio, podemos meter fichas
     if was_last_space:
         for tile_size in range(min_size, total_blocks + 1):
-            
+
             # intentamos meter tiles de tamaño size
             total = tiles_114(total, offset + tile_size, min_size,
                               total_blocks, False, solution + [tile_size])
@@ -37,5 +37,7 @@ def result():
     total = 0
     while total < 1000000:
         total = tiles_114(0, 0, 50, num_blocks, True, [])
+        # print(num_blocks, total)
         num_blocks += 1
-        print(num_blocks, total)
+
+    return num_blocks
