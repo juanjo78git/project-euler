@@ -115,6 +115,7 @@ import projecteuler.problems.d0100.p0111.r0111 as r0111
 import projecteuler.problems.d0100.p0112.r0112 as r0112
 import projecteuler.problems.d0100.p0113.r0113 as r0113
 import projecteuler.problems.d0100.p0114.r0114 as r0114
+import projecteuler.problems.d0100.p0115.r0115 as r0115
 import projecteuler.problems.d0100.p0116.r0116 as r0116
 import projecteuler.problems.d0100.p0117.r0117 as r0117
 import projecteuler.problems.d0100.p0119.r0119 as r0119
