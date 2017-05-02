@@ -2,7 +2,7 @@
 
 import os
 
-from projecteuler.objects import graph
+from projecteuler.classes import graph
 
 
 def result():

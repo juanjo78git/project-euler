@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-""""""
-
 __author__ = "Pedro Nicolás"
 __copyright__ = "Copyright 2017"
 __license__ = "MIT"
