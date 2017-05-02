@@ -13,7 +13,7 @@ setup(
     author_email='png1981@gmail.com',
     description='project Euler',
     long_description="README on github : https://github.com/penicolas/project-euler",
-    install_requires=[sympy],
+    install_requires=['sympy'],
     url='https://github.com/penicolas/project-euler',
     classifiers=[
         'Programming Language :: Python',

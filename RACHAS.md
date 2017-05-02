@@ -4,6 +4,9 @@
 
 | PROBLEM     | DATE              |
 |-------------|-------------------|
+| Problem 117 | 29 Apr 17 (09:39) |
+| Problem 107 | 27 Apr 17 (22:54) |
+| Problem 121 | 26 Apr 17 (10:20) |
 | Problem 116 | 24 Apr 17 (11:49) |
 | Problem 205 | 23 Apr 17 (23:22) |
 | Problem 191 | 22 Apr 17 (12:43) |
