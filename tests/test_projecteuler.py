@@ -23,6 +23,7 @@ class testProjectEuler(unittest.TestCase):
 
         # revisamos las que llevamos
         for p in prbs:
+            print('Test problem: {}'.format(p))
             r = results.launch(p)
             s = answers.solution(p)
 
