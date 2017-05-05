@@ -87,7 +87,7 @@ def relax(u, v, graph, d, p):
 
 def bellman_ford(graph, source):
     d, p = initialize(graph, source)
-    for i in range(len(graph)-1):
+    for _ in range(len(graph)-1):
         for u in graph:
             for v in graph[u]:
                 relax(u, v, graph, d, p)
@@ -108,7 +108,7 @@ def result():
 
     grafo = matriz_a_grafo(dim, mat)
 
-    p, d = bellman_ford(grafo, 'x-x')
+    p, _ = bellman_ford(grafo, 'x-x')
 
     minimo = 0
     for i in p:

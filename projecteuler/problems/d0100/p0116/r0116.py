@@ -63,14 +63,14 @@ def result():
     total = 0
 
     N_BLOCKS = 50
-    TILE_A_SIZE = 2
-    TILE_B_SIZE = 3
+    # TILE_A_SIZE = 2
+    # TILE_B_SIZE = 3
     TILE_C_SIZE = 4
 
     g_a = fibonacci_minus_1()
     g_b = tiles_size_3()
 
-    for i in range(0, N_BLOCKS):
+    for _ in range(0, N_BLOCKS):
         next(g_a)
         next(g_b)
 

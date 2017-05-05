@@ -44,10 +44,8 @@ def tiles_114(total, offset, min_size, total_blocks, was_last_space, solution):
 
 def result():
 
-    total = 0
-
     N_BLOCKS = 50
-    TILE_MINIM_SIZE = 3
+    # TILE_MINIM_SIZE = 3
 
     g = gen_114()
     # total = 0
@@ -55,7 +53,7 @@ def result():
     # tamaño mínimo de azulejos
     # número de bloque
     # que era lo último que le hemos pasado
-    for n_b in range(0, N_BLOCKS + 1):
+    for _ in range(0, N_BLOCKS + 1):
         # recursivo UNICAMENTE para ver como es la secuencia y estudiarla
         # total = tiles_114(0, 0, TILE_MINIM_SIZE, n_b, True, [])
         # print(n_b, total, next(g))

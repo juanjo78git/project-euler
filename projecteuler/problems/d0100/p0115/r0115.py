@@ -30,7 +30,7 @@ def tiles_114(total, offset, min_size, total_blocks, was_last_space, solution):
 def result():
 
     TILE_MINIM_SIZE = 3
-    TOTAL_NUMBERS_BLOCKS = 30
+    # TOTAL_NUMBERS_BLOCKS = 30
     # total = tiles_114(0, 0, 3, 29, True, [])
     # total = tiles_114(0, 0, 10, 56, True, [])
     num_blocks = 0

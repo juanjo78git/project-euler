@@ -32,7 +32,7 @@ def result():
     n = 3
     d = 2
 
-    for i in range(0, n_iteraciones):
+    for _ in range(0, n_iteraciones):
         if len(str(n)) > len(str(d)):
             numerator_more_digits = numerator_more_digits + 1
 

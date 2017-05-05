@@ -42,8 +42,8 @@ def result():
     for d in range(1, limite+1):
 
         # limite inferior a la primera facción
-        n_inf, m = divmod(n_fix_inf*d, d_fix_inf)
-        n_sup, m = divmod(n_fix_sup*d, d_fix_sup)
+        n_inf, _ = divmod(n_fix_inf*d, d_fix_inf)
+        n_sup, _ = divmod(n_fix_sup*d, d_fix_sup)
 
         for n in range(n_inf-1, n_sup+2):
 

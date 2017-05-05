@@ -16,7 +16,7 @@ def miller_rabin_pass(a, s, d, n):
     if a_to_power == 1:
         return True
     # for i in xrange(s-1):
-    for i in range(s-1):
+    for _ in range(s-1):
         if a_to_power == n - 1:
             return True
         a_to_power = (a_to_power * a_to_power) % n
@@ -30,8 +30,7 @@ def miller_rabin(n):
         d >>= 1
         s += 1
 
-    # for repeat in xrange(20):
-    for repeat in range(20):
+    for _ in range(20):
         a = 0
         while a == 0:
             a = random.randrange(n)

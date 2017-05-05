@@ -3,7 +3,6 @@
 from .context import results
 
 import unittest
-import json
 import operator
 
 class testProjectEuler(unittest.TestCase):

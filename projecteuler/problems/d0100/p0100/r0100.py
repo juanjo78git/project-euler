@@ -38,6 +38,5 @@ def result():
         if total > 1000000000000:
             # print "Solucion 0100:", blues
             return blues
-            break
 
         blues = n.__next__()

@@ -24,7 +24,7 @@ def result():
     while not cumple:
 
         # añadimos 4 elementos más
-        for i in range(0, 4):
+        for _ in range(0, 4):
 
             if isprime(d):
                 nprimos = nprimos + 1

@@ -7,8 +7,8 @@ class Graph:
 
 
     def add_edge(self, edge):
-        edges = list(self.graph['edges'])
-        vertices = list(self.graph['vertices'])
+        # edges = list(self.graph['edges'])
+        # vertices = list(self.graph['vertices'])
 
         if edge[1] not in self.graph['vertices']:
             self.graph['vertices'].append(edge[1])
@@ -70,7 +70,7 @@ class Graph:
         edges = list(self.graph['edges'])
         edges.sort()
         for edge in edges:
-            weight, vertice1, vertice2 = edge
+            _, vertice1, vertice2 = edge
             if _find(parent, vertice1) != _find(parent, vertice2):
                 _union(parent, rank, vertice1, vertice2)
                 minimum_spanning_tree.add(edge)

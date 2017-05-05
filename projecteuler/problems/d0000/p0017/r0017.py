@@ -17,7 +17,7 @@ numeros = []
 
 def n4s(n):
     s = ""
-    for i in range(0, (4 - len(str(n)))):
+    for _ in range(0, (4 - len(str(n)))):
         s = s + "0"
 
     return (s + str(n))

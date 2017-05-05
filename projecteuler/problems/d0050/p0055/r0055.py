@@ -55,7 +55,7 @@ def result():
         ispal = False
         na = n
         nr = numreverse(n)
-        for i in range(0, max_iter):
+        for _ in range(0, max_iter):
             if ispalindrome(na + nr):
                 ispal = True
                 break

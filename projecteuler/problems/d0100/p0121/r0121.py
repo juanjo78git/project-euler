@@ -26,12 +26,12 @@ def discgame(blues, reds, curr_blues, curr_reds, turn, turns, total, visual):
             return 0, 0
 
     # jugamos y sacamos una ficha azul
-    t, d = discgame(blues, reds + 1, curr_blues + 1, curr_reds, turn + 1,
+    t, _ = discgame(blues, reds + 1, curr_blues + 1, curr_reds, turn + 1,
                     turns, total, visual + ['A'])
     parcial += t
 
     # jugamos y sacamos una ficha roja
-    t, d = discgame(blues, reds + 1, curr_blues, curr_reds + 1, turn + 1,
+    t, _ = discgame(blues, reds + 1, curr_blues, curr_reds + 1, turn + 1,
                     turns, total * reds, visual + ['R'])
     parcial += t
 

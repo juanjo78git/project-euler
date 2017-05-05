@@ -39,7 +39,7 @@ def tetranacci():
     while True:
         a_n = a_0 + a_1 + a_2 + a_3
         yield a_n
-        a_4 = a_3
+        # a_4 = a_3
         a_3 = a_2
         a_2 = a_1
         a_1 = a_0
@@ -48,8 +48,6 @@ def tetranacci():
 
 def result():
 
-    total = 0
-
     N_BLOCKS = 50
     TILE_A_SIZE = 2
     TILE_B_SIZE = 3
@@ -57,14 +55,10 @@ def result():
 
     # La solución recursiva no termina
     # total = tiles(0, 0, [TILE_A_SIZE, TILE_B_SIZE, TILE_C_SIZE], N_BLOCKS)
-
     t = tetranacci()
 
-    for i in range(0, N_BLOCKS + 1):
+    for _ in range(0, N_BLOCKS + 1):
         solucion = next(t)
         # print(i, solucion)
-
-    # falta incluir la que no tiene NINGÚNA tile
-    # total += 1
 
     return solucion

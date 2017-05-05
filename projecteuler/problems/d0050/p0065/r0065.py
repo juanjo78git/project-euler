@@ -16,7 +16,7 @@ def genl_e():
     dos = False
     n = 0
     l = []
-    for i in range(1, 150):
+    for _ in range(1, 150):
         if uno and dos:
             n = n + 2
             l.append(n)
@@ -45,7 +45,7 @@ def n_fraccion(v):
 def r65(v):
     # para cuadrar
     v = v - 1
-    n, d = n_fraccion(v)
+    n, _ = n_fraccion(v)
 
     # calculamos la suma del numerador
     s = 0

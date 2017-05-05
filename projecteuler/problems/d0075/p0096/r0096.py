@@ -115,10 +115,7 @@ class Sudoku:
     @classmethod
     def is_solved_partial(cls, partial):
         partial.sort()
-        if [1, 2, 3, 4, 5, 6, 7, 8, 9] == partial:
-            return True
-        else:
-            False
+        return bool([1, 2, 3, 4, 5, 6, 7, 8, 9] == partial)
 
     def is_solved(self):
         """ si es solucion """

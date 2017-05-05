@@ -101,19 +101,23 @@ def result():
 
     BETTER = 15
     STEP = 1
-    EXP_TO_GET = 50
+    EXP_TO_GET = 200
     total = 0
     total2 = 0
+    aux = 0
 
     # b = m(EXP_TO_GET, [1, 1], STEP, BETTER)
-    # for exp_to_get in range(1, EXP_TO_GET + 1):
-    #     total = m(exp_to_get, [1, 1], 1, (exp_to_get // 2) + 5)
-    #     total2 = m2(exp_to_get, [1], 1, exp_to_get)
+    for exp_to_get in range(1, EXP_TO_GET + 1):
+        aux = m(exp_to_get, [1, 1], 1, test_binary(exp_to_get) + 2)
+        total += aux
+        print(exp_to_get, aux)
+        # total2 = m2(exp_to_get, [1], 1, exp_to_get)
+        # total2 = m2(exp_to_get, [1], 1, exp_to_get)
 
     #     if test_binary(exp_to_get) != total:
     #         print(exp_to_get, total, total2, bin(exp_to_get), test_binary(exp_to_get))
 
-    total = m(200, [1, 1], 1, 15)
+    # total = m(200, [1, 1], 1, 15)
     # total = m(50, [1, 1], 1, 50)
     # total = m2(50, [1], 1, 50)
     return total

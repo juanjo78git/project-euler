@@ -9,7 +9,7 @@ def result():
 
     limite = 10001
 
-    for i in range(1, limite):
+    for _ in range(1, limite):
         p.__next__()
 
     return p.__next__()

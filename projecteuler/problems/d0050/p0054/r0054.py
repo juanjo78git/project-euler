@@ -280,8 +280,8 @@ class ManoDeCartas:
 
     # 4. full
     def analiza_full(self, other):
-        val3s, val2s = self.is_full_of()
-        val3o, val2o = other.is_full_of()
+        val3s, _ = self.is_full_of()
+        val3o, _ = other.is_full_of()
 
         if val3s and not val3o:
             return 1
