@@ -91,9 +91,10 @@ def bellman_ford(graph, source):
         for u in graph:
             for v in graph[u]:
                 relax(u, v, graph, d, p)
-    for u in graph:
-        for v in graph[u]:
-            assert d[v] <= d[u] + graph[u][v]
+    # testing
+    # for u in graph:
+    #     for v in graph[u]:
+    #         assert d[v] <= d[u] + graph[u][v]
     return d, p
 
 
@@ -108,7 +109,7 @@ def result():
 
     grafo = matriz_a_grafo(dim, mat)
 
-    p, d = bellman_ford(grafo, 'x-x')
+    p, _ = bellman_ford(grafo, 'x-x')
 
     minimo = 0
     for i in p:

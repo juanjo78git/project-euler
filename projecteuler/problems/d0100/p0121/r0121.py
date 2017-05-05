@@ -15,7 +15,6 @@ def discgame(blues, reds, curr_blues, curr_reds, turn, turns, total, visual):
     den = math.factorial(turns + 1)
 
     t = 0
-    d = 0
     parcial = 0
 
     if turn == turns:

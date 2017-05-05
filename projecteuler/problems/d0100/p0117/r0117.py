@@ -49,9 +49,9 @@ def tetranacci():
 def result():
 
     N_BLOCKS = 50
-    TILE_A_SIZE = 2
-    TILE_B_SIZE = 3
-    TILE_C_SIZE = 4
+    # TILE_A_SIZE = 2
+    # TILE_B_SIZE = 3
+    # TILE_C_SIZE = 4
 
     # La solución recursiva no termina
     # total = tiles(0, 0, [TILE_A_SIZE, TILE_B_SIZE, TILE_C_SIZE], N_BLOCKS)

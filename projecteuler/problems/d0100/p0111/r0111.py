@@ -104,7 +104,7 @@ def result():
     t = 0
 
     for i in range(0, 10):
-        v_N, v_S = N_S(d, i)
+        _, v_S = N_S(d, i)
         t += v_S
 
     return t

@@ -2,7 +2,7 @@ init:
 	pip install -r requirements.txt
 
 test:
-	python -m unittest 'tests/test_projecteuler.py' -v
+	python3 -m unittest 'tests/test_projecteuler.py' -v
 
 testpypy:
 	pypy -m unittest 'tests/test_projecteuler.py' -v

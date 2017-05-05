@@ -6,3 +6,4 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from projecteuler import mymaths
 from projecteuler import results
+from projecteuler import answers

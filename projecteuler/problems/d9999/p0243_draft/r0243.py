@@ -71,7 +71,7 @@ def result():
         mini = noreducibles / float(d - 1)
         if mini < mymin:
             mymin = mini
-            mini
+            # mini
             if mini > 0.165:
                 # print noreducibles, d - 1, mini
                 if not nomas:
