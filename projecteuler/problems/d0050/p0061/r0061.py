@@ -120,5 +120,5 @@ def result():
                 lunida.append(i)
 
     gensolucion(l, lunida)
-    global RESULTADO
+    
     return RESULTADO

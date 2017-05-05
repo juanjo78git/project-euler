@@ -31,7 +31,7 @@ def factorial(x):
 
 
 def fact_under_10(x):
-    global fact10
+    # global fact10
     return fact10[x]
 
 

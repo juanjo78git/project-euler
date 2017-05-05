@@ -28,7 +28,7 @@ def gen_list_palindromic(limit):
 
 def is_0125(squares, p):
     """ dado una lista de cuadrados y un palindromo intenta ver si cumple """
-    for i in range(len(squares)):
+    for i in range(0, len(squares)):
         # si el cuadrado ya es mayor que p debemos salir
         if squares[i] > p:
             break

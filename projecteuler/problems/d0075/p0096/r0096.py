@@ -7,8 +7,10 @@ class Sudoku:
     """Un sudoku!!"""
     def __init__(self, cadena):
         self.__sudoku = []
-        for i in range(len(cadena)):
-            self.__sudoku.append(int(cadena[i]))
+        # for i in range(len(cadena)):
+        #     self.__sudoku.append(int(cadena[i]))
+        for c in cadena:
+            self.__sudoku.append(int(c))
 
     def __str__(self):
         s = ""
