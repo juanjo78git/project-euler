@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from .context import results
-from .context import answers
-
 import unittest
-import operator
+from projecteuler import results
+from projecteuler import answers
+
 
 class testProjectEuler(unittest.TestCase):
     """ Test generico Project Euler """
