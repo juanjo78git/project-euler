@@ -139,3 +139,9 @@ import projecteuler.problems.d9999.p0205.r0205 as r0205
 import projecteuler.problems.d9999.p0206.r0206 as r0206
 import projecteuler.problems.d9999.p0357.r0357 as r0357
 import projecteuler.problems.d9999.p0387.r0387 as r0387
+
+
+def launch(n):
+    
+    if n == 1:
+        return r0001.result()

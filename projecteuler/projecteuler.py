@@ -6,6 +6,7 @@ import time
 
 from projecteuler import __version__
 from projecteuler import answers
+from projecteuler import results
 
 
 def build_parser():
@@ -35,21 +36,22 @@ def _seconds_to_str(seconds):
 def exec_problem(problem):
     """ Launch problem, return result and time """
 
-    pmodule = 'r{}'.format('%04d' % problem)
+    # pmodule = 'r{}'.format('%04d' % problem)
 
     # try:
-    ns = {}
-    fs = 'from projecteuler.results import {} as mod'
-    exec(fs.format(pmodule), globals(), ns)
-    mod = ns['mod']
+    # ns = {}
+    # fs = 'from projecteuler.results import {} as mod'
+    # exec(fs.format(pmodule), globals(), ns)
+    # mod = ns['mod']
     # except ImportError:
     #     return None, _seconds_to_str(0)
 
     start_time = time.process_time()
     # start_time = datetime.now()
 
+    r = results.launch(problem)
     # exec_problem
-    r = mod.result()
+    # r = mod.result()
 
     tt = time.process_time() - start_time
 
