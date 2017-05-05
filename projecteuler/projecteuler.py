@@ -36,16 +36,6 @@ def _seconds_to_str(seconds):
 def exec_problem(problem):
     """ Launch problem, return result and time """
 
-    # pmodule = 'r{}'.format('%04d' % problem)
-
-    # try:
-    # ns = {}
-    # fs = 'from projecteuler.results import {} as mod'
-    # exec(fs.format(pmodule), globals(), ns)
-    # mod = ns['mod']
-    # except ImportError:
-    #     return None, _seconds_to_str(0)
-
     start_time = time.process_time()
     # start_time = datetime.now()
 

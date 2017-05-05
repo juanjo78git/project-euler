@@ -142,6 +142,408 @@ import projecteuler.problems.d9999.p0387.r0387 as r0387
 
 
 def launch(n):
-    
+
     if n == 1:
         return r0001.result()
+
+    if n == 2:
+        return r0002.result()
+
+    if n == 3:
+        return r0003.result()
+
+    if n == 4:
+        return r0004.result()
+
+    if n == 5:
+        return r0005.result()
+
+    if n == 6:
+        return r0006.result()
+
+    if n == 7:
+        return r0007.result()
+
+    if n == 8:
+        return r0008.result()
+
+    if n == 9:
+        return r0009.result()
+
+    if n == 10:
+        return r0010.result()
+
+    if n == 11:
+        return r0011.result()
+
+    if n == 12:
+        return r0012.result()
+
+    if n == 13:
+        return r0013.result()
+
+    if n == 14:
+        return r0014.result()
+
+    if n == 15:
+        return r0015.result()
+
+    if n == 16:
+        return r0016.result()
+
+    if n == 17:
+        return r0017.result()
+
+    if n == 18:
+        return r0018.result()
+
+    if n == 19:
+        return r0019.result()
+
+    if n == 20:
+        return r0020.result()
+
+    if n == 21:
+        return r0021.result()
+
+    if n == 22:
+        return r0022.result()
+
+    if n == 23:
+        return r0023.result()
+
+    if n == 24:
+        return r0024.result()
+
+    if n == 25:
+        return r0025.result()
+
+    if n == 26:
+        return r0026.result()
+
+    if n == 27:
+        return r0027.result()
+
+    if n == 28:
+        return r0028.result()
+
+    if n == 29:
+        return r0029.result()
+
+    if n == 30:
+        return r0030.result()
+
+    if n == 31:
+        return r0031.result()
+
+    if n == 32:
+        return r0032.result()
+
+    if n == 33:
+        return r0033.result()
+
+    if n == 34:
+        return r0034.result()
+
+    if n == 35:
+        return r0035.result()
+
+    if n == 36:
+        return r0036.result()
+
+    if n == 37:
+        return r0037.result()
+
+    if n == 38:
+        return r0038.result()
+
+    if n == 39:
+        return r0039.result()
+
+    if n == 40:
+        return r0040.result()
+
+    if n == 41:
+        return r0041.result()
+
+    if n == 42:
+        return r0042.result()
+
+    if n == 43:
+        return r0043.result()
+
+    if n == 44:
+        return r0044.result()
+
+    if n == 45:
+        return r0045.result()
+
+    if n == 46:
+        return r0046.result()
+
+    if n == 47:
+        return r0047.result()
+
+    if n == 48:
+        return r0048.result()
+
+    if n == 49:
+        return r0049.result()
+
+    if n == 50:
+        return r0050.result()
+
+    if n == 51:
+        return r0051.result()
+
+    if n == 52:
+        return r0052.result()
+
+    if n == 53:
+        return r0053.result()
+
+    if n == 54:
+        return r0054.result()
+
+    if n == 55:
+        return r0055.result()
+
+    if n == 56:
+        return r0056.result()
+
+    if n == 57:
+        return r0057.result()
+
+    if n == 58:
+        return r0058.result()
+
+    if n == 59:
+        return r0059.result()
+
+    if n == 60:
+        return r0060.result()
+
+    if n == 61:
+        return r0061.result()
+
+    if n == 62:
+        return r0062.result()
+
+    if n == 63:
+        return r0063.result()
+
+    if n == 64:
+        return r0064.result()
+
+    if n == 65:
+        return r0065.result()
+
+    if n == 66:
+        return r0066.result()
+
+    if n == 67:
+        return r0067.result()
+
+    if n == 68:
+        return r0068.result()
+
+    if n == 69:
+        return r0069.result()
+
+    if n == 70:
+        return r0070.result()
+
+    if n == 71:
+        return r0071.result()
+
+    if n == 72:
+        return r0072.result()
+
+    if n == 73:
+        return r0073.result()
+
+    if n == 74:
+        return r0074.result()
+
+    if n == 75:
+        return r0075.result()
+
+    if n == 76:
+        return r0076.result()
+
+    if n == 77:
+        return r0077.result()
+
+    if n == 78:
+        return r0078.result()
+
+    if n == 79:
+        return r0079.result()
+
+    if n == 80:
+        return r0080.result()
+
+    if n == 81:
+        return r0081.result()
+
+    if n == 82:
+        return r0082.result()
+
+    if n == 83:
+        return r0083.result()
+
+    if n == 84:
+        return r0084.result()
+
+    if n == 85:
+        return r0085.result()
+
+    if n == 86:
+        return r0086.result()
+
+    if n == 87:
+        return r0087.result()
+
+    if n == 88:
+        return r0088.result()
+
+    if n == 89:
+        return r0089.result()
+
+    if n == 90:
+        return r0090.result()
+
+    if n == 91:
+        return r0091.result()
+
+    if n == 92:
+        return r0092.result()
+
+    if n == 93:
+        return r0093.result()
+
+    if n == 94:
+        return r0094.result()
+
+    if n == 95:
+        return r0095.result()
+
+    if n == 96:
+        return r0096.result()
+
+    if n == 97:
+        return r0097.result()
+
+    if n == 98:
+        return r0098.result()
+
+    if n == 99:
+        return r0099.result()
+
+    if n == 100:
+        return r0100.result()
+
+    if n == 101:
+        return r0101.result()
+
+    if n == 102:
+        return r0102.result()
+
+    if n == 103:
+        return r0103.result()
+
+    if n == 104:
+        return r0104.result()
+
+    if n == 105:
+        return r0105.result()
+
+    if n == 106:
+        return r0106.result()
+
+    if n == 107:
+        return r0107.result()
+
+    if n == 108:
+        return r0108.result()
+
+    # if n == 109:
+    #     return r0109.result()
+
+    # if n == 110:
+    #     return r0110.result()
+
+    if n == 111:
+        return r0111.result()
+
+    if n == 112:
+        return r0112.result()
+
+    if n == 113:
+        return r0113.result()
+
+    if n == 114:
+        return r0114.result()
+
+    if n == 115:
+        return r0115.result()
+
+    if n == 116:
+        return r0116.result()
+
+    if n == 117:
+        return r0117.result()
+
+    # if n == 118:
+    #     return r0118.result()
+
+    if n == 119:
+        return r0119.result()
+
+    if n == 120:
+        return r0120.result()
+
+    if n == 121:
+        return r0121.result()
+
+    if n == 122:
+        return r0122.result()
+
+    if n == 123:
+        return r0123.result()
+
+    if n == 124:
+        return r0124.result()
+
+    if n == 125:
+        return r0125.result()
+
+    if n == 134:
+        return r0134.result()
+
+    if n == 145:
+        return r0145.result()
+
+    if n == 173:
+        return r0173.result()
+
+    if n == 179:
+        return r0179.result()
+
+    if n == 187:
+        return r0187.result()
+
+    if n == 191:
+        return r0191.result()
+
+    if n == 205:
+        return r0205.result()
+
+    if n == 206:
+        return r0206.result()
+
+    if n == 357:
+        return r0357.result()
+
+    if n == 387:
+        return r0387.result()
