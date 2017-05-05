@@ -55,10 +55,7 @@ def cumple(l, solucion):
                 if s not in solaux:
                     solaux.append(s)
 
-    if len(laux) == 0 and len(solaux) == 6:
-        return True
-    else:
-        return False
+    return bool(len(laux) == 0 and len(solaux) == 6)
 
 
 def siguientes(e, l):

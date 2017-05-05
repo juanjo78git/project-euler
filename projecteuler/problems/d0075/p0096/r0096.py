@@ -48,7 +48,8 @@ class Sudoku:
                 poss.remove(m)
         return poss
 
-    def getcord(self, i):
+    @classmethod
+    def getcord(cls, i):
         """ retorna las cordenadas """
         # @TODO repasar, que python3 no me gusta mucho lo de dividir :(
         cubo = ((i//27) * 3 + (i//3) % 3)
@@ -86,7 +87,8 @@ class Sudoku:
                 cubo.append(self.__sudoku[e])
         return cubo
 
-    def is_valid_partial(self, partial):
+    @classmethod
+    def is_valid_partial(cls, partial):
         """ si una linea, cubo y columna es valida """
         complet = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         for i in partial:
@@ -108,7 +110,8 @@ class Sudoku:
                 return False
         return True
 
-    def is_solved_partial(self, partial):
+    @classmethod
+    def is_solved_partial(cls, partial):
         partial.sort()
         if [1, 2, 3, 4, 5, 6, 7, 8, 9] == partial:
             return True

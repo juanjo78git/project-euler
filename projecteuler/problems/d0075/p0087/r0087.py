@@ -23,13 +23,13 @@ def lprimepower(limit):
     lprimes2 = []
     lprimes3 = []
     lprimes4 = []
-    exit = False
+    exxit = False
 
-    while not exit:
+    while not exxit:
         if p**2 < limit:
             lprimes2.append(p**2)
         else:
-            exit = True
+            exxit = True
 
         if p**3 < limit:
             lprimes3.append(p**3)

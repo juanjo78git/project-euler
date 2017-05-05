@@ -118,34 +118,22 @@ class Monopoly(object):
 
     def es_tripledoble(self):
         """ para el caso de triple doble """
-        if self.dobles == 3:
-            return True
-        else:
-            return False
+        return bool(self.dobles == 3)
 
     def es_ch(self):
         """ nos indica si la casilla actual es ch """
         casilla = self.get_casilla()
-        if casilla[0:2] == 'CH':
-            return True
-        else:
-            return False
+        return bool(casilla[0:2] == 'CH')
 
     def es_cc(self):
         """ nos indica si la casilla actual es cc """
         casilla = self.get_casilla()
-        if casilla[0:2] == 'CC':
-            return True
-        else:
-            return False
+        return bool(casilla[0:2] == 'CC')
 
     def es_g2j(self):
         """ nos indica si la casilla actual es g2j """
         casilla = self.get_casilla()
-        if casilla == 'G2J':
-            return True
-        else:
-            return False
+        return bool(casilla == 'G2J')
 
     def tirada(self):
         """ nos devuelve el valor de la tirada """

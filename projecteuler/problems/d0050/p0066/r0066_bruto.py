@@ -3,10 +3,7 @@
 
 def is_square(n):
     square = n**0.5
-    if int(square) == square:
-        return True
-    else:
-        return False
+    return bool(int(square) == square)
 
 
 def diophantine(d, y2):

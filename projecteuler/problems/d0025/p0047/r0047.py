@@ -67,19 +67,19 @@ def result():
         l2 = [1]
         l3 = [1]
         l4 = [1]
-        exit = False
+        exxit = False
         n = 2
 
-    while not exit:
+    while not exxit:
 
         l1 = l2
         l2 = l3
         l3 = l4
         l4 = lista_factores(n + 3)
 
-        exit = f_47(l1, l2, l3, l4)
+        exxit = f_47(l1, l2, l3, l4)
 
-        if exit:
+        if exxit:
             # print "resultado", n
             return n
 

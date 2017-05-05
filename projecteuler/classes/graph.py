@@ -12,10 +12,10 @@ class Graph:
 
         if edge[1] not in self.graph['vertices']:
             self.graph['vertices'].append(edge[1])
-        
+
         if edge[2] not in self.graph['vertices']:
             self.graph['vertices'].append(edge[2])
-        
+
         self.graph['edges'].add(edge)
 
     def weight(self):
@@ -25,13 +25,13 @@ class Graph:
         return t
 
     def from_file_adjacency_matrix(self, filepath):
-        f = open(filepath, 'r') 
+        f = open(filepath, 'r')
 
         m = []
         for line in f:
             a = line.replace('\n', '').split(',')
             m.append(a)
-    
+
         for i in range(0, len(m[0])):
             for j in range(i + 1, len(m[0])):
                 if m[i][j] != '-':

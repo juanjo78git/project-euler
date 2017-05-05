@@ -289,11 +289,11 @@ def istriangle(n):
 
 
 def calc_sum_letras(s):
-    sum = 0
+    value = 0
     for i in range(0, len(s)):
-        sum = sum + ord(s[i]) - 64
+        value = value + ord(s[i]) - 64
 
-    return sum
+    return value
 
 
 def result():

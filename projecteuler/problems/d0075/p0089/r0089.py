@@ -28,22 +28,22 @@ class Roman:
         """ calculamos a partir del romano el número en arábico """
         total = 0
         prev = None
-        next = None
+        nxxt = None
         curr = None
         lenr = len(self._romano)
         for r in range(0, lenr):
-            # calculamos curr y next...
+            # calculamos curr y nxxt...
             curr = self._romano[r]
             if r + 1 < lenr:
-                next = self._romano[r + 1]
+                nxxt = self._romano[r + 1]
             else:
-                next = None
+                nxxt = None
 
             if r - 1 >= 0:
                 prev = self._romano[r - 1]
 
             if (prev is None or self._romval[prev] >= self._romval[curr]):
-                if (next is None or self._romval[curr] >= self._romval[next]):
+                if (nxxt is None or self._romval[curr] >= self._romval[nxxt]):
                     total += self._romval[curr]
             # cuando anterior no es ni None ni mayor igual, osea el anterior
             # es MENOR

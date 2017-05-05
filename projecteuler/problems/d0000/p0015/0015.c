@@ -22,7 +22,7 @@
 /* Cabeceras */
 void mult_matrix(uint64_t a[][NUM_NODOS], uint64_t b[][NUM_NODOS], uint64_t r[][NUM_NODOS]);
 void matrizcpy(uint64_t orig[][NUM_NODOS], uint64_t des[][NUM_NODOS]);
-void prlong_matrix(uint64_t a[][NUM_NODOS]);
+/* void prlong_matrix(uint64_t a[][NUM_NODOS]); */
 void elevar_matriz(uint64_t m[][NUM_NODOS], uint64_t potencia);
 
 /* funciones */
@@ -65,18 +65,18 @@ void matrizcpy(uint64_t orig[][NUM_NODOS], uint64_t des[][NUM_NODOS])
 
 
 
-void prlong_matrix(uint64_t a[][NUM_NODOS])
-{
-    uint64_t i, j;
-    for (i = 0; i < NUM_NODOS; i++) {
-        for (j = 0; j < NUM_NODOS; j++) {
-            printf("%02d ", a[i][j]);
-        }
-        printf("\n");
-    }
+/* void prlong_matrix(uint64_t a[][NUM_NODOS]) */
+/* { */
+/*     uint64_t i, j; */
+/*     for (i = 0; i < NUM_NODOS; i++) { */
+/*         for (j = 0; j < NUM_NODOS; j++) { */
+/*             printf("%02d ", a[i][j]); */
+/*         } */
+/*         printf("\n"); */
+/*     } */
 
-    printf("\n\n");
-}
+/*     printf("\n\n"); */
+/* } */
 
 
 void mult_matrix(uint64_t a[][NUM_NODOS], uint64_t b[][NUM_NODOS], uint64_t r[][NUM_NODOS])

@@ -14,18 +14,18 @@ from projecteuler import mymaths
 
 def result():
     resultado = 0
-    exit = False
+    salida = False
 
     for a in range(1, 1000):
         for b in range(a+1, 1000):
             for c in range(b+1, 1000):
                 if a+b+c == 1000 and mymaths.ispythagoreantriplet(a, b, c):
                     resultado = a*b*c
-                    exit = True
+                    salida = True
                     break
-            if exit:
+            if salida:
                 break
-        if exit:
+        if salida:
             break
 
     return resultado

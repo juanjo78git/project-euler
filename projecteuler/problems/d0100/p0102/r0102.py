@@ -34,10 +34,7 @@ class Triangulo:
         or_2 = t2.orientacion()
         t3 = Triangulo(self.p3, self.p1, po)
         or_3 = t3.orientacion()
-        if or_0 == or_1 and or_1 == or_2 and or_2 == or_3:
-            return True
-        else:
-            return False
+        return bool(or_0 == or_1 and or_1 == or_2 and or_2 == or_3)
 
 
 def result():

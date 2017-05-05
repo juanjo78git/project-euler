@@ -12,10 +12,7 @@ def fibonacci():
 def pandigital(s):
     p = "123456789"
 
-    if "".join(sorted(s)) == p:
-        return True
-    else:
-        return False
+    return bool("".join(sorted(s)) == p)
 
 
 def presufpan(n):

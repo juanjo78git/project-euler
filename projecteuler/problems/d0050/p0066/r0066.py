@@ -39,10 +39,7 @@ def fracxy(i, xy0, xy1):
 
 
 def espell(x, y, d):
-    if (x**2) - (d*(y**2)) == 1:
-        return True
-    else:
-        return False
+    return bool((x**2) - (d*(y**2)) == 1)
 
 
 def calcfrac(r):

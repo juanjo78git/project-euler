@@ -44,12 +44,12 @@ def sumfactorial(n):
 
 def ciclossumfactorial(n):
     ciclos = 0
-    lnext = []
-    next = n
-    while next not in lnext:
+    lsiguiente = []
+    siguiente = n
+    while siguiente not in lsiguiente:
         ciclos += 1
-        lnext.append(next)
-        next = sumfactorial(next)
+        lsiguiente.append(siguiente)
+        siguiente = sumfactorial(siguiente)
     return ciclos
 
 

@@ -15,11 +15,11 @@ def m(get, exps, step, better):
     # 1. Tenemos que ver como llamarlo :S no lo tengo claro...
 
     # combinaciones de dos en dos :D
-    for par in list(set(list(itertools.combinations(exps, 2)))): 
+    for par in list(set(list(itertools.combinations(exps, 2)))):
 
 
         n = sum(par)
-        
+
         if n in yet_tested:
             continue
         else:
@@ -34,7 +34,7 @@ def m(get, exps, step, better):
             # añadimos dos veces el mismo numero
             # exps.append(sum(par))
             # exps.append(sum(par))
-            
+
             better = m(get, exps + [n, n], step + 1, better)
 
     return better
@@ -53,7 +53,7 @@ def m2(get, exps, step, better):
     # 1. Tenemos que ver como llamarlo :S no lo tengo claro...
 
     # combinaciones de dos en dos :D
-    # for par in list(set(list(itertools.combinations(exps, 2)))): 
+    # for par in list(set(list(itertools.combinations(exps, 2)))):
     for i in exps:
         for j in exps:
             n = i + j
@@ -79,10 +79,21 @@ def m2(get, exps, step, better):
                 # añadimos dos veces el mismo numero
                 # exps.append(sum(par))
                 # exps.append(sum(par))
-                
+
                 better = m2(get, exps + [n], step + 1, better)
 
     return better
+
+
+def test_binary(n):
+    v = 0
+
+    b = "{0:b}".format(n)
+
+    v = len(b) - 1
+    v += len(b[1:].replace('0', ''))
+
+    return v
 
 
 def result():
@@ -90,17 +101,19 @@ def result():
 
     BETTER = 15
     STEP = 1
-    EXP_TO_GET = 200
+    EXP_TO_GET = 50
     total = 0
     total2 = 0
 
-    # b = m(EXP_TO_GET, [1, 1], STEP, BETTER)
-    # for exp_to_get in range(1, EXP_TO_GET + 1):
-    #     total = m(exp_to_get, [1, 1], 1, (exp_to_get // 2) + 5)
-    #     # total2 = m2(exp_to_get, [1], 1, exp_to_get)
-    #     print(exp_to_get, total, total2, bin(exp_to_get))
+    b = m(EXP_TO_GET, [1, 1], STEP, BETTER)
+    for exp_to_get in range(1, EXP_TO_GET + 1):
+        total = m(exp_to_get, [1, 1], 1, (exp_to_get // 2) + 5)
+        total2 = m2(exp_to_get, [1], 1, exp_to_get)
 
-    total = m(200, [1, 1], 1, 110)
+        if test_binary(exp_to_get) != total:
+            print(exp_to_get, total, total2, bin(exp_to_get), test_binary(exp_to_get))
+
+    # total = m(200, [1, 1], 1, 110)
     # total = m(50, [1, 1], 1, 50)
     # total = m2(50, [1], 1, 50)
     return total

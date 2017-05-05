@@ -28,13 +28,13 @@ def tiles_114(total, offset, min_size, total_blocks, was_last_space, solution):
         return total
 
     # podemos intentar meter un espacio
-    total = tiles_114(total, offset + 1, min_size, total_blocks, True, 
+    total = tiles_114(total, offset + 1, min_size, total_blocks, True,
                       solution + ['S'])
 
     # Si lo ultimo fue un espacio, podemos meter fichas
     if was_last_space:
         for tile_size in range(min_size, total_blocks + 1):
-            
+
             # intentamos meter tiles de tamaño size
             total = tiles_114(total, offset + tile_size, min_size,
                               total_blocks, False, solution + [tile_size])
@@ -48,7 +48,7 @@ def result():
 
     N_BLOCKS = 50
     TILE_MINIM_SIZE = 3
-    
+
     g = gen_114()
     # total = 0
     # offset = 0

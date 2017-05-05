@@ -9,10 +9,7 @@
 
 # pasados dos enteros, nos dice si tienen los mismos dígitos
 def mismosdigitos(n1, n2):
-    if ''.join(sorted(str(n1))) == ''.join(sorted(str(n2))):
-        return True
-    else:
-        return False
+    return bool(''.join(sorted(str(n1))) == ''.join(sorted(str(n2))))
 
 
 def result():

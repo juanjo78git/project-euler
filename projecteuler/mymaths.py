@@ -181,7 +181,7 @@ def genprimes(n1, n2):
     l = []
     p = prime()
     myprime = p.__next__()
-    
+
     # primero saltamos los que sean menores
     while myprime < n1:
         myprime = p.__next__()
@@ -229,10 +229,10 @@ class Fraccion:
     def simplify(self):
         """ Simplificar la fracción """
         for i in range(2, min(self.n, self.d) + 1):
-            exit = False
-            while not exit:
+            exxit = False
+            while not exxit:
                 if (divmod(self.n, i)[1] == 0) and (divmod(self.d, i)[1] == 0):
                     self.n = self.n // i
                     self.d = self.d // i
                 else:
-                    exit = True
+                    exxit = True

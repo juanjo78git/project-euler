@@ -43,10 +43,11 @@ def concatprimes(lcomb):
     prime12 = int(str(prime1) + str(prime2))
     prime21 = int(str(prime2) + str(prime1))
 
-    if isprime(prime12) and isprime(prime21):
-        return True
-    else:
-        return False
+    return bool(isprime(prime12) and isprime(prime21))
+    # if isprime(prime12) and isprime(prime21):
+    #     return True
+    # else:
+    #     return False
 
 
 def compcombinac(lxprimes, newprime):
