@@ -56,7 +56,9 @@ def calc_valores_parent(comb_dig_opers):
             if int(r) == r:
                 if r not in l and r > 0:
                     l.append(r)
-        except:
+        except NameError:
+            pass
+        except ZeroDivisionError:
             pass
 
     return l

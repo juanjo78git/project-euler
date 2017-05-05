@@ -178,7 +178,7 @@ def result():
     for i in m.visitadas:
         l.append([m.visitadas[i], i])
 
-    sorted(l)[-3:]
+    # sorted(l)[-3:]
 
     # print "Resultado de 0084: ", m.resultado0084()
     return int(m.resultado0084())
