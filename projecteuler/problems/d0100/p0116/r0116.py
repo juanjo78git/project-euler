@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def fibonacci_minus_1():
     """ Generador de la secuencia Fibonacci"""
     a, b = 1, 1

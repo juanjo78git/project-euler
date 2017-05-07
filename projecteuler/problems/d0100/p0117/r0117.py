@@ -25,7 +25,6 @@ def tiles(total, offset, sizes, blocks):
     return total
 
 
-
 def tetranacci():
     """ Tetranacci numbers: a(n) = a(n-1) + a(n-2) + a(n-3) + a(n-4)
         with a(0)=a(1)=a(2)=0, a(3)=1.
