@@ -1,5 +1,8 @@
 # PROJECT EULER
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d5f5aac1f76346aaa2b83a8dfe2b8bc1)](https://www.codacy.com/app/penicolas/project-euler?utm_source=github.com&utm_medium=referral&utm_content=penicolas/project-euler&utm_campaign=badger)
+[![Code Climate](https://img.shields.io/codeclimate/github/penicolas/project-euler.svg)]()
+
 Mis soluciones a los ejercicios planteados en [projecteuler.net], programados
 en [Python].
 
